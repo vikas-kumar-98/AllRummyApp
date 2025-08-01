@@ -1,0 +1,2228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Rummy Apps - Reviews & Comparisons</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #FF6B35;
+            --secondary: #2C3E50;
+            --accent: #FFBE0B;
+            --light: #F7F9FC;
+            --dark: #1A252F;
+            --gray: #95A5A6;
+            --success: #2ECC71;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 15px auto 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), #FF8C42);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+            font-size: 16px;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--secondary);
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* Search Box Styles */
+        .search-container {
+            margin: 20px 0;
+            position: relative;
+            display: none; /* Hidden by default, shown in mobile */
+        }
+        
+        .search-container.active {
+            display: block;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 12px 20px;
+            padding-left: 45px;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .search-box:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(255, 107, 53, 0.2);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        .search-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--secondary);
+            font-size: 18px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2C3E50, #4A6491);
+            color: white;
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+            opacity: 0.15;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        /* Features Section */
+        .features {
+            background-color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--light);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .feature-icon {
+            font-size: 50px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+            font-size: 22px;
+        }
+        
+        /* Rummy Apps Section */
+        .rummy-apps {
+            background-color: var(--light);
+        }
+        
+        .apps-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: linear-gradient(135deg, var(--primary), #FF8C42);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+        
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .category-tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gray);
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .category-tab.active {
+            color: var(--primary);
+        }
+        
+        .category-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .category-content {
+            display: none;
+        }
+        
+        .category-content.active {
+            display: block;
+        }
+        
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .app-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .app-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .app-image {
+            height: 180px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .app-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .app-image .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+        
+        .app-image .overlay h3 {
+            color: white;
+            font-size: 22px;
+        }
+        
+        .app-content {
+            padding: 25px;
+        }
+        
+        .app-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        .app-rating {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .app-desc {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .app-features {
+            margin-bottom: 20px;
+        }
+        
+        .app-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .app-feature i {
+            color: var(--primary);
+            margin-right: 8px;
+            font-size: 12px;
+        }
+        
+        .app-btns {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .app-btn {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .app-download {
+            background-color: var(--secondary);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .app-download:hover {
+            background-color: var(--dark);
+        }
+        
+        .app-details {
+            background-color: var(--light);
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        .app-details:hover {
+            background-color: #e0e0e0;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background-color: white;
+            position: relative;
+        }
+        
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+            opacity: 0.03;
+            z-index: 0;
+        }
+        
+        .testimonials .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-slider {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 0 15px;
+        }
+        
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial-card {
+            min-width: 100%;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+        
+        .testimonial-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-content::before {
+            content: '"';
+            font-size: 120px;
+            color: var(--primary);
+            opacity: 0.1;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 30px;
+            font-size: 18px;
+            font-style: italic;
+            color: #555;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #eee;
+            margin-right: 15px;
+            overflow: hidden;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: var(--secondary);
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .slider-dot.active {
+            background-color: var(--primary);
+            transform: scale(1.2);
+        }
+        
+        .slider-arrows {
+            position: absolute;
+            top: 50%;
+            width: calc(100% - 30px);
+            left: 15px;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        
+        .slider-arrow {
+            background-color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            pointer-events: auto;
+            transition: all 0.3s;
+            z-index: 2;
+        }
+        
+        .slider-arrow:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            background-color: var(--light);
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            padding: 20px 25px;
+            background-color: white;
+            color: var(--secondary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+        
+        .faq-question:hover {
+            color: var(--primary);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-question.active + .faq-answer {
+            padding: 0 25px 25px;
+            max-height: 500px;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary), #FF8C42);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .newsletter::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .newsletter .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .newsletter h2 {
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 50px;
+            overflow: hidden;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 25px;
+            border: none;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        .newsletter-form button {
+            padding: 15px 30px;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: var(--dark);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 80px 0 0;
+            position: relative;
+        }
+        
+        .footer-wave {
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        
+        .footer-wave svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 60px;
+        }
+        
+        .footer-wave .shape-fill {
+            fill: var(--light);
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-col h3 {
+            margin-bottom: 25px;
+            color: white;
+            font-size: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 0;
+            border-radius: 3px;
+        }
+        
+        .footer-col p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links li a i {
+            margin-right: 10px;
+            color: var(--primary);
+            font-size: 14px;
+        }
+        
+        .footer-links li a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-contact-info {
+            list-style: none;
+        }
+        
+        .footer-contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .footer-contact-info li i {
+            color: var(--primary);
+            margin-right: 15px;
+            margin-top: 5px;
+            font-size: 18px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px 0;
+            text-align: center;
+        }
+        
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+        
+        .footer-links-bottom {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        
+        .footer-links-bottom a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links-bottom a:hover {
+            color: var(--primary);
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .testimonial-card {
+                min-width: 50%;
+            }
+            
+            .apps-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 992px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .testimonial-card {
+                min-width: 50%;
+            }
+            
+            .testimonial-content {
+                padding: 30px;
+            }
+            
+            .testimonial-text {
+                font-size: 16px;
+            }
+            
+            .apps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 300px;
+                height: 100vh;
+                background-color: var(--secondary);
+                padding: 80px 30px 30px;
+                transition: left 0.3s ease;
+                z-index: 1000;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0 0 20px;
+            }
+            
+            nav ul li a {
+                color: white;
+                font-size: 18px;
+            }
+            
+            .search-btn {
+                display: block;
+                margin-left: auto;
+                margin-right: 20px;
+            }
+            
+            .search-container {
+                display: block;
+                padding: 0 20px;
+                margin-bottom: 20px;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                margin-bottom: 15px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+            
+            .testimonial-card {
+                min-width: 100%;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                border-radius: 10px;
+            }
+            
+            .newsletter-form input,
+            .newsletter-form button {
+                border-radius: 10px !important;
+                width: 100%;
+            }
+            
+            .newsletter-form input {
+                margin-bottom: 10px;
+            }
+            
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-tabs {
+                flex-direction: column;
+                border-bottom: none;
+            }
+            
+            .category-tab {
+                border-bottom: 1px solid #eee;
+            }
+            
+            .category-tab.active::after {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            section {
+                padding: 50px 0;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .testimonial-content {
+                padding: 25px;
+            }
+            
+            .app-btns {
+                flex-direction: column;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-col {
+                text-align: center;
+            }
+            
+            .footer-col h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .footer-contact-info li {
+                justify-content: center;
+                text-align: center;
+            }
+            
+            nav {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://via.placeholder.com/40x40" alt="RummyHub Logo">
+                <span></span>
+            </div>
+            <button class="search-btn" id="searchBtn">
+                <i class="fas fa-search"></i>
+            </button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="mainNav">
+                <div class="search-container" id="mobileSearch">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-box" placeholder="Search rummy apps...">
+                </div>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#apps">Rummy Apps</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Discover the Best Rummy Apps in India</h1>
+            <p>Compare, review, and download the top rummy applications with secure payments, exciting tournaments, and massive bonuses.</p>
+            <div class="hero-btns">
+                <a href="#apps" class="btn">Explore Apps</a>
+                <a href="#features" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Our Recommended Apps</h2>
+                <p>We carefully select only the most trusted and feature-rich rummy platforms for your gaming pleasure</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>100% Secure</h3>
+                    <p>All listed apps are certified and use advanced encryption to protect your data and transactions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <h3>Instant Withdrawals</h3>
+                    <p>Fast and hassle-free withdrawal process to get your winnings when you want them.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Big Tournaments</h3>
+                    <p>Daily tournaments with massive prize pools and exciting rewards for top players.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rummy Apps Section -->
+    <section class="rummy-apps" id="apps">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Rummy Apps</h2>
+                <p>Browse through our curated selection of the best rummy platforms available today</p>
+            </div>
+            
+            <div class="search-container" id="desktopSearch">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-box" placeholder="Search rummy apps...">
+            </div>
+            
+            <div class="category-tabs">
+                <div class="category-tab active" data-category="trending">Trending Apps</div>
+                <div class="category-tab" data-category="best">Best Apps</div>
+                <div class="category-tab" data-category="latest">Latest Apps</div>
+            </div>
+            
+            <!-- Trending Apps -->
+            <div class="category-content active" id="trending-apps">
+                <div class="apps-grid">
+                    <!-- App 1 -->
+                    <div class="app-card" data-category="cash tournament trending">
+                        <div class="app-badge">Trending</div>
+                        <div class="app-image">
+                            <img src="https://via.placeholder.com/400x200/FF6B6B/FFFFFF?text=RummyCircle" alt="RummyCircle">
+                            <div class="overlay">
+                                <h3>RummyCircle</h3>
+                            </div>
+                        </div>
+                        <div class="app-content">
+                            <div class="app-meta">
+                                <span>10M+ Downloads</span>
+                                <span class="app-rating">★★★★☆ 4.2</span>
+                            </div>
+                            <div class="app-desc">
+                                India's largest rummy platform with 10 million+ players and daily tournaments.
+                            </div>
+                            <div class="app-features">
+                                <div class="app-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>₹10,000 Welcome Bonus</span>
+                                </div>
+                                <div class="app-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>24/7 Customer Support</span>
+                                </div>
+                            </div>
+                            <div class="app-btns">
+                                <a href="#" class="app-btn app-download">Download Now</a>
+                                <a href="#" class="app-btn app-details">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App 2 -->
+                    <div class="app-card" data-category="cash free trending">
+                        <div class="app-image">
+                            <img src="https://via.placeholder.com/400x200/4ECDC4/FFFFFF?text=Ace2Three" alt="Ace2Three">
+                            <div class="overlay">
+                                <h3>Ace2Three</h3>
+                            </div>
+                        </div>
+                        <div class="app-content">
+                            <div class="app-meta">
+                                <span>5M+ Downloads</span>
+                                <span class="app-rating">★★★★★ 4.7</span>
+                            </div>
+                            <div class="app-desc">
+                                Pioneer in online rummy with practice games and cash tables for all skill levels.
+                            </div>
+                            <div class="app-features">
+                                <div class="app-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>₹8,000 Welcome Bonus</span>
+                                </div>
+                                <div class="app-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Beginner Friendly</span>
+                                </div>
+                            </div>
+                            <div class="app-btns">
+                                <a href="#" class="app-btn app-download">Download Now</a>
+                                <a href="#" class="app-btn app-details">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App 3 -->
+                    <div class="app-card" data-category="tournament new trending">
+                        <div class="app-badge">Amazon Backed</div>
+                        <div class="app-image">
+                            <img src="https://via.placeholder.com/400x200/45B7D1/FFFFFF?text=Junglee+Rummy" alt="Junglee Rummy">
+                            <div class="overlay">
+                                <h3>Junglee Rummy</h3>
+                            </div>
+                        </div>
+                        <div class="app-content">
+                            <div class="app-meta">
+                                <span>8M+ Downloads</span>
+                                <span class="app-rating">★★★★☆ 4.3</span>
+                            </div>
+                            <div class="app-desc">
+                                Amazon-backed platform with massive welcome bonuses and regular promotions.
+                            </div>
+                            <div class="app-features">
+                                <div class="app-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>₹15,000 Welcome Bonus</span>
+                                </div>
+                                <div class="app-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Daily Cashback</span>
+                                </div>
+                            </div>
+                            <div class="app-btns">
+                                <a href="#" class="app-btn app-download">Download Now</a>
+                                <a href="#" class="app-btn app-details">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Best Apps -->
+            <div class="category-content" id="best-apps">
+                <div class="apps-grid">
+                    <!-- App 4 -->
+                    <div class="app-card" data-category="cash best">
+                        <div class="app-badge">Best for Cash</div>
+                        <div class="app-image">
+                            <img src="https://via.placeholder.com/400x200/FFBE0B/FFFFFF?text=KhelPlay+Rummy" alt="KhelPlay Rummy">
+                            <div class="overlay">
+                                <h3>KhelPlay Rummy</h3>
+                            </div>
+                        </div>
+                        <div class="app-content">
+                            <div class="app-meta">
+                                <span>3M+ Downloads</span>
+                                <span class="app-rating">★★★★☆ 4.1</span>
+                            </div>
+                            <div class="app-desc">
+                                User-friendly interface with multiple rummy variants and 24/7 customer support.
+                            </div>
+                            <div class="app-features">
+                                <div class="app-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>₹5,000 Welcome Bonus</span>
+                                </div>
+                                <div class="app-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Multiple Variants</span>
+                                </div>
+                            </div>
+                            <div class="app-btns">
+                                <a href="#" class="app-btn app-download">Download Now</a>
+                                <a href="#" class="app-btn app-details">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App 5 -->
+                    <div class="app-card" data-category="free new best">
+                        <div class="app-badge">Best for Beginners</div>
+                        <div class="app-image">
+                            <img src="https://via.placeholder.com/400x200/8338EC/FFFFFF?text=Rummy+Passion" alt="Rummy Passion">
+                            <div class="overlay">
+                                <h3>Rummy Passion</h3>
+                            </div>
+                        </div>
+                        <div class="app-content">
+                            <div class="app-meta">
+                                <span>2M+ Downloads</span>
+                                <span class="app-rating">★★★★★ 4.8</span>
+                            </div>
+                            <div class="app-desc">
+                                Beginner-friendly platform with free games and low-stakes tables.
+                            </div>
+                            <div class="app-features">
+                                <div class="app-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Free Practice Games</span>
+                                </div>
+                                <div class="app-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Beginner Tutorials</span>
+                                </div>
+                            </div>
+                            <div class="app-btns">
+                                <a href="#" class="app-btn app-download">Download Now</a>
+                                <a href="#" class="app-btn app-details">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App 6 -->
+                    <div class="app-card" data-category="cash tournament best">
+                        <div class="app-badge">VIP Program</div>
+                        <div class="app-image">
+                            <img src="https://via.placeholder.com/400x200/FF006E/FFFFFF?text=Classic+Rummy" alt="Classic Rummy">
+                            <div class="overlay">
+                                <h3>Classic Rummy</h3>
+                            </div>
+                        </div>
+                        <div class="app-content">
+                            <div class="app-meta">
+                                <span>4M+ Downloads</span>
+                                <span class="app-rating">★★★★☆ 4.0</span>
+                            </div>
+                            <div class="app-desc">
+                                Premium rummy experience with high-stakes tables and VIP rewards.
+                            </div>
+                            <div class="app-features">
+                                <div class="app-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>VIP Rewards Program</span>
+                                </div>
+                                <div class="app-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>High-Stakes Tables</span>
+                                </div>
+                            </div>
+                            <div class="app-btns">
+                                <a href="#" class="app-btn app-download">Download Now</a>
+                                <a href="#" class="app-btn app-details">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Latest Apps -->
+            <div class="category-content" id="latest-apps">
+                <div class="apps-grid">
+                    <!-- App 7 -->
+                    <div class="app-card" data-category="new latest">
+                        <div class="app-badge">New Launch</div>
+                        <div class="app-image">
+                            <img src="https://via.placeholder.com/400x200/3A86FF/FFFFFF?text=Rummy+Gold" alt="Rummy Gold">
+                            <div class="overlay">
+                                <h3>Rummy Gold</h3>
+                            </div>
+                        </div>
+                        <div class="app-content">
+                            <div class="app-meta">
+                                <span>500K+ Downloads</span>
+                                <span class="app-rating">★★★★☆ 4.5</span>
+                            </div>
+                            <div class="app-desc">
+                                New platform with innovative features and daily leaderboard challenges.
+                            </div>
+                            <div class="app-features">
+                                <div class="app-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>₹12,000 Welcome Bonus</span>
+                                </div>
+                                <div class="app-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Daily Leaderboards</span>
+                                </div>
+                            </div>
+                            <div class="app-btns">
+                                <a href="#" class="app-btn app-download">Download Now</a>
+                                <a href="#" class="app-btn app-details">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App 8 -->
+                    <div class="app-card" data-category="tournament new latest">
+                        <div class="app-badge">New</div>
+                        <div class="app-image">
+                            <img src="https://via.placeholder.com/400x200/8338EC/FFFFFF?text=Rummy+Pro" alt="Rummy Pro">
+                            <div class="overlay">
+                                <h3>Rummy Pro</h3>
+                            </div>
+                        </div>
+                        <div class="app-content">
+                            <div class="app-meta">
+                                <span>1M+ Downloads</span>
+                                <span class="app-rating">★★★★★ 4.9</span>
+                            </div>
+                            <div class="app-desc">
+                                Professional rummy platform with advanced analytics and coaching.
+                            </div>
+                            <div class="app-features">
+                                <div class="app-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Advanced Analytics</span>
+                                </div>
+                                <div class="app-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Pro Coaching</span>
+                                </div>
+                            </div>
+                            <div class="app-btns">
+                                <a href="#" class="app-btn app-download">Download Now</a>
+                                <a href="#" class="app-btn app-details">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App 9 -->
+                    <div class="app-card" data-category="free new latest">
+                        <div class="app-badge">New</div>
+                        <div class="app-image">
+                            <img src="https://via.placeholder.com/400x200/FF006E/FFFFFF?text=Rummy+Stars" alt="Rummy Stars">
+                            <div class="overlay">
+                                <h3>Rummy Stars</h3>
+                            </div>
+                        </div>
+                        <div class="app-content">
+                            <div class="app-meta">
+                                <span>750K+ Downloads</span>
+                                <span class="app-rating">★★★★☆ 4.3</span>
+                            </div>
+                            <div class="app-desc">
+                                New social rummy platform with celebrity tournaments and live events.
+                            </div>
+                            <div class="app-features">
+                                <div class="app-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Celebrity Tournaments</span>
+                                </div>
+                                <div class="app-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Social Features</span>
+                                </div>
+                            </div>
+                            <div class="app-btns">
+                                <a href="#" class="app-btn app-download">Download Now</a>
+                                <a href="#" class="app-btn app-details">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Players Say</h2>
+                <p>Hear from our community of rummy enthusiasts about their experiences</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-text">
+                                "I've tried many rummy apps but RummyCircle offers the best tournaments. The interface is smooth, and I won ₹25,000 in last month's mega tournament! Withdrawals are processed within hours, which is amazing."
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rajesh Kumar">
+                                </div>
+                                <div class="author-info">
+                                    <h4>Rajesh Kumar</h4>
+                                    <p>Delhi, Regular Player</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-text">
+                                "Ace2Three has the most secure payment system I've encountered. As someone who plays daily, I appreciate that withdrawals are processed within 2 hours. Their customer support is also very responsive whenever I have questions."
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya Malhotra">
+                                </div>
+                                <div class="author-info">
+                                    <h4>Priya Malhotra</h4>
+                                    <p>Mumbai, 3 Years Experience</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-text">
+                                "As a beginner, I found Rummy Passion very easy to use. Their tutorials helped me improve my game quickly, and the free practice tables allowed me to gain confidence before playing cash games. Now I play regularly and have won over ₹15,000!"
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Ankit Sharma">
+                                </div>
+                                <div class="author-info">
+                                    <h4>Ankit Sharma</h4>
+                                    <p>Bangalore, New Player</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-text">
+                                "Junglee Rummy's daily promotions keep me coming back. The deposit bonuses are generous, and I love their tournament structure. I've cashed out over ₹50,000 in the past six months playing on their platform."
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Sunita Patel">
+                                </div>
+                                <div class="author-info">
+                                    <h4>Sunita Patel</h4>
+                                    <p>Ahmedabad, Tournament Player</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-text">
+                                "Classic Rummy's VIP program is unmatched. The rewards and exclusive tournaments make me feel valued as a player. I've received special bonuses and even invitations to live events through their program."
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Vikram Singh">
+                                </div>
+                                <div class="author-info">
+                                    <h4>Vikram Singh</h4>
+                                    <p>Chennai, VIP Player</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-text">
+                                "KhelPlay Rummy offers the best variety of rummy variants. I love switching between Points Rummy, Pool Rummy, and Deals Rummy. The seamless transition between game types keeps the experience fresh and exciting."
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Neha Gupta">
+                                </div>
+                                <div class="author-info">
+                                    <h4>Neha Gupta</h4>
+                                    <p>Hyderabad, Multi-Variant Player</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-nav">
+                    <div class="slider-dot active" data-index="0"></div>
+                    <div class="slider-dot" data-index="1"></div>
+                    <div class="slider-dot" data-index="2"></div>
+                    <div class="slider-dot" data-index="3"></div>
+                    <div class="slider-dot" data-index="4"></div>
+                    <div class="slider-dot" data-index="5"></div>
+                </div>
+                
+                <div class="slider-arrows">
+                    <div class="slider-arrow" id="prevArrow">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="slider-arrow" id="nextArrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about online rummy and our recommended apps</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is playing rummy online legal in India?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, playing rummy online for cash is legal in India as it has been classified as a game of skill by the Supreme Court. However, laws may vary by state, so it's advisable to check your local regulations. All apps we recommend operate within the legal framework and have necessary certifications.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I withdraw my winnings?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Withdrawal processes vary by platform but generally involve these steps:</p>
+                        <ol>
+                            <li>Complete your account verification (KYC process)</li>
+                            <li>Navigate to the cashier or withdrawal section</li>
+                            <li>Select your preferred withdrawal method (UPI, bank transfer, etc.)</li>
+                            <li>Enter the amount you wish to withdraw</li>
+                            <li>Confirm the transaction</li>
+                        </ol>
+                        <p>Most apps process withdrawals within 24-48 hours, with some offering instant withdrawals for verified users.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Are these apps safe for transactions?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. All apps listed on our platform use 128-bit SSL encryption for secure transactions and are certified by independent auditors. We only recommend apps with:</p>
+                        <ul>
+                            <li>Proven track records of security and fair play</li>
+                            <li>Proper gaming licenses and certifications</li>
+                            <li>Positive user reviews regarding payments</li>
+                            <li>Transparent terms and conditions</li>
+                        </ul>
+                        <p>We regularly review and update our recommendations based on user feedback and security audits.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can beginners play on these apps?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! Most apps we recommend offer excellent features for beginners:</p>
+                        <ul>
+                            <li>Free practice games with no money involved</li>
+                            <li>Comprehensive tutorials and rule guides</li>
+                            <li>Beginner tables with low stakes</li>
+                            <li>Bonus offers specifically for new players</li>
+                            <li>Customer support to answer your questions</li>
+                        </ul>
+                        <p>We particularly recommend Rummy Passion and Ace2Three for new players due to their excellent beginner resources.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What's the minimum deposit amount?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Minimum deposit amounts vary by platform but typically range from ₹25 to ₹100 for Indian rummy apps. Here's a quick comparison:</p>
+                        <ul>
+                            <li><strong>RummyCircle:</strong> ₹50 minimum deposit</li>
+                            <li><strong>Ace2Three:</strong> ₹25 minimum deposit</li>
+                            <li><strong>Junglee Rummy:</strong> ₹100 minimum deposit</li>
+                            <li><strong>Rummy Passion:</strong> ₹25 minimum deposit</li>
+                        </ul>
+                        <p>Many apps offer special bonuses on your first deposit, effectively giving you extra playing money.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Stay Updated on New Rummy Apps</h2>
+            <p>Subscribe to our newsletter to receive updates on new app launches, special promotions, and tournament announcements.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-wave">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        <div class="footer-content">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3>RummyHub</h3>
+                        <p>Your trusted guide to the best rummy gaming platforms in India. We provide honest reviews and comparisons to help you choose the right app.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                            <li><a href="#apps"><i class="fas fa-chevron-right"></i> Rummy Apps</a></li>
+                            <li><a href="#features"><i class="fas fa-chevron-right"></i> Features</a></li>
+                            <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+                            <li><a href="#faq"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3>Top Apps</h3>
+                        <ul class="footer-links">
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> RummyCircle</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Ace2Three</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Junglee Rummy</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> KhelPlay Rummy</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Classic Rummy</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3>Contact Us</h3>
+                        <ul class="footer-contact-info">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>Address:</strong>
+                                    <p>123 Gaming Street, Bangalore, India - 560001</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>Email:</strong>
+                                    <p>info@rummyhub.com</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone-alt"></i>
+                                <div>
+                                    <strong>Phone:</strong>
+                                    <p>+91 9876543210</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="copyright">
+                    <p>&copy; 2023 RummyHub. All rights reserved.</p>
+                    <div class="footer-links-bottom">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Responsible Gaming</a>
+                        <a href="#">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        const searchBtn = document.getElementById('searchBtn');
+        const mobileSearch = document.getElementById('mobileSearch');
+        const desktopSearch = document.getElementById('desktopSearch');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        searchBtn.addEventListener('click', () => {
+            mobileSearch.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Category Tabs
+        const categoryTabs = document.querySelectorAll('.category-tab');
+        const categoryContents = document.querySelectorAll('.category-content');
+        
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                categoryContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                const category = tab.getAttribute('data-category');
+                document.getElementById(`${category}-apps`).classList.add('active');
+            });
+        });
+        
+        // Search Functionality
+        const searchBoxes = document.querySelectorAll('.search-box');
+        
+        searchBoxes.forEach(box => {
+            box.addEventListener('input', () => {
+                const searchTerm = box.value.toLowerCase();
+                const activeCategory = document.querySelector('.category-content.active');
+                const cards = activeCategory.querySelectorAll('.app-card');
+                
+                cards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const desc = card.querySelector('.app-desc').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || desc.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                // Close all other items
+                faqQuestions.forEach(item => {
+                    if (item !== question) {
+                        item.classList.remove('active');
+                        item.nextElementSibling.style.maxHeight = '0';
+                        item.nextElementSibling.style.padding = '0 25px';
+                        item.querySelector('i').style.transform = 'rotate(0deg)';
+                    }
+                });
+                
+                // Toggle current item
+                question.classList.toggle('active');
+                
+                if (question.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    answer.style.padding = '0 25px 25px';
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    answer.style.maxHeight = '0';
+                    answer.style.padding = '0 25px';
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+        
+        // Testimonial Slider
+        const testimonialTrack = document.getElementById('testimonialTrack');
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+        const dots = document.querySelectorAll('.slider-dot');
+        const prevArrow = document.getElementById('prevArrow');
+        const nextArrow = document.getElementById('nextArrow');
+        
+        let currentIndex = 0;
+        const cardCount = testimonialCards.length;
+        let slidesToShow = 3; // Default for desktop
+        let isDragging = false;
+        let startPos = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let animationID;
+        
+        // Set initial slides to show based on screen size
+        function setSlidesToShow() {
+            if (window.innerWidth >= 992) {
+                slidesToShow = 3; // Desktop - show 3
+            } else if (window.innerWidth >= 768) {
+                slidesToShow = 2; // Tablet - show 2
+            } else {
+                slidesToShow = 1; // Mobile - show 1
+            }
+            updateSlider();
+        }
+        
+        // Initialize slider
+        setSlidesToShow();
+        window.addEventListener('resize', setSlidesToShow);
+        
+        // Update slider position
+        function updateSlider() {
+            const slideWidth = 100 / slidesToShow;
+            testimonialTrack.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        // Go to specific slide
+        function goToSlide(index) {
+            // Ensure index stays within bounds
+            if (index < 0) {
+                index = cardCount - slidesToShow;
+            } else if (index > cardCount - slidesToShow) {
+                index = 0;
+            }
+            
+            currentIndex = index;
+            updateSlider();
+        }
+        
+        // Next slide
+        function nextSlide() {
+            goToSlide(currentIndex + 1);
+        }
+        
+        // Previous slide
+        function prevSlide() {
+            goToSlide(currentIndex - 1);
+        }
+        
+        // Dot navigation
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const slideIndex = parseInt(dot.getAttribute('data-index'));
+                goToSlide(slideIndex);
+            });
+        });
+        
+        // Arrow navigation
+        nextArrow.addEventListener('click', nextSlide);
+        prevArrow.addEventListener('click', prevSlide);
+        
+        // Auto slide
+        let autoSlideInterval = setInterval(nextSlide, 5000);
+        
+        // Pause auto slide on hover
+        testimonialTrack.addEventListener('mouseenter', () => {
+            clearInterval(autoSlideInterval);
+        });
+        
+        testimonialTrack.addEventListener('mouseleave', () => {
+            autoSlideInterval = setInterval(nextSlide, 5000);
+        });
+        
+        // Touch events for mobile swipe
+        testimonialTrack.addEventListener('touchstart', touchStart);
+        testimonialTrack.addEventListener('touchend', touchEnd);
+        testimonialTrack.addEventListener('touchmove', touchMove);
+        
+        function touchStart(e) {
+            startPos = e.touches[0].clientX;
+            isDragging = true;
+            clearInterval(autoSlideInterval);
+            animationID = requestAnimationFrame(animation);
+            testimonialTrack.style.cursor = 'grabbing';
+            testimonialTrack.style.transition = 'none';
+        }
+        
+        function touchEnd() {
+            isDragging = false;
+            cancelAnimationFrame(animationID);
+            
+            const movedBy = currentTranslate - prevTranslate;
+            
+            if (movedBy < -100 && currentIndex < cardCount - slidesToShow) {
+                nextSlide();
+            } else if (movedBy > 100 && currentIndex > 0) {
+                prevSlide();
+            }
+            
+            testimonialTrack.style.cursor = 'grab';
+            testimonialTrack.style.transition = 'transform 0.5s ease';
+            autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+        
+        function touchMove(e) {
+            if (isDragging) {
+                const currentPosition = e.touches[0].clientX;
+                currentTranslate = prevTranslate + currentPosition - startPos;
+            }
+        }
+        
+        function animation() {
+            testimonialTrack.style.transform = `translateX(calc(-${currentIndex * (100 / slidesToShow)}% + ${currentTranslate}px))`;
+            if (isDragging) requestAnimationFrame(animation);
+        }
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

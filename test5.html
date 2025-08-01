@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Card Fixed Layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 10px;
+        }
+        
+        .card-container {
+            display: flex;
+            width: 100%;
+            max-width: 1000px;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: nowrap; /* Prevent wrapping to new line */
+        }
+        
+        .card {
+            flex: 1;
+            min-width: 120px; /* Increased minimum width */
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 12px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .card.middle {
+            top: -20px;
+            border: 1px solid whitesmoke;
+        }
+        
+        .card img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 10%;
+            margin-bottom: 8px;
+            background: #eee;
+            max-width: 150px;
+        }
+        
+        h2 {
+            font-size: clamp(0.8rem, 2vw, 1.2rem);
+            margin: 5px 0;
+            color: #333;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+        
+        h3 {
+            font-size: clamp(0.7rem, 1.8vw, 1rem);
+            margin: 5px 0;
+            color: #555;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+        
+        .rating {
+            color: #FFD700;
+            margin: 5px 0;
+            font-size: clamp(0.6rem, 1.5vw, 0.9rem);
+        }
+        
+        .download-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 5px;
+            font-size: clamp(0.6rem, 1.5vw, 0.8rem);
+            width: 100%;
+            max-width: 120px;
+        }
+
+        /* Media Query for smaller screens */
+        @media (max-width: 768px) {
+            .card-container {
+                gap: 5px; /* Reduce gap between cards */
+                padding: 10px;
+                overflow-x: auto; /* Allow horizontal scrolling if needed */
+                justify-content: center; /* Align cards to start */
+            }
+            
+            .card {
+                min-width: 140px; /* Smaller minimum width */
+                padding: 10px;
+                flex: 0 0 auto; /* Don't grow or shrink */
+            }
+            
+            .card.middle {
+                top: 0;
+            }
+            
+            .card img {
+                max-width: 125px;
+            }
+            
+            h2, h3 {
+                font-size: 0.7rem;
+            }
+            
+            .rating {
+                font-size: 0.6rem;
+            }
+            
+            .download-btn {
+                padding: 3px 6px;
+                font-size: 0.6rem;
+                max-width: 80px;
+            }
+        }
+
+        /* Media Query for very small screens */
+        @media (max-width: 480px) {
+            .card {
+                min-width: 100px;
+                padding: 8px;
+            }
+            
+            .card img {
+                max-width: 85px;
+            }
+            
+            h2 {
+                font-size: 0.6rem;
+            }
+            
+            h3 {
+                font-size: 0.6rem;
+            }
+            
+            .rating {
+                font-size: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <!-- Card 1 -->
+        <div class="card">
+            <img src="img/rummy.png" alt="Image 1">
+            <h3>One</h3>
+            <div class="rating">★★★★☆</div>
+        </div>
+
+        <!-- Card 2 (Middle - Elevated) -->
+        <div class="card middle">
+            <img src="img/rummy.png" alt="Image 2">
+            <h2>Your Name</h2>
+            <div class="rating">★★★★★</div>
+            <button class="download-btn">Download</button>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <img src="img/rummy.png" alt="Image 3">
+            <h3>Three</h3>
+            <div class="rating">★★★☆☆</div>
+        </div>
+    </div>
+</body>
+</html>

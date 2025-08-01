@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Card Showcase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 15px;
+        }
+        
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .card-rating {
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .download-btn:hover {
+            background-color: #45a049;
+        }
+        
+        /* Expanded View for Mobile */
+        .expanded-view {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .expanded-content {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 500px;
+            margin: 20px auto;
+            position: relative;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+        }
+        
+        .expanded-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .expanded-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .expanded-rating {
+            color: #ffc107;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .expanded-desc {
+            margin-bottom: 20px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .expanded-download {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .card {
+                width: calc(33.333% - 20px);
+            }
+            
+            .download-btn {
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Featured Content</h1>
+        
+        <div class="cards-container">
+            <!-- Card 1 -->
+            <div class="card" onclick="showExpanded(1)">
+                <img src="https://source.unsplash.com/random/600x400?nature" alt="Nature" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Beautiful Nature</h3>
+                    <div class="card-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(4.0)</span>
+                    </div>
+                    <button class="download-btn">Download</button>
+                </div>
+                
+                <!-- Expanded View (hidden by default) -->
+                <div class="expanded-view" id="expanded-1">
+                    <div class="expanded-content">
+                        <span class="close-btn" onclick="hideExpanded(1)">&times;</span>
+                        <img src="https://source.unsplash.com/random/600x400?nature" alt="Nature" class="expanded-image">
+                        <h2 class="expanded-title">Beautiful Nature</h2>
+                        <div class="expanded-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(4.0)</span>
+                        </div>
+                        <p class="expanded-desc">
+                            Stunning high-resolution nature photography featuring lush forests, majestic mountains, and serene lakes. Perfect for wallpapers and creative projects.
+                        </p>
+                        <button class="expanded-download">Download HD Image</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="card" onclick="showExpanded(2)">
+                <img src="https://source.unsplash.com/random/600x400?city" alt="City" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Urban Landscape</h3>
+                    <div class="card-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>(5.0)</span>
+                    </div>
+                    <button class="download-btn">Download</button>
+                </div>
+                
+                <!-- Expanded View (hidden by default) -->
+                <div class="expanded-view" id="expanded-2">
+                    <div class="expanded-content">
+                        <span class="close-btn" onclick="hideExpanded(2)">&times;</span>
+                        <img src="https://source.unsplash.com/random/600x400?city" alt="City" class="expanded-image">
+                        <h2 class="expanded-title">Urban Landscape</h2>
+                        <div class="expanded-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(5.0)</span>
+                        </div>
+                        <p class="expanded-desc">
+                            Captivating cityscapes from around the world, showcasing modern architecture, bustling streets, and vibrant nightlife. Ideal for presentations and design work.
+                        </p>
+                        <button class="expanded-download">Download HD Image</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="card" onclick="showExpanded(3)">
+                <img src="https://source.unsplash.com/random/600x400?animal" alt="Animal" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Wildlife</h3>
+                    <div class="card-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
+                        <span>(3.7)</span>
+                    </div>
+                    <button class="download-btn">Download</button>
+                </div>
+                
+                <!-- Expanded View (hidden by default) -->
+                <div class="expanded-view" id="expanded-3">
+                    <div class="expanded-content">
+                        <span class="close-btn" onclick="hideExpanded(3)">&times;</span>
+                        <img src="https://source.unsplash.com/random/600x400?animal" alt="Animal" class="expanded-image">
+                        <h2 class="expanded-title">Wildlife</h2>
+                        <div class="expanded-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                            <span>(3.7)</span>
+                        </div>
+                        <p class="expanded-desc">
+                            Stunning wildlife photography featuring animals in their natural habitats. From majestic lions to playful dolphins, this collection brings nature to you.
+                        </p>
+                        <button class="expanded-download">Download HD Image</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showExpanded(cardNumber) {
+            // On mobile, show expanded view
+            if (window.innerWidth <= 768) {
+                document.getElementById(`expanded-${cardNumber}`).style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+        }
+        
+        function hideExpanded(cardNumber) {
+            document.getElementById(`expanded-${cardNumber}`).style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        
+        // Add click event to download buttons to prevent card click when button is clicked
+        document.querySelectorAll('.download-btn, .expanded-download').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation();
+                alert('Download started! (This is a demo)');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,3061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Gaming Navigation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff4655;
+            --secondary: #0f1923;
+            --accent: #ece8e1;
+            --dark: #111;
+            --light: #f8f9fa;
+            --highlight: #ff8a00;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Titillium Web', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--white);
+            color: var(--black);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* ========== ADVANCED NAVIGATION ========== */
+        .navbar {
+            background: rgba(15, 25, 35, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 70, 85, 0.2);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--highlight));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .nav-item {
+            position: relative;
+            list-style-type: none;
+        }
+        
+        .nav-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        .nav-link i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+        
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--secondary);
+            width: 220px;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+            border: 1px solid rgba(255, 70, 85, 0.1);
+            border-top: 2px solid var(--primary);
+        }
+        
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            padding: 0.7rem 1.5rem;
+            border-bottom: 1px solid rgba(236, 232, 225, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(255, 70, 85, 0.1);
+            padding-left: 1.8rem;
+        }
+        
+        .dropdown-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .dropdown-link i {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+        
+        /* Mega Menu */
+        .mega-menu {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            background: var(--secondary);
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 70, 85, 0.1);
+            border-top: 2px solid var(--primary);
+        }
+        
+        .nav-item.mega:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .mega-column h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 70, 85, 0.3);
+        }
+        
+        .mega-list {
+            list-style: none;
+        }
+        
+        .mega-list li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .mega-list a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .mega-list a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .mega-list a i {
+            font-size: 0.8rem;
+            color: var(--highlight);
+        }
+        
+        .mega-banner {
+            grid-column: span 1;
+            background: linear-gradient(135deg, rgba(255, 70, 85, 0.1), rgba(15, 25, 35, 0.8));
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 1px solid rgba(255, 70, 85, 0.2);
+        }
+        
+        .mega-banner img {
+            width: 80px;
+            margin-bottom: 1rem;
+        }
+        
+        .mega-banner h5 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .mega-banner p {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .mega-btn {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .mega-btn:hover {
+            background: #e63a49;
+            transform: translateY(-2px);
+        }
+        
+        /* Auth Buttons */
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn-login {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-login:hover {
+            background: rgba(236, 232, 225, 0.1);
+        }
+        
+        .btn-signup {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-signup:hover {
+            background: #e63a49;
+            transform: translateY(-2px);
+        }
+        
+        /* Mobile Menu Toggle */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* ========== ADVANCED FOOTER ========== */
+        footer {
+            background: var(--secondary);
+            margin-top: auto;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(255, 70, 85, 0.2);
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-col {
+            padding: 0 1rem;
+        }
+        
+        .footer-col:first-child {
+            grid-column: span 2;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-logo img {
+            height: 40px;
+        }
+        
+        .footer-logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--highlight));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .footer-about {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(236, 232, 225, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-title {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.8;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            opacity: 1;
+            padding-left: 5px;
+        }
+        
+        .footer-links a i {
+            font-size: 0.8rem;
+            color: var(--highlight);
+        }
+        
+        .footer-newsletter p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 0.7rem 1rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            background: rgba(236, 232, 225, 0.1);
+            color: var(--accent);
+            outline: none;
+        }
+        
+        .newsletter-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 1.2rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-btn:hover {
+            background: #e63a49;
+        }
+        
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .footer-bottom-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .footer-legal {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .footer-legal a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-legal a:hover {
+            color: var(--primary);
+            opacity: 1;
+        }
+        
+        /* ========== RESPONSIVE DESIGN ========== */
+        @media (max-width: 1200px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-col:first-child {
+                grid-column: span 3;
+                margin-bottom: 2rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                max-width: 350px;
+                height: calc(100vh - 70px);
+                background: var(--secondary);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 2rem;
+                transition: all 0.5s ease;
+                overflow-y: auto;
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                width: 100%;
+            }
+            
+            .nav-link {
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(236, 232, 225, 0.1);
+                width: 100%;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                border: none;
+                box-shadow: none;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                display: none;
+                margin-top: 0;
+                border-radius: 0;
+                padding-left: 1rem;
+            }
+            
+            .dropdown-menu.active {
+                display: block;
+            }
+            
+            .mega-menu {
+                position: static;
+                width: 100%;
+                display: none;
+                grid-template-columns: 1fr;
+                padding: 1rem;
+                margin-top: 0;
+            }
+            
+            .mega-menu.active {
+                display: grid;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .auth-buttons {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-col:first-child {
+                grid-column: span 1;
+            }
+            
+            .footer-bottom-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .footer-container {
+                padding: 0 1rem;
+            }
+            
+            .mega-menu {
+                padding: 0.5rem;
+            }
+        }
+
+
+        /*Card three ............................*/
+        .card-container {
+            display: flex;
+            width: 65%;
+            padding: 10px;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: nowrap;
+            position: relative;
+            margin: 0 auto;
+        }
+        
+        .card {
+            flex: 1;
+            min-width: 120px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 5px 5px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 25px;
+        }
+        
+        .card.middle {
+            transform: translateY(-20px);
+            border: 1px solid whitesmoke;
+        }
+        
+        .card-number {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+        
+        .image-container {
+            width: 100%;
+            margin-bottom: 1px;
+        }
+        
+        .card img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 10%;
+            background: #eee;
+            max-width: 150px;
+        }
+        
+        h2 {
+            font-size: clamp(0.8rem, 2vw, 1.2rem);
+            margin: 0px;
+            color: #333;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+        
+        h3 {
+            font-size: clamp(0.7rem, 1.8vw, 1rem);
+            margin: 0px;
+            color: #555;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+        
+        .rating {
+            color: #FFD700;
+            margin: 1px 0;
+            font-size: clamp(1.1rem, 1.5vw, 0.9rem);
+        }
+        
+        .download-btn1 {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 4px 6px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+            width: 100%;
+            max-width: 100px;
+        }
+
+        /* Media Query for smaller screens */
+        @media (max-width: 768px) {
+            .card-container {
+                gap: 12px;
+                padding: 5px;
+                overflow-x: auto;
+                justify-content: flex-start;
+                margin: 0 auto;
+                width: 100%;
+            }
+            
+            .card {
+            flex: 1;
+            min-width: 120px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 4px 5px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 25px;
+            }
+            
+            .card-number {
+                width: 30px;
+                height: 30px;
+                font-size: 1.2rem;
+                top: -10px;
+            }
+            
+            .card img {
+                max-width: 80px;
+            }
+        }
+
+        /* Media Query for very small screens */
+        @media (max-width: 480px) {
+            .card-container {
+            display: flex;
+            width: 100%;
+            padding: 0px;
+            gap: 2px;
+            margin: 0px;
+            justify-content: center;
+            flex-wrap: nowrap;
+             margin: 0 auto;
+            position: relative;
+            }
+            .card {
+            flex: 1;
+            min-width: 100px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 5px 0px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            }
+            
+            .card-number {
+                width: 20px;
+                height: 20px;
+                font-size: 1rem;
+                top: -7px;
+            }
+
+           .card img {
+                max-width: 70px;
+            }
+        }
+        /*End of three cards*/
+
+        /*Search box cssss........................*/
+        .search-container {
+            max-width: 600px;
+            margin: .2rem auto;
+        }
+
+        .search-form {
+            position: relative;
+        }
+
+        .search-input-container {
+            display: flex;
+            border: 2px solid blanchedalmond;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .search-input-container:focus-within {
+            box-shadow: 0 2px 8px rgba(66, 133, 244, 0.3);
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-button {
+            background: whitesmoke;
+            border: none;
+            padding: 0 20px;
+            cursor: pointer;
+            color: var(--primary-color);
+            font-size: 16px;
+            transition: background-color 0.2s;
+        }
+
+        .search-button:hover {
+            background-color: var(--hover-color);
+        }
+
+        .search-suggestions {
+            position: absolute;
+            width: 100%;
+            max-height: 300px;
+            overflow-y: auto;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 0 0 8px 8px;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            display: none;
+        }
+
+        .search-suggestions.visible {
+            display: block;
+        }
+
+        .suggestion-item {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .suggestion-item:hover {
+            background-color: var(--hover-color);
+        }
+
+        .suggestion-item.highlighted {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .search-history {
+            margin-top: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            display: none;
+        }
+
+        .search-history.visible {
+            display: block;
+        }
+
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .history-header h3 {
+            margin: 0;
+            font-size: 16px;
+            color: var(--text-color);
+        }
+
+        #clear-history {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        #history-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .history-item {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+        }
+
+        .history-query {
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        .history-query:hover {
+            text-decoration: underline;
+        }
+
+        .history-delete {
+            color: #70757a;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* Icons */
+        .icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .search-icon {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234285f4'%3E%3Cpath d='M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E");
+        }
+
+        .close-icon {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2370757a'%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3C/svg%3E");
+        }
+        /*End of Search box here*/
+
+        /*Start of FAQ PART css..................................*/
+        .rummy-faq-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--primary), #b21e2b);
+            color: white;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .faq-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .faq-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            opacity: 0.9;
+        }
+        
+        .faq-header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://example.com/cards-pattern.png') center/cover;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .faq-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+        
+        .faq-tab {
+            padding: 12px 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #666;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        .faq-tab.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .faq-tab:hover:not(.active) {
+            color: var(--dark);
+        }
+        
+        .faq-tab .badge {
+            position: absolute;
+            top: -8px;
+            right: 5px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .faq-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .faq-content.active {
+            display: block;
+        }
+        
+        .faq-category {
+            margin-bottom: 40px;
+        }
+        
+        .faq-category h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            padding-bottom: 10px;
+            border-bottom: 2px dashed #e0e0e0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .faq-category h3::before {
+            content: "";
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background-color: var(--secondary);
+            margin-right: 10px;
+            transform: rotate(45deg);
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .faq-question {
+            padding: 18px 25px;
+            background-color: #f8f9fa;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            color: var(--dark);
+        }
+        
+        .faq-question:hover {
+            background-color: #e9ecef;
+        }
+        
+        .faq-question::after {
+            content: '+';
+            font-size: 1.8rem;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+        
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+            background-color: white;
+            color: black;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px 25px;
+            max-height: 1000px;
+        }
+        
+        .faq-answer p {
+            margin-bottom: 15px;
+        }
+        
+        .faq-answer ul, .faq-answer ol {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        
+        .faq-answer li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight {
+            background-color: #fff9c4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        
+        .term {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .strategy-tip {
+            background-color: #e3f2fd;
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .warning-note {
+            background-color: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .faq-header h1 {
+                font-size: 2rem;
+            }
+            
+            .faq-tabs {
+                flex-direction: column;
+                align-items: stretch;
+                border-bottom: none;
+            }
+            
+            .faq-tab {
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid #e0e0e0;
+                border-left: 4px solid transparent;
+            }
+            
+            .faq-tab.active {
+                border-left: 4px solid var(--primary);
+                border-bottom: 1px solid #e0e0e0;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        /*End Of FAQ*/
+
+        /*youtube css ..............................*/
+        /* Video Section Styles */
+        .video-section {
+            padding: 60px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Video Grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        /* Video Card */
+        .video-card {
+            background: var(--light);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            overflow: hidden;
+        }
+        
+        .video-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.05);
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 71, 84, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .play-button:hover {
+            background-color: var(--primary);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .play-button svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--light);
+            margin-left: 3px;
+        }
+        
+        .video-info {
+            padding: 20px;
+        }
+        
+        .video-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            color: black;
+        }
+        
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 15px;
+            color: black;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+            
+            .video-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .video-section {
+                padding: 40px 15px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        /*End of youtube css*/
+
+
+
+        .tab-container {
+            max-width: 1000px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .tab-scroll {
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 8px;
+        }
+
+        .tab-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-nav {
+            display: inline-flex;
+            gap: 0.5rem;
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            background: DodgerBlue;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            position: relative;
+            z-index: 1;
+        }
+
+        .tab-btn:hover {
+            
+            background-color: yellowgreen;
+        }
+        .tab-btn.active {
+            color: white;
+            background-color: #4CAF50;
+        }
+
+        .tab-indicator {
+            position: absolute;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+            z-index: 0;
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            min-height: 500px;
+        }
+
+        .tab-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .tab-content.active {
+            position: relative;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .app-card {
+            background: white;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .app-card-content {
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .app-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            object-fit: cover;
+            flex-shrink: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .app-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .app-title {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
+        .app-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .app-meta img {
+            width: 14px;
+            height: 14px;
+        }
+
+        .app-tag {
+            display: inline-block;
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 80%;
+            padding: 6px 10px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+            background-color: DodgerBlue;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 127, 238, 0.7);
+        }
+
+        .download-btn img {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .app-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tab-nav {
+                gap: 0.25rem;
+                padding: 0 0.5rem;
+            }
+            
+            .tab-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+            
+            .app-card-content {
+                padding: 1.25rem;
+            }
+            
+            .app-icon {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header {
+                margin: 1.5rem 0 2rem;
+            }
+            
+            .app-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .tab-btn {
+                padding: 0.5rem 1rem;
+            }
+            
+            .download-btn {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animation for card items */
+        .app-card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sequential animation for cards */
+        .tab-content.active .app-card:nth-child(1) { animation-delay: 0.1s; }
+        .tab-content.active .app-card:nth-child(2) { animation-delay: 0.2s; }
+        .tab-content.active .app-card:nth-child(3) { animation-delay: 0.3s; }
+        .tab-content.active .app-card:nth-child(4) { animation-delay: 0.4s; }
+        .tab-content.active .app-card:nth-child(5) { animation-delay: 0.5s; }
+        .tab-content.active .app-card:nth-child(6) { animation-delay: 0.6s; }
+
+  </style>
+</head>
+<body>
+    <!-- Advanced Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="img/wts.png" alt="GameZone Logo">
+                <span class="logo-text">AllRummyGame.com</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Home</a>
+                </li>
+               <li class="nav-item">
+                    <a href="#" class="nav-link">About</a>
+                </li>
+        
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Games <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link"><i class="fas fa-newspaper"></i> Latest Updates</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link"><i class="fas fa-award"></i> Reviews</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link"><i class="fas fa-video"></i> Trailers</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link"><i class="fas fa-calendar-alt"></i> Events</a>
+                        </div>
+                    </div>
+                </li>
+                
+
+
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Community <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link"><i class="fas fa-users"></i> Forums</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link"><i class="fas fa-trophy"></i> Tournaments</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link"><i class="fas fa-user-plus"></i> Teams</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="dropdown-link"><i class="fab fa-discord"></i> Discord</a>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Shop</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="contact-us.html" class="nav-link">Support</a>
+                </li>
+            </ul>
+            
+            <div class="auth-buttons">
+                <button class="btn-login">Login</button>
+                <button class="btn-signup">Sign Up</button>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Main Content (Placeholder) -->
+    <main style="padding: 1rem; flex: 1;">
+        <div class="card-container">
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="card-number">1</div>
+            <div class="image-container">
+                <img src="img/rummy.png" alt="Image 1">
+            </div>
+            <h3>One</h3>
+            <div class="rating">★★★★☆</div>
+            <button class="download-btn1">Download</button>
+        </div>
+
+        <!-- Card 2 (Middle - Elevated) -->
+        <div class="card middle">
+            <div class="card-number">2</div>
+            <div class="image-container">
+                <img src="img/rummy.png" alt="Image 2">
+            </div>
+            <h2>Your Name</h2>
+            <div class="rating">★★★★★</div>
+            <button class="download-btn1">Download</button>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card p-0">
+            <div class="card-number">3</div>
+            <div class="image-container">
+                <img src="img/rummy.png" alt="Image 3">
+            </div>
+            <h3>Three</h3>
+            <div class="rating">★★★☆☆</div>
+            <button class="download-btn1">Download</button>
+        </div>
+    </div>
+    <!--Search box-->
+    <div class="search-container">
+        <form id="search-form" class="search-form" role="search">
+            <div class="search-input-container">
+                <input type="search" id="search-input" class="search-input" 
+                       placeholder="All rummy game apps..." 
+                       autocomplete="off"
+                       aria-label="Search through site content">
+                <button type="submit" class="search-button">
+                    <span class="icon search-icon"></span>
+                </button>
+            </div>
+            
+            <div class="search-suggestions" id="search-suggestions"></div>
+        </form>
+        
+        <div class="search-history" id="search-history">
+            <div class="history-header">
+                <h3>Recent searches</h3>
+                <button type="button" id="clear-history">Clear all</button>
+            </div>
+            <ul id="history-list"></ul>
+        </div>
+    </div>
+    <!--End of search box -->
+
+
+    <!--Game app list -->
+    <div class="container py-4">
+       
+        
+        <div class="tab-container">
+            <div class="tab-scroll">
+                <div class="tab-nav">
+                    <button class="tab-btn active" data-tab="content1">Analytics</button>
+                    <button class="tab-btn" data-tab="content2">AI Tools</button>
+                    <button class="tab-btn" data-tab="content3">Security</button>
+                    <div class="tab-indicator"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-container">
+            <!-- Analytics Tab -->
+            <div id="content1" class="tab-content active">
+                <div class="app-grid">
+                    <!-- App Card 1 -->
+                    <div class="app-card">
+                        <div class="app-card-content">
+                            <img src="img/rummy333.webp" alt="App Icon" class="app-icon">
+                            <div class="app-info">
+                                <div>
+                                    <h3 class="app-title">New Rummy Apps</h3>
+                                    <div class="app-meta">
+                                        <img src="img/downl.png" alt="Download icon">
+                                        <span>Upcoming Apps | Soon</span>
+                                    </div>
+                                    <span class="app-tag">Join Us New Apps</span>
+                                </div>
+                                <button class="download-btn">
+                                    <img src="img/downl2.png" alt="Download">
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App Card 2 -->
+                    <div class="app-card">
+                        <div class="app-card-content">
+                            <img src="img/rummy333.webp" alt="App Icon" class="app-icon">
+                            <div class="app-info">
+                                <div>
+                                    <h3 class="app-title">New Rummy Apps</h3>
+                                    <div class="app-meta">
+                                        <img src="img/downl.png" alt="Download icon">
+                                        <span>200K Upcoming Apps | Soon</span>
+                                    </div>
+                                    <span class="app-tag">Join Us New Apps</span>
+                                </div>
+                                <button class="download-btn">
+                                    <img src="img/downl2.png" alt="Download">
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App Card 3 -->
+                    <div class="app-card">
+                        <div class="app-card-content">
+                            <img src="img/rummy333.webp" alt="App Icon" class="app-icon">
+                            <div class="app-info">
+                                <div>
+                                    <h3 class="app-title">New Rummy Apps</h3>
+                                    <div class="app-meta">
+                                        <img src="img/downl.png" alt="Download icon">
+                                        <span>Upcoming Apps | Soon</span>
+                                    </div>
+                                    <span class="app-tag">Join Us New Apps</span>
+                                </div>
+                                <button class="download-btn">
+                                    <img src="img/downl2.png" alt="Download">
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App Card 4 -->
+                    <div class="app-card">
+                        <div class="app-card-content">
+                            <img src="img/rummy333.webp" alt="App Icon" class="app-icon">
+                            <div class="app-info">
+                                <div>
+                                    <h3 class="app-title">New Rummy Apps</h3>
+                                    <div class="app-meta">
+                                        <img src="img/downl.png" alt="Download icon">
+                                        <span>Upcoming Apps | Soon</span>
+                                    </div>
+                                    <span class="app-tag">Join Us New Apps</span>
+                                </div>
+                                <button class="download-btn">
+                                    <img src="img/downl2.png" alt="Download">
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App Card 5 -->
+                    <div class="app-card">
+                        <div class="app-card-content">
+                            <img src="img/rummy333.webp" alt="App Icon" class="app-icon">
+                            <div class="app-info">
+                                <div>
+                                    <h3 class="app-title">New Rummy Apps</h3>
+                                    <div class="app-meta">
+                                        <img src="img/downl.png" alt="Download icon">
+                                        <span>Upcoming Apps | Soon</span>
+                                    </div>
+                                    <span class="app-tag">Join Us New Apps</span>
+                                </div>
+                                <button class="download-btn">
+                                    <img src="img/downl2.png" alt="Download">
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App Card 6 -->
+                    <div class="app-card">
+                        <div class="app-card-content">
+                            <img src="img/rummy333.webp" alt="App Icon" class="app-icon">
+                            <div class="app-info">
+                                <div>
+                                    <h3 class="app-title">New Rummy Apps</h3>
+                                    <div class="app-meta">
+                                        <img src="img/downl.png" alt="Download icon">
+                                        <span>Upcoming Apps | Soon</span>
+                                    </div>
+                                    <span class="app-tag">Join Us New Apps</span>
+                                </div>
+                                <button class="download-btn">
+                                    <img src="img/downl2.png" alt="Download">
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- AI Tools Tab -->
+            <div id="content2" class="tab-content">
+                <div class="app-grid">
+                    <!-- App Card 1 -->
+                    <div class="app-card">
+                        <div class="app-card-content">
+                            <img src="img/rummy333.webp" alt="App Icon" class="app-icon">
+                            <div class="app-info">
+                                <div>
+                                    <h3 class="app-title">New Rummy Apps</h3>
+                                    <div class="app-meta">
+                                        <img src="img/downl.png" alt="Download icon">
+                                        <span>Upcoming Apps | Soon</span>
+                                    </div>
+                                    <span class="app-tag">Join Us New Apps</span>
+                                </div>
+                                <button class="download-btn">
+                                    <img src="img/downl2.png" alt="Download">
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App Card 2 -->
+                    <div class="app-card">
+                        <div class="app-card-content">
+                            <img src="img/rummy333.webp" alt="App Icon" class="app-icon">
+                            <div class="app-info">
+                                <div>
+                                    <h3 class="app-title">New Rummy Apps</h3>
+                                    <div class="app-meta">
+                                        <img src="img/downl.png" alt="Download icon">
+                                        <span>200K Upcoming Apps | Soon</span>
+                                    </div>
+                                    <span class="app-tag">Join Us New Apps</span>
+                                </div>
+                                <button class="download-btn">
+                                    <img src="img/downl2.png" alt="Download">
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App Card 3 -->
+                    <div class="app-card">
+                        <div class="app-card-content">
+                            <img src="img/rummy333.webp" alt="App Icon" class="app-icon">
+                            <div class="app-info">
+                                <div>
+                                    <h3 class="app-title">New Rummy Apps</h3>
+                                    <div class="app-meta">
+                                        <img src="img/downl.png" alt="Download icon">
+                                        <span>Upcoming Apps | Soon</span>
+                                    </div>
+                                    <span class="app-tag">Join Us New Apps</span>
+                                </div>
+                                <button class="download-btn">
+                                    <img src="img/downl2.png" alt="Download">
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App Card 4 -->
+                    <div class="app-card">
+                        <div class="app-card-content">
+                            <img src="img/rummy333.webp" alt="App Icon" class="app-icon">
+                            <div class="app-info">
+                                <div>
+                                    <h3 class="app-title">New Rummy Apps</h3>
+                                    <div class="app-meta">
+                                        <img src="img/downl.png" alt="Download icon">
+                                        <span>Upcoming Apps | Soon</span>
+                                    </div>
+                                    <span class="app-tag">Join Us New Apps</span>
+                                </div>
+                                <button class="download-btn">
+                                    <img src="img/downl2.png" alt="Download">
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App Card 5 -->
+                    <div class="app-card">
+                        <div class="app-card-content">
+                            <img src="img/rummy333.webp" alt="App Icon" class="app-icon">
+                            <div class="app-info">
+                                <div>
+                                    <h3 class="app-title">New Rummy Apps</h3>
+                                    <div class="app-meta">
+                                        <img src="img/downl.png" alt="Download icon">
+                                        <span>Upcoming Apps | Soon</span>
+                                    </div>
+                                    <span class="app-tag">Join Us New Apps</span>
+                                </div>
+                                <button class="download-btn">
+                                    <img src="img/downl2.png" alt="Download">
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App Card 6 -->
+                    <div class="app-card">
+                        <div class="app-card-content">
+                            <img src="img/rummy333.webp" alt="App Icon" class="app-icon">
+                            <div class="app-info">
+                                <div>
+                                    <h3 class="app-title">New Rummy Apps</h3>
+                                    <div class="app-meta">
+                                        <img src="img/downl.png" alt="Download icon">
+                                        <span>Upcoming Apps | Soon</span>
+                                    </div>
+                                    <span class="app-tag">Join Us New Apps</span>
+                                </div>
+                                <button class="download-btn">
+                                    <img src="img/downl2.png" alt="Download">
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Security Tab -->
+            <div id="content3" class="tab-content">
+                <div class="app-grid">
+                    <!-- App Card 1 -->
+                    <div class="app-card">
+                        <div class="app-card-content">
+                            <img src="img/rummy333.webp" alt="App Icon" class="app-icon">
+                            <div class="app-info">
+                                <div>
+                                    <h3 class="app-title">New Rummy Apps</h3>
+                                    <div class="app-meta">
+                                        <img src="img/downl.png" alt="Download icon">
+                                        <span>Upcoming Apps | Soon</span>
+                                    </div>
+                                    <span class="app-tag">Join Us New Apps</span>
+                                </div>
+                                <button class="download-btn">
+                                    <img src="img/downl2.png" alt="Download">
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App Card 2 -->
+                    <div class="app-card">
+                        <div class="app-card-content">
+                            <img src="img/rummy333.webp" alt="App Icon" class="app-icon">
+                            <div class="app-info">
+                                <div>
+                                    <h3 class="app-title">New Rummy Apps</h3>
+                                    <div class="app-meta">
+                                        <img src="img/downl.png" alt="Download icon">
+                                        <span>200K Upcoming Apps | Soon</span>
+                                    </div>
+                                    <span class="app-tag">Join Us New Apps</span>
+                                </div>
+                                <button class="download-btn">
+                                    <img src="img/downl2.png" alt="Download">
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App Card 3 -->
+                    <div class="app-card">
+                        <div class="app-card-content">
+                            <img src="img/rummy333.webp" alt="App Icon" class="app-icon">
+                            <div class="app-info">
+                                <div>
+                                    <h3 class="app-title">New Rummy Apps</h3>
+                                    <div class="app-meta">
+                                        <img src="img/downl.png" alt="Download icon">
+                                        <span>Upcoming Apps | Soon</span>
+                                    </div>
+                                    <span class="app-tag">Join Us New Apps</span>
+                                </div>
+                                <button class="download-btn">
+                                    <img src="img/downl2.png" alt="Download">
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App Card 4 -->
+                    <div class="app-card">
+                        <div class="app-card-content">
+                            <img src="img/rummy333.webp" alt="App Icon" class="app-icon">
+                            <div class="app-info">
+                                <div>
+                                    <h3 class="app-title">New Rummy Apps</h3>
+                                    <div class="app-meta">
+                                        <img src="img/downl.png" alt="Download icon">
+                                        <span>Upcoming Apps | Soon</span>
+                                    </div>
+                                    <span class="app-tag">Join Us New Apps</span>
+                                </div>
+                                <button class="download-btn">
+                                    <img src="img/downl2.png" alt="Download">
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App Card 5 -->
+                    <div class="app-card">
+                        <div class="app-card-content">
+                            <img src="img/rummy333.webp" alt="App Icon" class="app-icon">
+                            <div class="app-info">
+                                <div>
+                                    <h3 class="app-title">New Rummy Apps</h3>
+                                    <div class="app-meta">
+                                        <img src="img/downl.png" alt="Download icon">
+                                        <span>Upcoming Apps | Soon</span>
+                                    </div>
+                                    <span class="app-tag">Join Us New Apps</span>
+                                </div>
+                                <button class="download-btn">
+                                    <img src="img/downl2.png" alt="Download">
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App Card 6 -->
+                    <div class="app-card">
+                        <div class="app-card-content">
+                            <img src="img/rummy333.webp" alt="App Icon" class="app-icon">
+                            <div class="app-info">
+                                <div>
+                                    <h3 class="app-title">New Rummy Apps</h3>
+                                    <div class="app-meta">
+                                        <img src="img/downl.png" alt="Download icon">
+                                        <span>Upcoming Apps | Soon</span>
+                                    </div>
+                                    <span class="app-tag">Join Us New Apps</span>
+                                </div>
+                                <button class="download-btn">
+                                    <img src="img/downl2.png" alt="Download">
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const tabIndicator = document.querySelector('.tab-indicator');
+            
+            // Set initial position for indicator
+            const activeTab = document.querySelector('.tab-btn.active');
+            if (activeTab) {
+                tabIndicator.style.width = `${activeTab.offsetWidth}px`;
+                tabIndicator.style.left = `${activeTab.offsetLeft}px`;
+            }
+            
+            // Tab switching functionality
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Update active tab button
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Move indicator
+                    tabIndicator.style.width = `${this.offsetWidth}px`;
+                    tabIndicator.style.left = `${this.offsetLeft}px`;
+                    
+                    // Show corresponding content
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === tabId) {
+                            content.classList.add('active');
+                        }
+                    });
+                    
+                    // Scroll to center the active tab on mobile
+                    if (window.innerWidth < 768) {
+                        const container = document.querySelector('.tab-scroll');
+                        const buttonRect = this.getBoundingClientRect();
+                        const containerRect = container.getBoundingClientRect();
+                        const scrollLeft = buttonRect.left - containerRect.left - (containerRect.width / 2) + (buttonRect.width / 2);
+                        
+                        container.scrollTo({
+                            left: container.scrollLeft + scrollLeft,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                const activeTab = document.querySelector('.tab-btn.active');
+                if (activeTab) {
+                    tabIndicator.style.width = `${activeTab.offsetWidth}px`;
+                    tabIndicator.style.left = `${activeTab.offsetLeft}px`;
+                }
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- End of all list-->
+
+    <!--Faq part goes here............................-->
+  <div class="rummy-faq-container">
+        <div class="faq-header">
+            <h1>Rummy Game Expert FAQ</h1>
+            <p>Master the game with our comprehensive guide covering advanced strategies, technical aspects, and gameplay mechanics</p>
+        </div>
+        
+        <div class="faq-tabs">
+            <div class="faq-tab active" data-tab="gameplay">Gameplay Mastery</div>
+            <div class="faq-tab" data-tab="strategy">Advanced Strategies</div>
+            <div class="faq-tab" data-tab="technical">Technical Aspects</div>
+            <div class="faq-tab" data-tab="tournaments">Tournaments <span class="badge">New</span></div>
+        </div>
+        
+        <!-- Gameplay Mastery Content -->
+        <div class="faq-content active" id="gameplay-faq">
+            <div class="faq-category">
+                <h3>Rules & Variations</h3>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What are the key differences between Points Rummy, Pool Rummy, and Deals Rummy?</div>
+                    <div class="faq-answer">
+                        <p>The three main variants differ in scoring and gameplay duration:</p>
+                        <ul>
+                            <li><span class="term">Points Rummy</span>: Fast-paced, each game has a pre-decided point value (₹1, ₹2, etc.). Game ends when first player declares.</li>
+                            <li><span class="term">Pool Rummy</span>: Players compete to avoid reaching 101/201 points. Those who reach are eliminated until one player remains.</li>
+                            <li><span class="term">Deals Rummy</span>: Fixed number of deals (usually 6). Players get chips initially, and winner takes chips based on opponents' points.</li>
+                        </ul>
+                        <div class="strategy-tip">
+                            <strong>Pro Tip:</strong> Points Rummy is best for quick games, Pool for endurance players, and Deals for strategic bankroll management.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How does the Joker selection process work in online Rummy?</div>
+                    <div class="faq-answer">
+                        <p>Online Rummy uses two types of Jokers:</p>
+                        <ol>
+                            <li><span class="term">Printed Joker</span>: The physical joker cards in the deck (usually 2 per deck)</li>
+                            <li><span class="term">Wild Joker</span>: Selected randomly at the beginning of each game by:
+                                <ul>
+                                    <li>Drawing a card from the closed deck after dealing</li>
+                                    <li>All cards of that rank (regardless of suit) become wild jokers</li>
+                                    <li>Example: If 7♦ is selected, all 7s (7♥, 7♣, 7♠) become jokers</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <div class="warning-note">
+                            <strong>Note:</strong> Some platforms allow the wild joker to be used in sequences (unlike physical Rummy where it's typically only for sets).
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-category">
+                <h3>Advanced Mechanics</h3>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What is the optimal discard strategy to minimize opponent advantage?</div>
+                    <div class="faq-answer">
+                        <p>Advanced discard strategy involves:</p>
+                        <ul>
+                            <li><span class="term">Middle Cards Priority</span>: Discard middle cards (6-9) first as they're most versatile for opponents</li>
+                            <li><span class="term">Suit Analysis</span>: Track which suits opponents are collecting and avoid discards in those suits</li>
+                            <li><span class="term">Dead Card Detection</span>: Identify cards that can't help opponents (e.g., if you hold 3 Kings, the 4th is safe)</li>
+                            <li><span class="term">Bluff Discards</span>: Occasionally discard cards from sequences you're actually building to mislead</li>
+                        </ul>
+                        <p>Advanced platforms show <span class="highlight">discard heatmaps</span> that track which cards are most dangerous to discard based on game state.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How does the "Expected Value" calculation work for drawing from open vs closed deck?</div>
+                    <div class="faq-answer">
+                        <p>EV calculation considers:</p>
+                        <ol>
+                            <li><span class="term">Known Cards</span>: Cards you've seen (in hand, discards, opponent picks)</li>
+                            <li><span class="term">Outs Counting</span>: Cards that improve your hand (e.g., 8♥ when you have 6♥7♥)</li>
+                            <li><span class="term">Position</span>: Your turn order affects likelihood of getting desired cards</li>
+                            <li><span class="term">Risk Assessment</span>: Probability opponent might declare soon</li>
+                        </ol>
+                        <p>The formula: <br>
+                        <span class="highlight">EV(open) = Immediate utility - information given to opponents</span><br>
+                        <span class="highlight">EV(closed) = (Outs remaining / Unknown cards) × Potential improvement</span></p>
+                        <div class="strategy-tip">
+                            <strong>Math Tip:</strong> When EV(open) > EV(closed) + 0.3 (risk factor), take from open deck.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Advanced Strategies Content -->
+        <div class="faq-content" id="strategy-faq">
+            <div class="faq-category">
+                <h3>Probability & Card Counting</h3>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How can I calculate the probability of completing a sequence by the 10th turn?</div>
+                    <div class="faq-answer">
+                        <p>Use the hypergeometric distribution formula:</p>
+                        <p><span class="highlight">P = [C(K,k) × C(N-K, n-k)] / C(N,n)</span></p>
+                        <p>Where:
+                            <ul>
+                                <li>N = Total unknown cards (104 - your 13 - seen discards)</li>
+                                <li>K = Cards that help you (outs)</li>
+                                <li>n = Cards you'll draw (turns remaining)</li>
+                                <li>k = Cards needed (usually 1 for last sequence card)</li>
+                            </ul>
+                        </p>
+                        <p><strong>Example:</strong> You need 5♦ to complete a sequence, with 3 other 5s already visible:<br>
+                        N=60, K=3 (4 total - 1 seen), n=10, k=1 → P ≈ 39%</p>
+                        <div class="strategy-tip">
+                            <strong>Shortcut:</strong> Each out has ~1.67% chance per unknown card. 3 outs × 10 turns × 1.67% ≈ 50% (adjusted for card removal).
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What's the optimal card retention strategy when holding multiple potential sequences?</div>
+                    <div class="faq-answer">
+                        <p>Follow this priority system:</p>
+                        <ol>
+                            <li><span class="term">Pure Sequence First</span>: Always prioritize forming a pure sequence (no jokers) first</li>
+                            <li><span class="term">Flexible Holdings</span>: Keep cards that serve multiple potential sequences (e.g., 5♥ can be in 3-4-5 or 5-6-7)</li>
+                            <li><span class="term">High-Low Split</span>: Maintain both high (A-2-3) and low (Q-K-A) sequence possibilities</li>
+                            <li><span class="term">Joker Allocation</span>: Use jokers for the sequence with fewer outs or higher point reduction</li>
+                        </ol>
+                        <p>Advanced players maintain a <span class="highlight">sequence matrix</span> tracking all possible sequence paths and their probabilities.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-category">
+                <h3>Psychological Tactics</h3>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How can I use timing tells to read opponents in online Rummy?</div>
+                    <div class="faq-answer">
+                        <p>Even online, timing reveals information:</p>
+                        <table border="1" style="width:100%; border-collapse: collapse; margin: 15px 0;">
+                            <tr>
+                                <th>Action</th>
+                                <th>Quick</th>
+                                <th>Delayed</th>
+                            </tr>
+                            <tr>
+                                <td>Discard</td>
+                                <td>Card is likely safe (not part of sequence)</td>
+                                <td>Possible bluff or difficult decision</td>
+                            </tr>
+                            <tr>
+                                <td>Pick from open</td>
+                                <td>Confident about needed card</td>
+                                <td>Considering alternative sequences</td>
+                            </tr>
+                            <tr>
+                                <td>Declaration</td>
+                                <td>Pre-planned hand</td>
+                                <td>Last-minute completion</td>
+                            </tr>
+                        </table>
+                        <div class="warning-note">
+                            <strong>Warning:</strong> Some players reverse these tells intentionally. Combine with card tracking for accurate reads.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Technical Aspects Content -->
+        <div class="faq-content" id="technical-faq">
+            <div class="faq-category">
+                <h3>Algorithm & Fair Play</h3>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How does the RNG (Random Number Generator) work in online Rummy?</div>
+                    <div class="faq-answer">
+                        <p>Reputable platforms use:</p>
+                        <ul>
+                            <li><span class="term">Cryptographic RNG</span>: Based on hardware entropy sources (mouse movements, network latency)</li>
+                            <li><span class="term">Shuffling Algorithms</span>: Fisher-Yates shuffle with multiple passes (typically 7+ for 2 decks)</li>
+                            <li><span class="term">Seed Generation</span>: Combines server timestamp with player-specific salts</li>
+                            <li><span class="term">Certification</span>: Third-party audits (e.g., iTech Labs, BMM Testlabs) verify randomness</li>
+                        </ul>
+                        <p>The process: <br>
+                        1. Generate seed from multiple entropy sources <br>
+                        2. Initialize Mersenne Twister or PCG RNG with seed <br>
+                        3. Perform Fisher-Yates shuffle with RNG output <br>
+                        4. Re-shuffle after each game</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What anti-collusion measures are implemented in cash games?</div>
+                    <div class="faq-answer">
+                        <p>Advanced systems include:</p>
+                        <ol>
+                            <li><span class="term">Behavioral Analysis</span>: Detects unusual patterns (e.g., always discarding helpful cards to same player)</li>
+                            <li><span class="term">Graph Theory</span>: Maps player connections and detects suspicious clusters</li>
+                            <li><span class="term">Real-time Monitoring</span>: AI flags potential collusion within 3-5 hands</li>
+                            <li><span class="term">Delayed Cashouts</span>: Funds held for review if suspicious activity detected</li>
+                        </ol>
+                        <div class="warning-note">
+                            <strong>Detection Stats:</strong> Top platforms catch 99.7% of collusion attempts with <2% false positives.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tournaments Content -->
+        <div class="faq-content" id="tournaments-faq">
+            <div class="faq-category">
+                <h3>Tournament Strategy</h3>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How does ICM (Independent Chip Model) affect final table play in Rummy tournaments?</div>
+                    <div class="faq-answer">
+                        <p>ICM introduces these strategic adjustments:</p>
+                        <ul>
+                            <li><span class="term">Bubble Play</span>: Tighten up when near money bubbles (fold marginal hands)</li>
+                            <li><span class="term">Chip Conservation</span>: Avoid risky plays against big stacks when medium stacks exist</li>
+                            <li><span class="term">Prize Jump Awareness</span>: The value difference between 1st-2nd often outweighs 2nd-3rd</li>
+                        </ul>
+                        <p><strong>ICM Pressure Points:</strong><br>
+                        - When your stack is 3-5x the average: Maximum pressure on shorter stacks<br>
+                        - When 2 players are sub-10BB: They'll avoid confronting each other</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--End of faq part goes here-->
+
+    <!--Youtube video goes here.........................-->
+    <section class="video-section">
+        <div class="section-header">
+            <h2 class="section-title">Rummy Game Tutorials</h2>
+            <p class="section-subtitle">Learn advanced strategies, tips and tricks from our expert players</p>
+        </div>
+        
+        <div class="video-grid">
+            <!-- Video Card 1 -->
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Rummy Tutorial">
+                    <div class="play-button" onclick="openVideo('dQw4w9WgXcQ')">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">How to Win at Rummy - Beginner's Guide to Card Games</h3>
+                    <div class="video-meta">
+                        <span>15K views</span>
+                        <span>2 weeks ago</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Video Card 2 -->
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="https://i.ytimg.com/vi/9bZkp7q19f0/maxresdefault.jpg" alt="Rummy Strategies">
+                    <div class="play-button" onclick="openVideo('9bZkp7q19f0')">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Advanced Rummy Strategies That Will Make You Win More Games</h3>
+                    <div class="video-meta">
+                        <span>42K views</span>
+                        <span>1 month ago</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Video Card 3 -->
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="https://i.ytimg.com/vi/kJQP7kiw5Fk/maxresdefault.jpg" alt="Rummy Tips">
+                    <div class="play-button" onclick="openVideo('JGwWNGJdvx8')">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">5 Pro Tips to Improve Your Rummy Game Overnight</h3>
+                    <div class="video-meta">
+                        <span>28K views</span>
+                        <span>3 months ago</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Video Card 4 -->
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="https://i.ytimg.com/vi/kJQP7kiw5Fk/maxresdefault.jpg" alt="Rummy Tournament">
+                    <div class="play-button" onclick="openVideo('kJQP7kiw5Fk')">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Rummy Tournament Finals - Watch the Best Players Compete</h3>
+                    <div class="video-meta">
+                        <span>75K views</span>
+                        <span>5 months ago</span>
+                    </div>
+                </div>
+            </div>
+                        <!-- Video Card 4 -->
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="https://i.ytimg.com/vi/kJQP7kiw5Fk/maxresdefault.jpg" alt="Rummy Tournament">
+                    <div class="play-button" onclick="openVideo('kJQP7kiw5Fk')">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Rummy Tournament Finals - Watch the Best Players Compete</h3>
+                    <div class="video-meta">
+                        <span>75K views</span>
+                        <span>5 months ago</span>
+                    </div>
+                </div>
+            </div>
+                        <!-- Video Card 4 -->
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="https://i.ytimg.com/vi/kJQP7kiw5Fk/maxresdefault.jpg" alt="Rummy Tournament">
+                    <div class="play-button" onclick="openVideo('kJQP7kiw5Fk')">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Rummy Tournament Finals - Watch the Best Players Compete</h3>
+                    <div class="video-meta">
+                        <span>75K views</span>
+                        <span>5 months ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--End of Youtube -->
+    </main>
+    
+    <!-- Advanced Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="https://via.placeholder.com/40x40" alt="GameZone Logo">
+                        <span class="footer-logo-text">GameZone</span>
+                    </div>
+                    <p class="footer-about">
+                        GameZone is the ultimate destination for gamers worldwide. We provide the latest news, reviews, 
+                        and community features for all gaming platforms.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitch"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Game Reviews</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> News</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-title">Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Action</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Adventure</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> RPG</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Strategy</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Sports</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Help Center</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Community</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Feedback</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Report Issue</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-title">Newsletter</h4>
+                    <p class="footer-newsletter">
+                        Subscribe to our newsletter to get the latest gaming news and exclusive offers directly to your inbox.
+                    </p>
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Your email">
+                        <button type="submit" class="newsletter-btn"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                    <div class="payment-methods">
+                        <img src="https://via.placeholder.com/200x30" alt="Payment Methods" style="width: 100%; opacity: 0.8;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <p class="copyright">© 2023 GameZone. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">GDPR</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Dropdown Menu Toggle for Mobile
+        const navItems = document.querySelectorAll('.nav-item');
+        
+        navItems.forEach(item => {
+            const link = item.querySelector('.nav-link');
+            
+            if (link && (item.querySelector('.dropdown-menu') || item.querySelector('.mega-menu'))) {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 992) {
+                        e.preventDefault();
+                        const dropdown = item.querySelector('.dropdown-menu') || item.querySelector('.mega-menu');
+                        dropdown.classList.toggle('active');
+                        
+                        const icon = link.querySelector('i');
+                        if (icon) {
+                            icon.style.transform = dropdown.classList.contains('active') 
+                                ? 'rotate(180deg)' 
+                                : 'rotate(0deg)';
+                        }
+                    }
+                });
+            }
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && e.target !== mobileMenuBtn) {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+    </script>
+
+    <!--sercvh box scrit-->
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const searchForm = document.getElementById('search-form');
+            const searchInput = document.getElementById('search-input');
+            const searchButton = document.querySelector('.search-button');
+            const searchSuggestions = document.getElementById('search-suggestions');
+            const searchHistory = document.getElementById('search-history');
+            const historyList = document.getElementById('history-list');
+            const clearHistoryBtn = document.getElementById('clear-history');
+            
+            // Mock data for autocomplete
+            const mockCodeSnippets = [
+                "function calculateTotal()",
+                "const user = {name: 'John', age: 30}",
+                "class UserController extends Controller",
+                "def calculate_average(numbers):",
+                "public static void main(String[] args)",
+                "<div class='container'>",
+                "SELECT * FROM users WHERE",
+                "import React from 'react'",
+                "interface UserInterface {",
+                "for (let i = 0; i < array.length; i++)"
+            ];
+            
+            // State
+            let searchHistoryItems = JSON.parse(localStorage.getItem('searchHistory')) || [];
+            let currentSuggestionIndex = -1;
+            
+            // Initialize
+            updateHistoryDisplay();
+            
+            // Event Listeners
+            searchInput.addEventListener('input', handleInput);
+            searchInput.addEventListener('keydown', handleKeyDown);
+            searchInput.addEventListener('focus', showHistory);
+            searchInput.addEventListener('blur', () => {
+                setTimeout(() => {
+                    searchSuggestions.classList.remove('visible');
+                }, 200);
+            });
+            
+            searchForm.addEventListener('submit', handleSearch);
+            clearHistoryBtn.addEventListener('click', clearHistory);
+            
+            // Functions
+            function handleInput(e) {
+                const query = e.target.value.trim();
+                
+                if (query.length === 0) {
+                    showHistory();
+                    return;
+                }
+                
+                // Get matching suggestions from our mock data
+                const suggestions = getSuggestions(query);
+                displaySuggestions(suggestions);
+            }
+        
+            function getSuggestions(query) {
+                if (!query) return [];
+                
+                const lowerQuery = query.toLowerCase();
+                
+                // First try to find exact matches
+                const exactMatches = mockCodeSnippets.filter(snippet => 
+                    snippet.toLowerCase().includes(lowerQuery)
+                );
+                
+                // Then try to find partial matches
+                const partialMatches = mockCodeSnippets.filter(snippet => 
+                    snippet.toLowerCase().includes(lowerQuery) && 
+                    !exactMatches.includes(snippet)
+                );
+                
+                // Combine results (exact matches first)
+                return [...exactMatches, ...partialMatches].slice(0, 5);
+            }
+            
+            function displaySuggestions(suggestions) {
+                searchSuggestions.innerHTML = '';
+                
+                if (suggestions.length === 0) {
+                    searchSuggestions.classList.remove('visible');
+                    return;
+                }
+                
+                suggestions.forEach((suggestion, index) => {
+                    const suggestionItem = document.createElement('div');
+                    suggestionItem.classList.add('suggestion-item');
+                    
+                    // Highlight the matching part of the suggestion
+                    const query = searchInput.value.trim().toLowerCase();
+                    const matchIndex = suggestion.toLowerCase().indexOf(query);
+                    
+                    if (matchIndex >= 0 && query.length > 0) {
+                        const before = suggestion.substring(0, matchIndex);
+                        const match = suggestion.substring(matchIndex, matchIndex + query.length);
+                        const after = suggestion.substring(matchIndex + query.length);
+                        
+                        suggestionItem.innerHTML = `${before}<strong>${match}</strong>${after}`;
+                    } else {
+                        suggestionItem.textContent = suggestion;
+                    }
+                    
+                    suggestionItem.addEventListener('click', () => {
+                        searchInput.value = suggestion;
+                        searchSuggestions.classList.remove('visible');
+                        handleSearch({ preventDefault: () => {} });
+                    });
+                    
+                    searchSuggestions.appendChild(suggestionItem);
+                });
+                
+                searchSuggestions.classList.add('visible');
+            }
+            
+            function handleKeyDown(e) {
+                const items = searchSuggestions.querySelectorAll('.suggestion-item');
+                
+                if (items.length === 0) return;
+                
+                // Down arrow
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    currentSuggestionIndex = Math.min(currentSuggestionIndex + 1, items.length - 1);
+                    updateHighlightedSuggestion(items);
+                }
+                // Up arrow
+                else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    currentSuggestionIndex = Math.max(currentSuggestionIndex - 1, -1);
+                    updateHighlightedSuggestion(items);
+                }
+                // Enter
+                else if (e.key === 'Enter') {
+                    e.preventDefault();
+                    if (currentSuggestionIndex >= 0) {
+                        searchInput.value = items[currentSuggestionIndex].textContent;
+                        searchSuggestions.classList.remove('visible');
+                    }
+                    handleSearch({ preventDefault: () => {} });
+                }
+                // Escape
+                else if (e.key === 'Escape') {
+                    searchSuggestions.classList.remove('visible');
+                }
+            }
+            
+            function updateHighlightedSuggestion(items) {
+                items.forEach((item, index) => {
+                    item.classList.toggle('highlighted', index === currentSuggestionIndex);
+                });
+                
+                if (currentSuggestionIndex >= 0) {
+                    items[currentSuggestionIndex].scrollIntoView({
+                        block: 'nearest'
+                    });
+                }
+            }
+            
+            function handleSearch(e) {
+                e.preventDefault();
+                const query = searchInput.value.trim();
+                
+                if (query.length === 0) return;
+                
+                // Save to history
+                addToHistory(query);
+                
+                // Hide suggestions
+                searchSuggestions.classList.remove('visible');
+                
+                // For demo purposes, just show what would be searched
+                console.log('Searching for:', query);
+                alert(`Searching for: ${query}`);
+            }
+            
+            function addToHistory(query) {
+                // Remove if already exists
+                searchHistoryItems = searchHistoryItems.filter(item => item !== query);
+                
+                // Add to beginning
+                searchHistoryItems.unshift(query);
+                
+                // Limit to 10 items
+                if (searchHistoryItems.length > 10) {
+                    searchHistoryItems = searchHistoryItems.slice(0, 10);
+                }
+                
+                // Save to localStorage
+                localStorage.setItem('searchHistory', JSON.stringify(searchHistoryItems));
+                
+                // Update display
+                updateHistoryDisplay();
+            }
+            
+            function updateHistoryDisplay() {
+                historyList.innerHTML = '';
+                
+                if (searchHistoryItems.length === 0) {
+                    searchHistory.classList.remove('visible');
+                    return;
+                }
+                
+                searchHistory.classList.add('visible');
+                
+                searchHistoryItems.forEach(query => {
+                    const li = document.createElement('li');
+                    li.classList.add('history-item');
+                    
+                    const span = document.createElement('span');
+                    span.classList.add('history-query');
+                    span.textContent = query;
+                    span.addEventListener('click', () => {
+                        searchInput.value = query;
+                        handleSearch({ preventDefault: () => {} });
+                    });
+                    
+                    const deleteBtn = document.createElement('span');
+                    deleteBtn.classList.add('history-delete');
+                    deleteBtn.innerHTML = '<span class="icon close-icon"></span>';
+                    deleteBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        removeFromHistory(query);
+                    });
+                    
+                    li.appendChild(span);
+                    li.appendChild(deleteBtn);
+                    historyList.appendChild(li);
+                });
+            }
+            
+            function removeFromHistory(query) {
+                searchHistoryItems = searchHistoryItems.filter(item => item !== query);
+                localStorage.setItem('searchHistory', JSON.stringify(searchHistoryItems));
+                updateHistoryDisplay();
+            }
+            
+            function clearHistory() {
+                searchHistoryItems = [];
+                localStorage.removeItem('searchHistory');
+                updateHistoryDisplay();
+            }
+            
+            function showHistory() {
+                if (searchInput.value.trim().length > 0 || searchHistoryItems.length === 0) {
+                    searchHistory.classList.remove('visible');
+                    return;
+                }
+                
+                searchHistory.classList.add('visible');
+            }
+        });
+    </script>
+    <!--End of search box script-->
+
+    <!--Start of faq script part-->
+
+        <script>
+        // Tab functionality
+        const tabs = document.querySelectorAll('.faq-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all content
+                document.querySelectorAll('.faq-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show selected content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(`${tabId}-faq`).classList.add('active');
+            });
+        });
+        
+        // Accordion functionality
+        const questions = document.querySelectorAll('.faq-question');
+        questions.forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+    <!--End of faq script part-->
+
+    <!--Youtube script-->
+    <script>
+        function openVideo(videoId) {
+            // In a real implementation, you might:
+            // 1. Open a modal with the YouTube iframe
+            // 2. Redirect to YouTube page
+            // 3. Use YouTube API to play inline
+            
+            // For this example, we'll just alert
+            alert("Opening YouTube video: " + videoId);
+            
+            // Real implementation might look like:
+            // window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+            
+            // Or for a modal:
+            /*
+            const modal = document.createElement('div');
+            modal.innerHTML = `
+                <div class="video-modal">
+                    <iframe width="560" height="315" 
+                            src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
+                            frameborder="0" allowfullscreen></iframe>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            */
+        }
+    </script>
+    <!--End of youtube script-->
+</body>
+</html>
