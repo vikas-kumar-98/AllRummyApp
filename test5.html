@@ -3,190 +3,418 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Three Card Fixed Layout</title>
+    <title>Game App Showcase Slider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
             min-height: 100vh;
-            padding: 10px;
-        }
-        
-        .card-container {
             display: flex;
-            width: 100%;
-            max-width: 1000px;
-            gap: 10px;
-            align-items: center;
             justify-content: center;
-            flex-wrap: nowrap; /* Prevent wrapping to new line */
+            align-items: center;
+            padding: 20px;
         }
         
-        .card {
-            flex: 1;
-            min-width: 120px; /* Increased minimum width */
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 12px;
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 30px;
+        }
+        
+        header {
             text-align: center;
-            position: relative;
+            margin-bottom: 50px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #00dbde, #fc00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a0a0d0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .swiper {
+            width: 100%;
+            height: 500px;
+            padding: 30px 0;
+        }
+        
+        .swiper-slide {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 25px;
+        }
+        
+        .swiper-slide:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+        
+        .game-rank {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            z-index: 10;
+        }
+        
+        .game-image {
+            width: 200px;
+            height: 200px;
+            margin: 40px auto 20px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
             align-items: center;
         }
         
-        .card.middle {
-            top: -20px;
-            border: 1px solid whitesmoke;
-        }
-        
-        .card img {
+        .game-image img {
             width: 100%;
-            height: auto;
-            aspect-ratio: 1/1;
+            height: 100%;
             object-fit: cover;
-            border-radius: 10%;
-            margin-bottom: 8px;
-            background: #eee;
-            max-width: 150px;
+            transition: transform 0.3s ease;
         }
         
-        h2 {
-            font-size: clamp(0.8rem, 2vw, 1.2rem);
-            margin: 5px 0;
-            color: #333;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            width: 100%;
+        .swiper-slide:hover .game-image img {
+            transform: scale(1.05);
         }
         
-        h3 {
-            font-size: clamp(0.7rem, 1.8vw, 1rem);
-            margin: 5px 0;
-            color: #555;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            width: 100%;
+        .game-name {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 15px 0;
+            color: #fff;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
         
-        .rating {
-            color: #FFD700;
-            margin: 5px 0;
-            font-size: clamp(0.6rem, 1.5vw, 0.9rem);
+        .game-rating {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0 20px;
+        }
+        
+        .stars {
+            color: #ffd700;
+            font-size: 1.3rem;
+            margin-right: 10px;
+        }
+        
+        .rating-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00c9ff, #92fe9d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         .download-btn {
-            background: #4CAF50;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
             color: white;
             border: none;
-            padding: 4px 8px;
-            border-radius: 3px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
-            margin-top: 5px;
-            font-size: clamp(0.6rem, 1.5vw, 0.8rem);
-            width: 100%;
-            max-width: 120px;
+            margin: 10px auto 5px;
+            display: block;
+            width: 80%;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
         }
-
-        /* Media Query for smaller screens */
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 117, 252, 0.6);
+        }
+        
+        .download-btn i {
+            margin-right: 8px;
+        }
+        
+        .download-count {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #a0a0d0;
+            margin-top: 8px;
+        }
+        
+        .swiper-button-prev, .swiper-button-next {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .swiper-button-prev:hover, .swiper-button-next:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .swiper-button-prev::after, .swiper-button-next::after {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .swiper-pagination-bullet {
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 1;
+            width: 12px;
+            height: 12px;
+            margin: 0 8px !important;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: linear-gradient(90deg, #00dbde, #fc00ff);
+        }
+        
         @media (max-width: 768px) {
-            .card-container {
-                gap: 5px; /* Reduce gap between cards */
-                padding: 10px;
-                overflow-x: auto; /* Allow horizontal scrolling if needed */
-                justify-content: center; /* Align cards to start */
+            .swiper {
+                height: 450px;
             }
             
-            .card {
-                min-width: 140px; /* Smaller minimum width */
-                padding: 10px;
-                flex: 0 0 auto; /* Don't grow or shrink */
+            h1 {
+                font-size: 2.5rem;
             }
             
-            .card.middle {
-                top: 0;
-            }
-            
-            .card img {
-                max-width: 125px;
-            }
-            
-            h2, h3 {
-                font-size: 0.7rem;
-            }
-            
-            .rating {
-                font-size: 0.6rem;
-            }
-            
-            .download-btn {
-                padding: 3px 6px;
-                font-size: 0.6rem;
-                max-width: 80px;
-            }
-        }
-
-        /* Media Query for very small screens */
-        @media (max-width: 480px) {
-            .card {
-                min-width: 100px;
-                padding: 8px;
-            }
-            
-            .card img {
-                max-width: 85px;
-            }
-            
-            h2 {
-                font-size: 0.6rem;
-            }
-            
-            h3 {
-                font-size: 0.6rem;
-            }
-            
-            .rating {
-                font-size: 0.5rem;
+            .game-image {
+                width: 150px;
+                height: 150px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="card-container">
-        <!-- Card 1 -->
-        <div class="card">
-            <img src="img/rummy.png" alt="Image 1">
-            <h3>One</h3>
-            <div class="rating">★★★★☆</div>
-        </div>
-
-        <!-- Card 2 (Middle - Elevated) -->
-        <div class="card middle">
-            <img src="img/rummy.png" alt="Image 2">
-            <h2>Your Name</h2>
-            <div class="rating">★★★★★</div>
-            <button class="download-btn">Download</button>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="card">
-            <img src="img/rummy.png" alt="Image 3">
-            <h3>Three</h3>
-            <div class="rating">★★★☆☆</div>
+    <div class="container">
+        <header>
+            <h1>Top Game Apps Showcase</h1>
+            <p class="subtitle">Discover the most popular mobile games of the year. Slide to explore our top picks!</p>
+        </header>
+        
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide">
+                    <div class="game-rank">1</div>
+                    <div class="game-image">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Epic Quest">
+                    </div>
+                    <h2 class="game-name">Epic Quest</h2>
+                    <div class="game-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="rating-value">4.7</span>
+                    </div>
+                    <button class="download-btn"><i class="fas fa-download"></i> Download Now</button>
+                    <div class="download-count">10M+ Downloads</div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="swiper-slide">
+                    <div class="game-rank">2</div>
+                    <div class="game-image">
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Cyber Racers">
+                    </div>
+                    <h2 class="game-name">Cyber Racers</h2>
+                    <div class="game-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="rating-value">4.3</span>
+                    </div>
+                    <button class="download-btn"><i class="fas fa-download"></i> Download Now</button>
+                    <div class="download-count">8.5M+ Downloads</div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="swiper-slide">
+                    <div class="game-rank">3</div>
+                    <div class="game-image">
+                        <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Kingdom Wars">
+                    </div>
+                    <h2 class="game-name">Kingdom Wars</h2>
+                    <div class="game-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-value">4.9</span>
+                    </div>
+                    <button class="download-btn"><i class="fas fa-download"></i> Download Now</button>
+                    <div class="download-count">12M+ Downloads</div>
+                </div>
+                
+                <!-- Slide 4 -->
+                <div class="swiper-slide">
+                    <div class="game-rank">4</div>
+                    <div class="game-image">
+                        <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Puzzle Masters">
+                    </div>
+                    <h2 class="game-name">Puzzle Masters</h2>
+                    <div class="game-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="rating-value">4.6</span>
+                    </div>
+                    <button class="download-btn"><i class="fas fa-download"></i> Download Now</button>
+                    <div class="download-count">7.2M+ Downloads</div>
+                </div>
+                
+                <!-- Slide 5 -->
+                <div class="swiper-slide">
+                    <div class="game-rank">5</div>
+                    <div class="game-image">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Space Explorer">
+                    </div>
+                    <h2 class="game-name">Space Explorer</h2>
+                    <div class="game-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="rating-value">4.2</span>
+                    </div>
+                    <button class="download-btn"><i class="fas fa-download"></i> Download Now</button>
+                    <div class="download-count">9.1M+ Downloads</div>
+                </div>
+                
+                <!-- Slide 6 -->
+                <div class="swiper-slide">
+                    <div class="game-rank">6</div>
+                    <div class="game-image">
+                        <img src="https://images.unsplash.com/photo-1511882150382-421056c89033?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Zombie Survival">
+                    </div>
+                    <h2 class="game-name">Zombie Survival</h2>
+                    <div class="game-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="rating-value">4.5</span>
+                    </div>
+                    <button class="download-btn"><i class="fas fa-download"></i> Download Now</button>
+                    <div class="download-count">15M+ Downloads</div>
+                </div>
+            </div>
+            
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            
+            <!-- Navigation buttons -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const swiper = new Swiper('.swiper', {
+                effect: 'coverflow',
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                loop: true,
+                coverflowEffect: {
+                    rotate: 0,
+                    stretch: 0,
+                    depth: 200,
+                    modifier: 2.5,
+                    slideShadows: true,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 20
+                    },
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 30
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>

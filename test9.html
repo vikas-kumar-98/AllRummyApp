@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rummy Mastery Showcase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff3e7f;
+            --dark: #121826;
+            --darker: #0d1119;
+            --light: #f8f9ff;
+            --gray: #8a93a7;
+            --card-bg: rgba(30, 33, 58, 0.7);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--light);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--accent);
+            font-size: 2.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--light);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 10px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(106,17,203,0.15) 0%, rgba(37,117,252,0) 70%);
+            z-index: -1;
+            animation: pulse 8s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.3; }
+            100% { transform: scale(1.2); opacity: 0.6; }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to right, var(--light), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: var(--gray);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .stat-box {
+            background: var(--card-bg);
+            padding: 1.5rem 2.5rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.08);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .stat-box .number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .stat-box .label {
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0 3rem;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: none;
+            color: var(--gray);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent);
+            color: var(--light);
+            box-shadow: 0 10px 20px rgba(255, 62, 127, 0.3);
+        }
+
+        /* Video Grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .video-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .thumbnail {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .video-card:hover .thumbnail img {
+            transform: scale(1.1);
+        }
+
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 62, 127, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+
+        .play-btn i {
+            color: white;
+            font-size: 1.5rem;
+            margin-left: 4px;
+        }
+
+        .play-btn:hover {
+            background: var(--accent);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-category {
+            display: inline-block;
+            background: rgba(37, 117, 252, 0.2);
+            color: var(--secondary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .video-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--light);
+        }
+
+        .video-stats {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .video-stats span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Featured Video */
+        .featured-video {
+            margin: 5rem 0;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .featured-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .featured-player {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .featured-player iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .featured-info {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-info h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .featured-info p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .featured-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .featured-stats div {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 0 2rem;
+            background: rgba(0,0,0,0.2);
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: var(--light);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .featured-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .stats {
+                flex-wrap: wrap;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-cards"></i>
+                    RummyPro
+                </a>
+                <div class="nav-links">
+                    <a href="#" class="active">Home</a>
+                    <a href="#">Videos</a>
+                    <a href="#">Strategies</a>
+                    <a href="#">Tournaments</a>
+                    <a href="#">About</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Master the Art of Rummy</h1>
+            <p>Explore my world of rummy expertise through video tutorials, gameplay analysis, and winning strategies that will elevate your game</p>
+            
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="number">250+</div>
+                    <div class="label">Videos Created</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">1.2M</div>
+                    <div class="label">Subscribers</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">15+</div>
+                    <div class="label">Tournaments Won</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="filters">
+            <button class="filter-btn active">All Videos</button>
+            <button class="filter-btn">Tutorials</button>
+            <button class="filter-btn">Gameplay</button>
+            <button class="filter-btn">Strategies</button>
+            <button class="filter-btn">Tournaments</button>
+            <button class="filter-btn">Card Analysis</button>
+        </div>
+
+        <div class="video-grid">
+            <!-- Video Card 1 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Rummy Strategy">
+                    <div class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <span class="video-category">Strategy</span>
+                    <h3 class="video-title">Advanced Rummy Strategies for Winning Tournaments</h3>
+                    <div class="video-stats">
+                        <span><i class="fas fa-eye"></i> 245K views</span>
+                        <span><i class="far fa-calendar"></i> 2 weeks ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 2 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Rummy Tutorial">
+                    <div class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <span class="video-category">Tutorial</span>
+                    <h3 class="video-title">How to Count Cards in Rummy Like a Pro</h3>
+                    <div class="video-stats">
+                        <span><i class="fas fa-eye"></i> 187K views</span>
+                        <span><i class="far fa-calendar"></i> 1 month ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 3 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Rummy Gameplay">
+                    <div class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <span class="video-category">Gameplay</span>
+                    <h3 class="video-title">Championship Gameplay - $10K Tournament Final</h3>
+                    <div class="video-stats">
+                        <span><i class="fas fa-eye"></i> 512K views</span>
+                        <span><i class="far fa-calendar"></i> 3 months ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 4 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Rummy Analysis">
+                    <div class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <span class="video-category">Analysis</span>
+                    <h3 class="video-title">Psychological Tactics in Competitive Rummy</h3>
+                    <div class="video-stats">
+                        <span><i class="fas fa-eye"></i> 143K views</span>
+                        <span><i class="far fa-calendar"></i> 5 days ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 5 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Rummy Tips">
+                    <div class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <span class="video-category">Tips & Tricks</span>
+                    <h3 class="video-title">10 Rummy Mistakes You're Probably Making</h3>
+                    <div class="video-stats">
+                        <span><i class="fas fa-eye"></i> 324K views</span>
+                        <span><i class="far fa-calendar"></i> 2 months ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 6 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Rummy Challenge">
+                    <div class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <span class="video-category">Challenge</span>
+                    <h3 class="video-title">24-Hour Rummy Marathon - Can I Win $5,000?</h3>
+                    <div class="video-stats">
+                        <span><i class="fas fa-eye"></i> 1.2M views</span>
+                        <span><i class="far fa-calendar"></i> 6 months ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="featured-video">
+            <div class="featured-content">
+                <div class="featured-player">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                            title="Featured Rummy Video" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="featured-info">
+                    <h2>Rummy Masterclass: From Beginner to Expert</h2>
+                    <p>In this comprehensive 60-minute masterclass, I reveal all the secrets I've learned from 15 years of professional rummy play. Learn advanced techniques that most players never discover.</p>
+                    <div class="featured-stats">
+                        <div><i class="fas fa-clock"></i> 58:24</div>
+                        <div><i class="fas fa-eye"></i> 847K Views</div>
+                        <div><i class="fas fa-thumbs-up"></i> 42K Likes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>RummyPro</h3>
+                    <p style="color: var(--gray); margin-bottom: 1.5rem;">Mastering the art of rummy through strategy, skill, and psychological insight.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-twitch"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Videos</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Strategies</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tournaments</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Coaching</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tutorials</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Gameplay</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Strategies</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Card Analysis</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tournament Recaps</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p style="color: var(--gray); margin-bottom: 1.5rem;">Subscribe for exclusive strategies and tournament alerts.</p>
+                    <form>
+                        <input type="email" placeholder="Your Email" style="width: 100%; padding: 12px; border-radius: 50px; border: none; background: rgba(255,255,255,0.1); color: white; margin-bottom: 1rem;">
+                        <button type="submit" style="background: var(--accent); color: white; border: none; padding: 12px 30px; border-radius: 50px; font-weight: 600; cursor: pointer; transition: var(--transition);">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Allgamingapp.com. All rights reserved. Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> for rummy enthusiasts.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // In a real implementation, this would filter videos
+                // For this demo, we'll just add a small animation
+                document.querySelector('.video-grid').style.opacity = '0.5';
+                setTimeout(() => {
+                    document.querySelector('.video-grid').style.opacity = '1';
+                }, 300);
+            });
+        });
+        
+        // Play button functionality
+        document.querySelectorAll('.play-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.video-card');
+                card.style.transform = 'scale(1.05)';
+                card.style.boxShadow = '0 25px 50px rgba(0,0,0,0.4)';
+                
+                setTimeout(() => {
+                    card.style.transform = '';
+                    card.style.boxShadow = '';
+                }, 500);
+                
+                // In a real implementation, this would open a modal with the video
+                alert('Now playing: ' + card.querySelector('.video-title').textContent);
+            });
+        });
+        
+        // Stats counter animation
+        const statsSection = document.querySelector('.stats');
+        const statBoxes = document.querySelectorAll('.stat-box');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    statBoxes.forEach(box => {
+                        box.style.transform = 'translateY(0)';
+                        box.style.opacity = '1';
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(statsSection);
+        
+        // Initialize positions and opacity
+        statBoxes.forEach((box, index) => {
+            box.style.transform = 'translateY(50px)';
+            box.style.opacity = '0';
+            box.style.transition = 'transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s ease';
+            box.style.transitionDelay = `${index * 0.2}s`;
+        });
+    </script>
+</body>
+</html>

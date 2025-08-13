@@ -1,441 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!-- Basic Required Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameHub - Ultimate Gaming Experience</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>All Rummy Game Apps  </title>
+    <meta name="description" content=" ">
+
+    <!-- Primary SEO Meta Tags -->
+    <meta name="keywords" content=" ">
+    <meta name="author" content="Webtestsite">
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+    <meta name="language" content="English">
+    <meta name="rating" content="general">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content=" ">
+    <meta property="og:description" content=" ">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.webtestsite.in">
+    <meta property="og:image" content="https://www.webtestsite.in/img/webtest-logo.jpg">
+    <meta property="og:image:alt" content=" ">
+    <meta property="og:site_name" content="Webtestsite Web Development">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="https://www.webtestsite.in/img/d.jpg">
+    <meta name="twitter:image:alt" content=" ">
+    <meta name="twitter:site" content="@wevtestsite">
+    <meta name="twitter:creator" content="@vikas">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.allgamingapp.com">
+
+    <!-- Favicon and Touch Icons -->
+    <link rel="icon" href="" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Web Development Specific Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "[Company Name]",
+        "image": "https://www.yourdevcompany.com/images/logo.jpg",
+        "@id": "https://www.yourdevcompany.com",
+        "url": "https://www.yourdevcompany.com",
+        "telephone": "+1-XXX-XXX-XXXX",
+        "priceRange": "$$$",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Developer Lane",
+            "addressLocality": "[City]",
+            "addressRegion": "[State]",
+            "postalCode": "XXXXX",
+            "addressCountry": "US"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "40.7128",
+            "longitude": "-74.0060"
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+        },
+        "sameAs": [
+            "https://www.facebook.com/yourdevcompany",
+            "https://www.linkedin.com/company/yourdevcompany",
+            "https://twitter.com/yourdevcompany"
+        ]
+    }
+    </script>
+
+    <!-- Service Specific Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@type": "Service",
+                    "name": "Custom Web Development",
+                    "description": "Bespoke website development tailored to your specific business requirements.",
+                    "provider": {
+                        "@type": "Organization",
+                        "name": "[Company Name]"
+                    }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                    "@type": "Service",
+                    "name": "E-Commerce Solutions",
+                    "description": "Complete online store development with secure payment integration.",
+                    "provider": {
+                        "@type": "Organization",
+                        "name": "[Company Name]"
+                    }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                    "@type": "Service",
+                    "name": "Responsive Web Design",
+                    "description": "Mobile-optimized websites that work flawlessly across all devices.",
+                    "provider": {
+                        "@type": "Organization",
+                        "name": "[Company Name]"
+                    }
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Mobile Specific -->
+    <meta name="theme-color" content="#2a7ae2">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- PWA Related -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="US-NY">
+    <meta name="geo.placename" content="New York">
+    <meta name="geo.position" content="40.7128;-74.0060">
+    <meta name="ICBM" content="40.7128, -74.0060">
+
+    <!-- Verification Meta Tags -->
+    <meta name="google-site-verification" content="your-verification-code">
+    <meta name="bing-verification" content="your-verification-code">
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
+    <link rel="stylesheet" href="css/style.css">
+    
     <style>
-        /* Variables */
-        :root {
-            --primary: #6a11cb;
-            --secondary: #2575fc;
-            --dark: #0f0c29;
-            --light: #f8f9fa;
-            --accent: #ff3c78;
-            --transition: all 0.3s ease;
-            --shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Reset & Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: white;
-            color: var(--light);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Header & Navigation */
-        header {
-            background: rgba(15, 12, 41, 0.95);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 5%;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--light);
-            text-decoration: none;
-            animation: pulse 2s infinite;
-        }
-
-
-
-        .nav-links {
-            display: flex;
-            gap: 1.8rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            padding: 0.5rem 0.8rem;
-            border-radius: 4px;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: var(--transition);
-            transform: translateX(-50%);
-        }
-
-        .nav-links a:hover::after {
-            width: 70%;
-        }
-
-        /* Dropdown Styles */
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-content {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: rgba(26, 26, 46, 0.9);
-            backdrop-filter: blur(10px);
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            width: 220px;
-            padding: 1rem 0;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: var(--transition);
-            z-index: 100;
-        }
-
-        .dropdown:hover .dropdown-content {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-content a {
-            display: block;
-            padding: 0.8rem 1.5rem;
-            color: var(--light);
-            text-decoration: none;
-            transition: var(--transition);
-            font-weight: 500;
-        }
-
-        .dropdown-content a:hover {
-            background: rgba(255, 60, 120, 0.15);
-            color: var(--accent);
-            padding-left: 1.8rem;
-        }
-
-        .dropdown-content a i {
-            margin-right: 0.8rem;
-            width: 20px;
-            text-align: center;
-        }
-
-        /* Mobile Menu */
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            background: transparent;
-            border: none;
-            outline: none;
-            z-index: 1100;
-        }
-
-
-        .hamburger span {
-            display: block;
-            width: 28px;
-            height: 3px;
-            background: var(--light);
-            margin: 5px 0;
-            border-radius: 3px;
-            transition: var(--transition);
-        }
-       
-        .hamburgerL {
-
-            cursor: pointer;
-            background: transparent;
-            border: none;
-            outline: none;
-            z-index: 1100;
-        }
-
-         .hamburgerL img {
-            display: block;
-            width: 80px;
-            height: auto;
-
-        }
-
-        /* Footer Styles */
-        footer {
-            background: var(--dark);
-            margin-top: auto;
-            padding-top: 4rem;
-            position: relative;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 5%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-        }
-
-        .footer-column h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
-            border-radius: 3px;
-        }
-
-        .footer-column p {
-            margin-bottom: 1.5rem;
-            color: #a0aec0;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: #a0aec0;
-            text-decoration: none;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-            transform: translateX(5px);
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1.2rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-icons a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--light);
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-
-        .social-icons a:hover {
-            background: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .newsletter-form {
-            display: flex;
-            margin-top: 1.5rem;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 0.8rem 1rem;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--light);
-            outline: none;
-        }
-
-        .newsletter-form button {
-            padding: 0 1.2rem;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .newsletter-form button:hover {
-            background: #ff1a5e;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding: 1.5rem 0;
-            margin-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #a0aec0;
-            font-size: 0.9rem;
-        }
-
-        .footer-bottom a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        /* Animation Keyframes */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .navbar {
-                padding: 1rem 5%;
-            }
-            
-            .nav-links {
-                gap: 1.2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 280px;
-                height: 100vh;
-                background: rgba(15, 12, 41, 0.98);
-                backdrop-filter: blur(10px);
-                flex-direction: column;
-                padding: 6rem 2rem 2rem;
-                transition: var(--transition);
-                z-index: 1000;
-                overflow-y: auto;
-            }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .nav-links li {
-                width: 100%;
-            }
-            
-            .nav-links a {
-                display: block;
-                padding: 1rem;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-            
-            .dropdown-content {
-                position: static;
-                width: 100%;
-                box-shadow: none;
-                background: rgba(0, 0, 0, 0.2);
-                margin-top: 0.5rem;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                display: none;
-            }
-            
-            .dropdown:hover .dropdown-content,
-            .dropdown.active .dropdown-content {
-                display: block;
-            }
-            
-            .hamburger {
-                display: block;
-            }
-            
-            .hamburger.active span:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-            
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-            
-            .hamburger.active span:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 1.2rem;
-            }
-            
-
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .footer-column {
-                text-align: center;
-            }
-            
-            .footer-column h3::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .social-icons {
-                justify-content: center;
-            }
-            
-            .footer-links a {
-                justify-content: center;
-            }
-        }
-
-
 
         /* Game Showcase Section */
         .game-showcase {
@@ -1885,6 +1619,7 @@
         }
        */
         /*End of marqur*/
+        
     </style>
 </head>
 <body>
@@ -1896,24 +1631,24 @@
                 <span>AllGamingApps</span>
             </a>
             <ul class="nav-links">
-                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li class="dropdown">
-                    <a href="#"><i class="fas fa-dice"></i> Games <i class="fas fa-caret-down"></i></a>
+                    <a href="game.html"><i class="fas fa-dice"></i> Games <i class="fas fa-caret-down"></i></a>
                     <div class="dropdown-content">
-                        <a href="#"><i class="fas fa-shield-alt"></i>Action</a>
-                        <a href="#"><i class="fas fa-hat-wizard"></i>Adventure</a>
-                        <a href="#"><i class="fas fa-puzzle-piece"></i>Puzzle</a>
-                        <a href="#"><i class="fas fa-car"></i>Racing</a>
-                        <a href="#"><i class="fas fa-basketball-ball"></i>Sports</a>
+                        <a href="#"> <i class="fas fa-dice"></i> Point Rummy</a>
+                        <a href="#"><i class="fas fa-layer-group"></i> Pool Rummy</a>
+                        <a href="#"><i class="fas fa-gem"></i> Deal Rummy</a>
+                        <a href="#"><i class="fas fa-crown"></i>21 cards Rummy</a>
+
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="#"><i class="fas fa-learn"></i> Learn <i class="fas fa-caret-down"></i></a>
+                    <a href="rummy-tutorial.html"><i class="fas fa-learn"></i> Learn <i class="fas fa-caret-down"></i></a>
                     <div class="dropdown-content">
-                        <a href="#"><i class="fas fa-shield-alt"></i>How to play</a>
-                        <a href="#"><i class="fas fa-hat-wizard"></i>Video</a>
-                        <a href="#"><i class="fas fa-puzzle-piece"></i>Strategies</a>
-                        <a href="#"><i class="fas fa-car"></i>Racing</a>
+                        <a href="rummy-rulers.html"><i class="fas fa-shield-alt"></i>How to play</a>
+                        <a href="rummy-tutorial.html"><i class="fas fa-video"></i>Video</a>
+                        <a href="our-strategies.html"><i class="fas fa-puzzle-piece"></i>Strategies</a>
+                        <a href="rules.html"><i class="fas fa-car"></i>Rules & Scoring</a>
 
                     </div>
                 </li>
@@ -1921,15 +1656,15 @@
                  <li class="dropdown">
                     <a href="#"><i class="fas fa-learn"></i> Pages <i class="fas fa-caret-down"></i></a>
                     <div class="dropdown-content">
-                        <a href="#"><i class="fas fa-shield-alt"></i>About Us</a>
-                        <a href="#"><i class="fas fa-hat-wizard"></i>Contact Us</a>
-                        <a href="#"><i class="fas fa-puzzle-piece"></i>Our privecy-policy</a>
+                        <a href="about-us.html"><i class="fas fa-shield-alt"></i>About Us</a>
+                        <a href="contact-us.html"><i class="fas fa-hat-wizard"></i>Contact Us</a>
+                        <a href="privecy-policy.html"><i class="fas fa-puzzle-piece"></i>Our privecy-policy</a>
 
                     </div>
                 </li>
 
-                <li><a href="#"><i class="fas fa-shopping-bag"></i> Store</a></li>
-                <li><a href="#"><i class="fas fa-headset"></i> Support</a></li>
+                <li><a href="promotions.html"><i class="fas fa-shopping-bag"></i> Promotions</a></li>
+                <li><a href="contact-us.html"><i class="fas fa-headset"></i> Support</a></li>
             </ul>
 
             <button class="hamburgerL">
@@ -2013,9 +1748,9 @@
         <div class="tab-container p-0">
             <div class="tab-scroll">
                 <div class="tab-nav">
-                    <button class="tab-btn active" data-tab="content1">Analytics</button>
-                    <button class="tab-btn" data-tab="content2">AI Tools</button>
-                    <button class="tab-btn" data-tab="content3">Security</button>
+                    <button class="tab-btn active" data-tab="content1">Bonus 41</button>
+                    <button class="tab-btn" data-tab="content2">Bonus 50</button>
+                    <button class="tab-btn" data-tab="content3">Bonus 100</button>
                     <div class="tab-indicator"></div>
                 </div>
             </div>
@@ -3075,7 +2810,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2023 GameHub. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> for Gamers</p>
+            <p>&copy; 2025 Allgamingapp.com. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: var(--accent);"></i>WebTestSite  for Gamers</p>
         </div>
     </footer>
 
