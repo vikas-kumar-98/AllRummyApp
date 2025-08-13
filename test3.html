@@ -3,18 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Three Card Showcase</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Rummy World - Play & Win</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
         }
         
         body {
-            background-color: #f5f5f5;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
             padding: 20px;
         }
         
@@ -23,301 +29,738 @@
             margin: 0 auto;
         }
         
-        h1 {
+        /* Hero Section */
+        .hero {
             text-align: center;
-            margin-bottom: 30px;
-            color: #333;
+            padding: 60px 20px;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
         
-        .cards-container {
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #e0e0e0;
+        }
+        
+        .hero-buttons {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
+            flex-wrap: wrap;
         }
         
-        .card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 350px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
             cursor: pointer;
-            position: relative;
         }
         
-        .card:hover {
+        .btn-primary {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 75, 43, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .btn:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 75, 43, 0.6);
         }
         
-        .card-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+        /* Apps Section */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 60px 0 40px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
-        .card-content {
-            padding: 15px;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            border-radius: 2px;
         }
         
-        .card-title {
+        .apps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .app-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .app-header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .app-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        
+        .app-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        
+        .app-rating {
+            display: flex;
+            align-items: center;
+            color: #FFD700;
+        }
+        
+        .app-body {
+            padding: 20px;
+        }
+        
+        .app-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px 15px;
+            border-radius: 10px;
+        }
+        
+        .app-stat {
+            text-align: center;
+        }
+        
+        .app-stat .value {
+            font-weight: 700;
             font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #333;
+            color: #ff9a9e;
         }
         
-        .card-rating {
-            color: #ffc107;
-            margin-bottom: 15px;
+        .app-stat .label {
+            font-size: 0.9rem;
+            color: #aaa;
         }
         
         .download-btn {
-            display: inline-block;
-            background-color: #4CAF50;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-            border: none;
-            cursor: pointer;
+            display: block;
             width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #36D1DC, #5B86E5);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
             text-align: center;
+            text-decoration: none;
         }
         
         .download-btn:hover {
-            background-color: #45a049;
+            background: linear-gradient(to right, #5B86E5, #36D1DC);
+            box-shadow: 0 5px 15px rgba(91, 134, 229, 0.4);
         }
         
-        /* Expanded View for Mobile */
-        .expanded-view {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            padding: 20px;
-            overflow-y: auto;
+        /* Testimonials */
+        .testimonials {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 50px 20px;
+            margin: 60px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
         
-        .expanded-content {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            max-width: 500px;
-            margin: 20px auto;
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+        
+        .testimonials::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(45deg, #36D1DC, #5B86E5);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+        
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .testimonial-slide {
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .testimonial-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-style: italic;
             position: relative;
         }
         
-        .close-btn {
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 4rem;
             position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #333;
+            color: rgba(255, 255, 255, 0.1);
+            font-family: Georgia, serif;
         }
         
-        .expanded-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 5px;
+        .testimonial-text::before {
+            top: -30px;
+            left: -20px;
+        }
+        
+        .testimonial-text::after {
+            bottom: -60px;
+            right: -20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
             margin-bottom: 15px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
         }
         
-        .expanded-title {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #333;
+        .author-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
         }
         
-        .expanded-rating {
-            color: #ffc107;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
+        .author-info p {
+            color: #aaa;
         }
         
-        .expanded-desc {
-            margin-bottom: 20px;
-            color: #666;
-            line-height: 1.5;
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
         }
         
-        .expanded-download {
-            display: inline-block;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-            border: none;
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
-            width: 100%;
-            text-align: center;
-            font-size: 1.1rem;
+            transition: all 0.3s ease;
         }
         
-        @media (min-width: 768px) {
-            .card {
-                width: calc(33.333% - 20px);
+        .slider-dot.active {
+            background: #ff416c;
+            transform: scale(1.2);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
             }
             
-            .download-btn {
-                width: auto;
+            .apps-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
         }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .apps-container {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 20px;
+            }
+            
+            .testimonial-text {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 40px 15px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .apps-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials {
+                padding: 40px 15px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .app-card {
+            animation: fadeIn 0.6s ease forwards;
+            opacity: 0;
+        }
+        
+        .app-card:nth-child(1) { animation-delay: 0.1s; }
+        .app-card:nth-child(2) { animation-delay: 0.2s; }
+        .app-card:nth-child(3) { animation-delay: 0.3s; }
+        .app-card:nth-child(4) { animation-delay: 0.4s; }
+        .app-card:nth-child(5) { animation-delay: 0.5s; }
+        .app-card:nth-child(6) { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Featured Content</h1>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Play Rummy & Win Real Cash!</h1>
+            <p>Download the best rummy gaming apps and join millions of players. Experience thrilling gameplay, secure transactions, and exciting tournaments!</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">
+                    <i class="fas fa-crown"></i> Play Now
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    <i class="fas fa-download"></i> Download All Apps
+                </a>
+            </div>
+        </section>
         
-        <div class="cards-container">
-            <!-- Card 1 -->
-            <div class="card" onclick="showExpanded(1)">
-                <img src="https://source.unsplash.com/random/600x400?nature" alt="Nature" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title">Beautiful Nature</h3>
-                    <div class="card-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <span>(4.0)</span>
+        <!-- Apps Section -->
+        <h2 class="section-title">Top Rummy Gaming Apps</h2>
+        <div class="apps-container">
+            <!-- App Card 1 -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon">
+                        <i class="fas fa-dice"></i>
                     </div>
-                    <button class="download-btn">Download</button>
-                </div>
-                
-                <!-- Expanded View (hidden by default) -->
-                <div class="expanded-view" id="expanded-1">
-                    <div class="expanded-content">
-                        <span class="close-btn" onclick="hideExpanded(1)">&times;</span>
-                        <img src="https://source.unsplash.com/random/600x400?nature" alt="Nature" class="expanded-image">
-                        <h2 class="expanded-title">Beautiful Nature</h2>
-                        <div class="expanded-rating">
+                    <div class="app-info">
+                        <h3>Rummy Palace</h3>
+                        <div class="app-rating">
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <span>(4.0)</span>
-                        </div>
-                        <p class="expanded-desc">
-                            Stunning high-resolution nature photography featuring lush forests, majestic mountains, and serene lakes. Perfect for wallpapers and creative projects.
-                        </p>
-                        <button class="expanded-download">Download HD Image</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Card 2 -->
-            <div class="card" onclick="showExpanded(2)">
-                <img src="https://source.unsplash.com/random/600x400?city" alt="City" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title">Urban Landscape</h3>
-                    <div class="card-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <span>(5.0)</span>
-                    </div>
-                    <button class="download-btn">Download</button>
-                </div>
-                
-                <!-- Expanded View (hidden by default) -->
-                <div class="expanded-view" id="expanded-2">
-                    <div class="expanded-content">
-                        <span class="close-btn" onclick="hideExpanded(2)">&times;</span>
-                        <img src="https://source.unsplash.com/random/600x400?city" alt="City" class="expanded-image">
-                        <h2 class="expanded-title">Urban Landscape</h2>
-                        <div class="expanded-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <span>(5.0)</span>
-                        </div>
-                        <p class="expanded-desc">
-                            Captivating cityscapes from around the world, showcasing modern architecture, bustling streets, and vibrant nightlife. Ideal for presentations and design work.
-                        </p>
-                        <button class="expanded-download">Download HD Image</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Card 3 -->
-            <div class="card" onclick="showExpanded(3)">
-                <img src="https://source.unsplash.com/random/600x400?animal" alt="Animal" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title">Wildlife</h3>
-                    <div class="card-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <i class="far fa-star"></i>
-                        <span>(3.7)</span>
-                    </div>
-                    <button class="download-btn">Download</button>
-                </div>
-                
-                <!-- Expanded View (hidden by default) -->
-                <div class="expanded-view" id="expanded-3">
-                    <div class="expanded-content">
-                        <span class="close-btn" onclick="hideExpanded(3)">&times;</span>
-                        <img src="https://source.unsplash.com/random/600x400?animal" alt="Animal" class="expanded-image">
-                        <h2 class="expanded-title">Wildlife</h2>
-                        <div class="expanded-rating">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star-half-alt"></i>
-                            <i class="far fa-star"></i>
-                            <span>(3.7)</span>
+                            <span>4.5</span>
                         </div>
-                        <p class="expanded-desc">
-                            Stunning wildlife photography featuring animals in their natural habitats. From majestic lions to playful dolphins, this collection brings nature to you.
-                        </p>
-                        <button class="expanded-download">Download HD Image</button>
                     </div>
                 </div>
+                <div class="app-body">
+                    <div class="app-stats">
+                        <div class="app-stat">
+                            <div class="value">45 MB</div>
+                            <div class="label">Size</div>
+                        </div>
+                        <div class="app-stat">
+                            <div class="value">10M+</div>
+                            <div class="label">Downloads</div>
+                        </div>
+                        <div class="app-stat">
+                            <div class="value">4.5</div>
+                            <div class="label">Rating</div>
+                        </div>
+                    </div>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
+                </div>
+            </div>
+            
+            <!-- App Card 2 -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon">
+                        <i class="fas fa-spade"></i>
+                    </div>
+                    <div class="app-info">
+                        <h3>Rummy Circle</h3>
+                        <div class="app-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>4.0</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-body">
+                    <div class="app-stats">
+                        <div class="app-stat">
+                            <div class="value">52 MB</div>
+                            <div class="label">Size</div>
+                        </div>
+                        <div class="app-stat">
+                            <div class="value">15M+</div>
+                            <div class="label">Downloads</div>
+                        </div>
+                        <div class="app-stat">
+                            <div class="value">4.0</div>
+                            <div class="label">Rating</div>
+                        </div>
+                    </div>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
+                </div>
+            </div>
+            
+            <!-- App Card 3 -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="app-info">
+                        <h3>Rummy Gold</h3>
+                        <div class="app-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-body">
+                    <div class="app-stats">
+                        <div class="app-stat">
+                            <div class="value">38 MB</div>
+                            <div class="label">Size</div>
+                        </div>
+                        <div class="app-stat">
+                            <div class="value">8M+</div>
+                            <div class="label">Downloads</div>
+                        </div>
+                        <div class="app-stat">
+                            <div class="value">4.9</div>
+                            <div class="label">Rating</div>
+                        </div>
+                    </div>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
+                </div>
+            </div>
+            
+            <!-- App Card 4 -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon">
+                        <i class="fas fa-diamond"></i>
+                    </div>
+                    <div class="app-info">
+                        <h3>Rummy Stars</h3>
+                        <div class="app-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.6</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-body">
+                    <div class="app-stats">
+                        <div class="app-stat">
+                            <div class="value">42 MB</div>
+                            <div class="label">Size</div>
+                        </div>
+                        <div class="app-stat">
+                            <div class="value">12M+</div>
+                            <div class="label">Downloads</div>
+                        </div>
+                        <div class="app-stat">
+                            <div class="value">4.6</div>
+                            <div class="label">Rating</div>
+                        </div>
+                    </div>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
+                </div>
+            </div>
+            
+            <!-- App Card 5 -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="app-info">
+                        <h3>Rummy King</h3>
+                        <div class="app-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>4.2</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-body">
+                    <div class="app-stats">
+                        <div class="app-stat">
+                            <div class="value">48 MB</div>
+                            <div class="label">Size</div>
+                        </div>
+                        <div class="app-stat">
+                            <div class="value">9M+</div>
+                            <div class="label">Downloads</div>
+                        </div>
+                        <div class="app-stat">
+                            <div class="value">4.2</div>
+                            <div class="label">Rating</div>
+                        </div>
+                    </div>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
+                </div>
+            </div>
+            
+            <!-- App Card 6 -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon">
+                        <i class="fas fa-chess-king"></i>
+                    </div>
+                    <div class="app-info">
+                        <h3>Rummy Master</h3>
+                        <div class="app-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>5.0</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-body">
+                    <div class="app-stats">
+                        <div class="app-stat">
+                            <div class="value">36 MB</div>
+                            <div class="label">Size</div>
+                        </div>
+                        <div class="app-stat">
+                            <div class="value">7M+</div>
+                            <div class="label">Downloads</div>
+                        </div>
+                        <div class="app-stat">
+                            <div class="value">5.0</div>
+                            <div class="label">Rating</div>
+                        </div>
+                    </div>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Testimonials Section -->
+        <div class="testimonials">
+            <h2 class="section-title">Player Testimonials</h2>
+            <div class="testimonial-container">
+                <div class="testimonial-slide active">
+                    <p class="testimonial-text">I've been playing on Rummy Gold for over a year now and it's been an amazing experience. The gameplay is smooth, withdrawals are quick, and I've won over ₹50,000 in tournaments!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">R</div>
+                        <div class="author-info">
+                            <h4>Rajesh Kumar</h4>
+                            <p>Professional Rummy Player</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">Rummy Circle has the best user interface among all rummy apps. The daily bonuses and tournaments keep me engaged, and I've made some good friends in the rummy community here.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">P</div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p>Rummy Enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">As a beginner, I found Rummy Stars to be the perfect platform to learn and improve my game. The practice tables and tutorials helped me understand strategies, and now I win regularly!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">V</div>
+                        <div class="author-info">
+                            <h4>Vikram Singh</h4>
+                            <p>Rummy Newbie Turned Winner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slider-nav">
+                <div class="slider-dot active"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
             </div>
         </div>
     </div>
 
     <script>
-        function showExpanded(cardNumber) {
-            // On mobile, show expanded view
-            if (window.innerWidth <= 768) {
-                document.getElementById(`expanded-${cardNumber}`).style.display = 'block';
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
+        // Testimonial slider functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            let currentSlide = 0;
+            
+            // Function to show a specific slide
+            function showSlide(index) {
+                // Hide all slides
+                slides.forEach(slide => slide.classList.remove('active'));
+                // Remove active class from all dots
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                // Show the selected slide
+                slides[index].classList.add('active');
+                // Activate the corresponding dot
+                dots[index].classList.add('active');
+                
+                currentSlide = index;
             }
-        }
-        
-        function hideExpanded(cardNumber) {
-            document.getElementById(`expanded-${cardNumber}`).style.display = 'none';
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
-        }
-        
-        // Add click event to download buttons to prevent card click when button is clicked
-        document.querySelectorAll('.download-btn, .expanded-download').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.stopPropagation();
-                alert('Download started! (This is a demo)');
+            
+            // Add click event to dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                });
             });
+            
+            // Auto slide change every 5 seconds
+            setInterval(() => {
+                let nextSlide = (currentSlide + 1) % slides.length;
+                showSlide(nextSlide);
+            }, 5000);
         });
     </script>
 </body>
