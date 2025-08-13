@@ -1501,8 +1501,8 @@
             align-items: center;
             justify-content: center;
             gap: 0.2rem;
-            width: 110px;
-            padding: 6px 5px;
+            width: 100px;
+            padding: 5px 4px;
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
             border: none;
@@ -1532,10 +1532,11 @@
                 grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
                 padding: 0;
             }
-                        .download-btn {
-                padding: 0.5rem;
+            .download-btn {
+
                 margin-left: 25%;
                 margin-bottom: 1%;
+                padding: 5px 4px;
                 font-size: 0.9rem;
             }
         }
@@ -1561,17 +1562,16 @@
             }
 
             .download-btn {
-                padding: 0.5rem;
+                min-width: 80px;
+                padding: 5px 4px;
                 margin-left: 45%;
                 margin-bottom: 1%;
-                font-size: 0.9rem;
+                font-size: 0.7rem;
             }
         }
 
         @media (max-width: 576px) {
-            .header {
-                margin: 1.5rem 0 2rem;
-            }
+           
             
             .app-grid {
                 grid-template-columns: 2fr;
@@ -1583,8 +1583,29 @@
             }
             
             .download-btn {
-                padding: 0.5rem;
+                min-width: 80px;
+                padding: 4px 3px;
                 margin-left: 10%;
+                margin-bottom: 1%;
+                font-size: 0.9rem;
+            }
+        }
+
+                @media (max-width: 486px) {
+
+            
+            .app-grid {
+                grid-template-columns: 1fr;
+                gap: .1rem;
+            }
+            
+            .tab-btn {
+                padding: 0.5rem 1rem;
+            }
+            
+            .download-btn {
+                padding: 0.5rem;
+                margin-left: 20%;
                 margin-bottom: 1%;
                 font-size: 0.9rem;
             }
