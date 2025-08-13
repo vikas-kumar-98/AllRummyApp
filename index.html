@@ -3,625 +3,599 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Gaming Navigation</title>
+    <title>GameHub - Ultimate Gaming Experience</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        /* Variables */
         :root {
-            --primary: #ff4655;
-            --secondary: #0f1923;
-            --accent: #ece8e1;
-            --dark: #111;
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --dark: #0f0c29;
             --light: #f8f9fa;
-            --highlight: #ff8a00;
+            --accent: #ff3c78;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
-        
+
+        /* Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Titillium Web', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
+        html, body {
+            overflow-x: hidden;
+        }
+
         body {
-            background-color: var(--white);
-            color: var(--black);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: var(--light);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        
-        /* ========== ADVANCED NAVIGATION ========== */
-        .navbar {
-            background: rgba(15, 25, 35, 0.95);
+
+        /* Header & Navigation */
+        header {
+            background: rgba(15, 12, 41, 0.95);
             backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 70, 85, 0.2);
+            box-shadow: var(--shadow);
         }
-        
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
+
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
+            padding: 1.2rem 5%;
+            max-width: 1600px;
+            margin: 0 auto;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-        
-        .logo img {
-            height: 40px;
-        }
-        
-        .logo-text {
+            gap: 0.8rem;
             font-size: 1.8rem;
             font-weight: 700;
-            background: linear-gradient(to right, var(--primary), var(--highlight));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-        
-        .nav-item {
-            position: relative;
-            list-style-type: none;
-        }
-        
-        .nav-link {
-            color: var(--accent);
+            color: var(--light);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            animation: pulse 2s infinite;
         }
-        
-        .nav-link:hover {
-            color: var(--primary);
-        }
-        
-        .nav-link i {
-            font-size: 0.8rem;
-            transition: transform 0.3s ease;
-        }
-        
-        /* Dropdown Menu */
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: var(--secondary);
-            width: 220px;
-            border-radius: 0 0 8px 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            z-index: 100;
-            border: 1px solid rgba(255, 70, 85, 0.1);
-            border-top: 2px solid var(--primary);
-        }
-        
-        .nav-item:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .dropdown-item {
-            padding: 0.7rem 1.5rem;
-            border-bottom: 1px solid rgba(236, 232, 225, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .dropdown-item:last-child {
-            border-bottom: none;
-        }
-        
-        .dropdown-item:hover {
-            background: rgba(255, 70, 85, 0.1);
-            padding-left: 1.8rem;
-        }
-        
-        .dropdown-link {
+
+        .logo-icon {
             color: var(--accent);
-            text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 2.2rem;
+        }
+
+        .nav-links {
             display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .dropdown-link i {
-            color: var(--primary);
-            font-size: 0.9rem;
-        }
-        
-        /* Mega Menu */
-        .mega-menu {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            background: var(--secondary);
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            z-index: 100;
-            border-radius: 0 0 8px 8px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 70, 85, 0.1);
-            border-top: 2px solid var(--primary);
-        }
-        
-        .nav-item.mega:hover .mega-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .mega-column h4 {
-            color: var(--primary);
-            font-size: 1.1rem;
-            margin-bottom: 1.2rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid rgba(255, 70, 85, 0.3);
-        }
-        
-        .mega-list {
+            gap: 1.8rem;
             list-style: none;
         }
-        
-        .mega-list li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .mega-list a {
-            color: var(--accent);
+
+        .nav-links a {
+            color: var(--light);
             text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .mega-list a:hover {
-            color: var(--primary);
-            padding-left: 5px;
-        }
-        
-        .mega-list a i {
-            font-size: 0.8rem;
-            color: var(--highlight);
-        }
-        
-        .mega-banner {
-            grid-column: span 1;
-            background: linear-gradient(135deg, rgba(255, 70, 85, 0.1), rgba(15, 25, 35, 0.8));
-            border-radius: 8px;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            border: 1px solid rgba(255, 70, 85, 0.2);
-        }
-        
-        .mega-banner img {
-            width: 80px;
-            margin-bottom: 1rem;
-        }
-        
-        .mega-banner h5 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .mega-banner p {
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            opacity: 0.8;
-        }
-        
-        .mega-btn {
-            background: var(--primary);
-            color: white;
-            padding: 0.5rem 1.2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 0.9rem;
             font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .mega-btn:hover {
-            background: #e63a49;
-            transform: translateY(-2px);
-        }
-        
-        /* Auth Buttons */
-        .auth-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .btn-login {
-            background: transparent;
-            color: var(--accent);
-            border: 1px solid var(--accent);
-            padding: 0.5rem 1.5rem;
+            font-size: 1.1rem;
+            padding: 0.5rem 0.8rem;
             border-radius: 4px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-login:hover {
-            background: rgba(236, 232, 225, 0.1);
-        }
-        
-        .btn-signup {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 4px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-signup:hover {
-            background: #e63a49;
-            transform: translateY(-2px);
-        }
-        
-        /* Mobile Menu Toggle */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--accent);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        /* ========== ADVANCED FOOTER ========== */
-        footer {
-            background: var(--secondary);
-            margin-top: auto;
-            padding-top: 4rem;
-            border-top: 1px solid rgba(255, 70, 85, 0.2);
-        }
-        
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .footer-col {
-            padding: 0 1rem;
-        }
-        
-        .footer-col:first-child {
-            grid-column: span 2;
-        }
-        
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-logo img {
-            height: 40px;
-        }
-        
-        .footer-logo-text {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(to right, var(--primary), var(--highlight));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .footer-about {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            opacity: 0.8;
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(236, 232, 225, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            color: var(--accent);
-            text-decoration: none;
-        }
-        
-        .social-link:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        .footer-title {
-            color: var(--primary);
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
             position: relative;
-            padding-bottom: 0.5rem;
+            transition: var(--transition);
         }
-        
-        .footer-title::after {
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
-            width: 40px;
+            left: 50%;
+            width: 0;
             height: 2px;
-            background: var(--primary);
+            background: var(--accent);
+            transition: var(--transition);
+            transform: translateX(-50%);
         }
-        
+
+        .nav-links a:hover::after {
+            width: 70%;
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(26, 26, 46, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            width: 220px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.8rem 1.5rem;
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(255, 60, 120, 0.15);
+            color: var(--accent);
+            padding-left: 1.8rem;
+        }
+
+        .dropdown-content a i {
+            margin-right: 0.8rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Mobile Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            outline: none;
+            z-index: 1100;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: var(--light);
+            margin: 5px 0;
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        /* Footer Styles */
+        footer {
+            background: var(--dark);
+            margin-top: auto;
+            padding-top: 4rem;
+            position: relative;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+
+        .footer-column p {
+            margin-bottom: 1.5rem;
+            color: #a0aec0;
+        }
+
         .footer-links {
             list-style: none;
         }
-        
+
         .footer-links li {
             margin-bottom: 0.8rem;
         }
-        
+
         .footer-links a {
-            color: var(--accent);
+            color: #a0aec0;
             text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 8px;
-            opacity: 0.8;
+            gap: 0.8rem;
         }
-        
+
         .footer-links a:hover {
-            color: var(--primary);
-            opacity: 1;
-            padding-left: 5px;
+            color: var(--accent);
+            transform: translateX(5px);
         }
-        
-        .footer-links a i {
-            font-size: 0.8rem;
-            color: var(--highlight);
+
+        .social-icons {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
         }
-        
-        .footer-newsletter p {
-            font-size: 0.95rem;
-            opacity: 0.8;
-            margin-bottom: 1rem;
-            line-height: 1.6;
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--light);
+            font-size: 1.2rem;
+            transition: var(--transition);
         }
-        
+
+        .social-icons a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
         .newsletter-form {
             display: flex;
-            margin-bottom: 1.5rem;
+            margin-top: 1.5rem;
         }
-        
-        .newsletter-input {
+
+        .newsletter-form input {
             flex: 1;
-            padding: 0.7rem 1rem;
+            padding: 0.8rem 1rem;
             border: none;
             border-radius: 4px 0 0 4px;
-            background: rgba(236, 232, 225, 0.1);
-            color: var(--accent);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
             outline: none;
         }
-        
-        .newsletter-btn {
-            background: var(--primary);
+
+        .newsletter-form button {
+            padding: 0 1.2rem;
+            background: var(--accent);
             color: white;
             border: none;
-            padding: 0 1.2rem;
             border-radius: 0 4px 4px 0;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
-        
-        .newsletter-btn:hover {
-            background: #e63a49;
+
+        .newsletter-form button:hover {
+            background: #ff1a5e;
         }
-        
+
         .footer-bottom {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 1.5rem 0;
             text-align: center;
-        }
-        
-        .footer-bottom-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .copyright {
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a0aec0;
             font-size: 0.9rem;
-            opacity: 0.7;
         }
-        
-        .footer-legal {
-            display: flex;
-            gap: 1.5rem;
-        }
-        
-        .footer-legal a {
+
+        .footer-bottom a {
             color: var(--accent);
             text-decoration: none;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            transition: all 0.3s ease;
         }
-        
-        .footer-legal a:hover {
-            color: var(--primary);
-            opacity: 1;
+
+        /* Animation Keyframes */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
-        
-        /* ========== RESPONSIVE DESIGN ========== */
-        @media (max-width: 1200px) {
-            .footer-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .footer-col:first-child {
-                grid-column: span 3;
-                margin-bottom: 2rem;
-            }
-        }
-        
+
+        /* Responsive Design */
         @media (max-width: 992px) {
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 80%;
-                max-width: 350px;
-                height: calc(100vh - 70px);
-                background: var(--secondary);
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 2rem;
-                transition: all 0.5s ease;
-                overflow-y: auto;
-                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+            .navbar {
+                padding: 1rem 5%;
             }
             
-            .nav-menu.active {
+            .nav-links {
+                gap: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 280px;
+                height: 100vh;
+                background: rgba(15, 12, 41, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                transition: var(--transition);
+                z-index: 1000;
+                overflow-y: auto;
+            }
+            
+            .nav-links.active {
                 left: 0;
             }
             
-            .nav-item {
+            .nav-links li {
                 width: 100%;
             }
             
-            .nav-link {
-                padding: 1rem 0;
-                border-bottom: 1px solid rgba(236, 232, 225, 0.1);
-                width: 100%;
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
             
-            .dropdown-menu {
+            .dropdown-content {
                 position: static;
                 width: 100%;
-                border: none;
                 box-shadow: none;
+                background: rgba(0, 0, 0, 0.2);
+                margin-top: 0.5rem;
                 opacity: 1;
                 visibility: visible;
                 transform: none;
                 display: none;
-                margin-top: 0;
-                border-radius: 0;
-                padding-left: 1rem;
             }
             
-            .dropdown-menu.active {
+            .dropdown:hover .dropdown-content,
+            .dropdown.active .dropdown-content {
                 display: block;
             }
             
-            .mega-menu {
-                position: static;
-                width: 100%;
-                display: none;
-                grid-template-columns: 1fr;
-                padding: 1rem;
-                margin-top: 0;
-            }
-            
-            .mega-menu.active {
-                display: grid;
-            }
-            
-            .mobile-menu-btn {
+            .hamburger {
                 display: block;
             }
             
-            .auth-buttons {
-                display: none;
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
             }
         }
-        
-        @media (max-width: 768px) {
-            .footer-grid {
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .logo-icon {
+                font-size: 1.8rem;
+            }
+            
+            .footer-content {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
             
-            .footer-col:first-child {
-                grid-column: span 1;
+            .footer-column {
+                text-align: center;
             }
             
-            .footer-bottom-container {
-                flex-direction: column;
-                gap: 1rem;
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
             }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .footer-links a {
+                justify-content: center;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 8rem 5% 6rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #ff3c78, #6a11cb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #a0aec0;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(106, 17, 203, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(106, 17, 203, 0.6);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Game Showcase Section */
+        .game-showcase {
+            padding: 4rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
         
-        @media (max-width: 576px) {
-            .nav-container {
-                padding: 0 1rem;
-            }
-            
-            .footer-container {
-                padding: 0 1rem;
-            }
-            
-            .mega-menu {
-                padding: 0.5rem;
-            }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(to right, #ff3c78, #6a11cb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .showcase-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .game-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .game-image {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .game-content {
+            padding: 1.5rem;
+        }
+        
+        .game-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .game-card p {
+            color: #a0aec0;
+            margin-bottom: 1rem;
+        }
+        
+        .rating {
+            color: #ffd700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .play-button {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .play-button:hover {
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 4rem 5%;
+            background: rgba(0, 0, 0, 0.2);
+            margin: 4rem 0;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            transition: var(--transition);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(106, 17, 203, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #ff3c78, #6a11cb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #a0aec0;
+            font-size: 1.1rem;
         }
 
 
+        /*index main css*/
         /*Card three ............................*/
         .card-container {
             display: flex;
@@ -1624,83 +1598,63 @@
         .tab-content.active .app-card:nth-child(5) { animation-delay: 0.5s; }
         .tab-content.active .app-card:nth-child(6) { animation-delay: 0.6s; }
 
-  </style>
+        /*Index main css file*/
+    </style>
 </head>
 <body>
-    <!-- Advanced Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <img src="img/wts.png" alt="GameZone Logo">
-                <span class="logo-text">AllRummyGame.com</span>
-            </div>
-            
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Home</a>
-                </li>
-               <li class="nav-item">
-                    <a href="#" class="nav-link">About</a>
-                </li>
-        
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Games <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link"><i class="fas fa-newspaper"></i> Latest Updates</a>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link"><i class="fas fa-award"></i> Reviews</a>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link"><i class="fas fa-video"></i> Trailers</a>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link"><i class="fas fa-calendar-alt"></i> Events</a>
-                        </div>
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <i class="fas fa-gamepad logo-icon"></i>
+                <span>GameHub</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-dice"></i> Games <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#"><i class="fas fa-shield-alt"></i>Action</a>
+                        <a href="#"><i class="fas fa-hat-wizard"></i>Adventure</a>
+                        <a href="#"><i class="fas fa-puzzle-piece"></i>Puzzle</a>
+                        <a href="#"><i class="fas fa-car"></i>Racing</a>
+                        <a href="#"><i class="fas fa-basketball-ball"></i>Sports</a>
                     </div>
                 </li>
-                
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-learn"></i> Learn <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#"><i class="fas fa-shield-alt"></i>How to play</a>
+                        <a href="#"><i class="fas fa-hat-wizard"></i>Video</a>
+                        <a href="#"><i class="fas fa-puzzle-piece"></i>Strategies</a>
+                        <a href="#"><i class="fas fa-car"></i>Racing</a>
 
-
-                
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Community <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link"><i class="fas fa-users"></i> Forums</a>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link"><i class="fas fa-trophy"></i> Tournaments</a>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link"><i class="fas fa-user-plus"></i> Teams</a>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="#" class="dropdown-link"><i class="fab fa-discord"></i> Discord</a>
-                        </div>
                     </div>
                 </li>
-                
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Shop</a>
+
+                 <li class="dropdown">
+                    <a href="#"><i class="fas fa-learn"></i> Pages<i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#"><i class="fas fa-shield-alt"></i>About Us</a>
+                        <a href="#"><i class="fas fa-hat-wizard"></i>Contact Us</a>
+                        <a href="#"><i class="fas fa-puzzle-piece"></i>Our privecy-policy</a>
+
+                    </div>
                 </li>
-                
-                <li class="nav-item">
-                    <a href="contact-us.html" class="nav-link">Support</a>
-                </li>
+
+                <li><a href="#"><i class="fas fa-shopping-bag"></i>Store</a></li>
+                <li><a href="#"><i class="fas fa-headset"></i>Support</a></li>
             </ul>
-            
-            <div class="auth-buttons">
-                <button class="btn-login">Login</button>
-                <button class="btn-signup">Sign Up</button>
-            </div>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
+
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
-        </div>
-    </nav>
+        </nav>
+    </header>
+
     
     <!-- Main Content (Placeholder) -->
     <main style="padding: 1rem; flex: 1;">
@@ -2491,7 +2445,7 @@
             <div class="video-card">
                 <div class="video-thumbnail">
                     <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Rummy Tutorial">
-                    <div class="play-button" onclick="openVideo('dQw4w9WgXcQ')">
+                    <div class="play-button" onclick="openVideo('-am6eZlbivU')">
                         <svg viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z"/>
                         </svg>
@@ -2566,7 +2520,7 @@
             <div class="video-card">
                 <div class="video-thumbnail">
                     <img src="https://i.ytimg.com/vi/kJQP7kiw5Fk/maxresdefault.jpg" alt="Rummy Tournament">
-                    <div class="play-button" onclick="openVideo('kJQP7kiw5Fk')">
+                    <div class="play-button" onclick="openVideo('-am6eZlbivU')">
                         <svg viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z"/>
                         </svg>
@@ -2604,92 +2558,148 @@
 
     <!--End of Youtube -->
     </main>
-    
-    <!-- Advanced Footer -->
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number">5M+</div>
+                <div class="stat-label">Active Players</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1.2K</div>
+                <div class="stat-label">Games Available</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Live Support</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Positive Reviews</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <div class="footer-logo">
-                        <img src="https://via.placeholder.com/40x40" alt="GameZone Logo">
-                        <span class="footer-logo-text">GameZone</span>
-                    </div>
-                    <p class="footer-about">
-                        GameZone is the ultimate destination for gamers worldwide. We provide the latest news, reviews, 
-                        and community features for all gaming platforms.
-                    </p>
-                    <div class="footer-social">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitch"></i></a>
-                    </div>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>GameHub</h3>
+                <p>Your ultimate gaming destination with thousands of games, tournaments, and a vibrant community of players.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-title">Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Game Reviews</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> News</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-title">Categories</h4>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Action</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Adventure</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> RPG</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Strategy</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Sports</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-title">Support</h4>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Help Center</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Community</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Feedback</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Report Issue</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-title">Newsletter</h4>
-                    <p class="footer-newsletter">
-                        Subscribe to our newsletter to get the latest gaming news and exclusive offers directly to your inbox.
-                    </p>
-                    <form class="newsletter-form">
-                        <input type="email" class="newsletter-input" placeholder="Your email">
-                        <button type="submit" class="newsletter-btn"><i class="fas fa-paper-plane"></i></button>
-                    </form>
-                    <div class="payment-methods">
-                        <img src="https://via.placeholder.com/200x30" alt="Payment Methods" style="width: 100%; opacity: 0.8;">
-                    </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>Home</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>Popular Games</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>New Releases</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>Upcoming Events</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>Gift Cards</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>FAQ</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>Help Center</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>Community</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>Contact Us</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i>Report Issue</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get latest updates on new games, tournaments and special offers.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email">
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+                <div class="download-badges" style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                    <a href="#" style="display: flex; align-items: center; background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 8px; transition: var(--transition); color: white; text-decoration: none;">
+                        <i class="fab fa-google-play" style="margin-right: 8px;"></i> Google Play
+                    </a>
+                    <a href="#" style="display: flex; align-items: center; background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 8px; transition: var(--transition); color: white; text-decoration: none;">
+                        <i class="fab fa-apple" style="margin-right: 8px;"></i> App Store
+                    </a>
                 </div>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <div class="footer-bottom-container">
-                <p class="copyright">© 2023 GameZone. All Rights Reserved.</p>
-                <div class="footer-legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Cookie Policy</a>
-                    <a href="#">GDPR</a>
-                </div>
-            </div>
+            <p>&copy; 2023 GameHub. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> for Gamers</p>
         </div>
     </footer>
-    
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const dropdowns = document.querySelectorAll('.dropdown');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (navLinks.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Mobile Dropdown Toggle
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && navLinks.classList.contains('active') && 
+                !e.target.closest('.nav-links') && !e.target.closest('.hamburger')) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
+            }
+        });
+
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = `fadeIn 0.8s ease forwards`;
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.game-card, .stat-card').forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.animationDelay = `${index * 0.2}s`;
+                observer.observe(card);
+            });
+        });
+    </script>
+
+
     <script>
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
