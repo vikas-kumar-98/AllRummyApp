@@ -423,54 +423,7 @@
             }
         }
 
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 8rem 5% 6rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(to right, #ff3c78, #6a11cb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeIn 1s ease;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #a0aec0;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(106, 17, 203, 0.4);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(106, 17, 203, 0.6);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
 
         /* Game Showcase Section */
         .game-showcase {
@@ -718,7 +671,7 @@
             background: white;
             border-radius: 12px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 4px 5px;
+            padding: 3px 5px;
             text-align: center;
             position: relative;
             display: flex;
@@ -749,7 +702,6 @@
             margin: 0px;
             justify-content: center;
             flex-wrap: nowrap;
-             margin: 0 auto;
             position: relative;
             }
             .card {
@@ -758,8 +710,9 @@
             background: white;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 5px 0px;
+            padding: 2px 0px;
             text-align: center;
+            margin: 0;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -776,6 +729,33 @@
            .card img {
                 max-width: 70px;
             }
+
+                    .image-container {
+            width: 100%;
+            margin-bottom: 1px;
+        }
+        
+
+        
+        h2 {
+            font-size: clamp(0.8rem, 2vw, 1.2rem);
+            margin: 0px;
+            padding: 0px;
+
+        }
+        
+        h3 {
+            font-size: clamp(0.7rem, 1.8vw, 1rem);
+            margin: 0px;
+            padding: 0;
+
+        }
+        
+        .rating {
+            color: #FFD700;
+            margin: 0;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+        }
         }
         /*End of three cards*/
 
