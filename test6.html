@@ -3,236 +3,278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Three Card Fixed Layout</title>
+    <title>Modern Notice Bar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
             padding: 20px;
         }
         
-        .card-container {
-            display: flex;
+        .notice-container {
+            max-width: 1200px;
             width: 100%;
-            max-width: 1000px;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: nowrap;
-            position: relative;
-        }
-        
-        .card {
-            flex: 1;
-            min-width: 120px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 5px 5px;
-            text-align: center;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 25px;
-        }
-        
-        .card.middle {
-            transform: translateY(-20px);
-            border: 1px solid whitesmoke;
-        }
-        
-        .card-number {
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 50px;
-            background: #4CAF50;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            z-index: 10;
-        }
-        
-        .image-container {
-            width: 100%;
-            margin-bottom: 8px;
-        }
-        
-        .card img {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 1/1;
-            object-fit: cover;
-            border-radius: 10%;
-            background: #eee;
-            max-width: 150px;
-        }
-        
-        h2 {
-            font-size: clamp(0.8rem, 2vw, 1.2rem);
-            margin: 5px 0;
-            color: #333;
-            white-space: nowrap;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
             overflow: hidden;
-            text-overflow: ellipsis;
-            width: 100%;
         }
         
-        h3 {
-            font-size: clamp(0.7rem, 1.8vw, 1rem);
-            margin: 5px 0;
-            color: #555;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            width: 100%;
-        }
-        
-        .rating {
-            color: #FFD700;
-            margin: 5px 0;
-            font-size: clamp(0.6rem, 1.5vw, 0.9rem);
-        }
-        
-        .download-btn {
-            background: #4CAF50;
+        .notice-bar {
+            display: flex;
+            background: linear-gradient(to right, #0c2461, #1e3799);
             color: white;
-            border: none;
-            padding: 4px 6px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-            font-size: clamp(0.7rem, 1.5vw, 0.9rem);
-            width: 100%;
-            max-width: 100px;
-        }
-
-        /* Media Query for smaller screens */
-        @media (max-width: 768px) {
-            .card-container {
-                gap: 15px;
-                padding: 10px;
-                overflow-x: auto;
-                justify-content: flex-start;
-            }
-            
-            .card {
-            flex: 1;
-            min-width: 120px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 4px 5px;
-            text-align: center;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 25px;
-            }
-            
-            .card-number {
-                width: 30px;
-                height: 30px;
-                font-size: 1.2rem;
-                top: -10px;
-            }
-            
-            .card img {
-                max-width: 80px;
-            }
-        }
-
-        /* Media Query for very small screens */
-        @media (max-width: 480px) {
-            .card-container {
-            display: flex;
-            width: 100%;
-            padding: 0px;
-            gap: 2px;
-            margin: 0px;
-            justify-content: center;
-            flex-wrap: nowrap;
-            position: relative;
-            }
-            .card {
-            flex: 1;
-            min-width: 100px;
-            background: white;
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 5px 0px;
-            text-align: center;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+        }
+        
+        .notice-title {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 18px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .notice-title::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%, 
+                        transparent 50%, rgba(255,255,255,0.05) 50%, 
+                        rgba(255,255,255,0.05) 75%, transparent 75%, transparent);
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+        
+        .notice-title h3 {
+            font-weight: 700;
+            font-size: 1.4rem;
             position: relative;
             display: flex;
-            flex-direction: column;
             align-items: center;
+            gap: 12px;
+        }
+        
+        .notice-title i {
+            color: #4bcffa;
+            font-size: 1.6rem;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .notice-content {
+            flex: 1;
+            padding: 18px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .marquee-container {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .marquee-text {
+            white-space: nowrap;
+            animation: marquee 20s linear infinite;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0c2461;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 5px 0;
+        }
+        
+        .marquee-text i {
+            color: #e74c3c;
+            font-size: 1.4rem;
+        }
+        
+        .contact-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 25px;
+            background: #0c2461;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info:hover {
+            background: #e74c3c;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+        
+        .contact-info i {
+            animation: ring 2s infinite;
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes ring {
+            0% { transform: rotate(0); }
+            10% { transform: rotate(20deg); }
+            20% { transform: rotate(-20deg); }
+            30% { transform: rotate(20deg); }
+            40% { transform: rotate(-20deg); }
+            50% { transform: rotate(0); }
+            100% { transform: rotate(0); }
+        }
+        
+        .decoration {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(76, 118, 255, 0.15);
+            top: -70px;
+            right: -70px;
+        }
+        
+        .decoration-2 {
+            width: 100px;
+            height: 100px;
+            background: rgba(231, 76, 60, 0.15);
+            bottom: -50px;
+            left: -50px;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .notice-bar {
+                flex-direction: column;
             }
             
-            .card-number {
-                width: 20px;
-                height: 20px;
-                font-size: 1rem;
-                top: -7px;
+            .notice-title {
+                min-width: 100%;
+                padding: 15px;
             }
-
-           .card img {
-                max-width: 70px;
+            
+            .notice-content {
+                padding: 15px;
+            }
+            
+            .marquee-text {
+                animation: marquee 15s linear infinite;
+                font-size: 1.1rem;
+            }
+            
+            .contact-info {
+                margin-left: 15px;
+                padding: 6px 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .marquee-text {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                white-space: normal;
+                animation: none;
+            }
+            
+            .contact-info {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            
+            .notice-title h3 {
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="card-container">
-        <!-- Card 1 -->
-        <div class="card">
-            <div class="card-number">1</div>
-            <div class="image-container">
-                <img src="img/rummy.png" alt="Image 1">
+    <div class="notice-container">
+        <div class="notice-bar">
+            <div class="notice-title">
+                <h3><i class="fas fa-bullhorn"></i> आवश्यक सूचना :</h3>
             </div>
-            <h3>One</h3>
-            <div class="rating">★★★★☆</div>
-            <button class="download-btn">Download</button>
-        </div>
-
-        <!-- Card 2 (Middle - Elevated) -->
-        <div class="card middle">
-            <div class="card-number">2</div>
-            <div class="image-container">
-                <img src="img/rummy.png" alt="Image 2">
+            <div class="notice-content">
+                <div class="marquee-container">
+                    <div class="marquee-text">
+                        <i class="fas fa-exclamation-circle"></i>
+                        यदि आपको किसी भी खेल में निकासी/जमा से संबंधित कोई समस्या आती है, तो कृपया हमसे संपर्क करें, मैं भी एक एजेंट हूं।
+                        <div class="contact-info">
+                            <i class="fas fa-phone-alt"></i>
+                            संपर्क करें: +91 98765 43210
+                        </div>
+                    </div>
+                </div>
+                <div class="decoration"></div>
+                <div class="decoration decoration-2"></div>
             </div>
-            <h2>Your Name</h2>
-            <div class="rating">★★★★★</div>
-            <button class="download-btn">Download</button>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="card p-0">
-            <div class="card-number">3</div>
-            <div class="image-container">
-                <img src="img/rummy.png" alt="Image 3">
-            </div>
-            <h3>Three</h3>
-            <div class="rating">★★★☆☆</div>
-            <button class="download-btn">Download</button>
         </div>
     </div>
+
+    <script>
+        // Pause animation on hover for better readability
+        const marqueeText = document.querySelector('.marquee-text');
+        
+        marqueeText.addEventListener('mouseenter', () => {
+            marqueeText.style.animationPlayState = 'paused';
+        });
+        
+        marqueeText.addEventListener('mouseleave', () => {
+            marqueeText.style.animationPlayState = 'running';
+        });
+        
+        // Mobile tap pause
+        if (window.innerWidth <= 480) {
+            let tapCount = 0;
+            
+            marqueeText.addEventListener('click', () => {
+                tapCount++;
+                
+                if (tapCount === 1) {
+                    marqueeText.style.animation = 'none';
+                    
+                    // Reset after 5 seconds
+                    setTimeout(() => {
+                        marqueeText.style.animation = '';
+                        tapCount = 0;
+                    }, 5000);
+                }
+            });
+        }
+    </script>
 </body>
 </html>
