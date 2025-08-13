@@ -1346,7 +1346,7 @@
             overflow-x: auto;
             scrollbar-width: none;
             -ms-overflow-style: none;
-            padding-bottom: 8px;
+            padding-bottom: 1px;
         }
 
         .tab-scroll::-webkit-scrollbar {
@@ -1398,7 +1398,7 @@
             margin: 0 auto;
             padding: 0 .1rem;
             position: relative;
-            min-height: 500px;
+            min-height: auto;
         }
 
         .tab-content {
@@ -1644,6 +1644,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             border-radius: 12px;
             overflow: hidden;
+            margin-top: 20px;
         }
         
         .notice-bar {
@@ -1658,7 +1659,7 @@
         
         .notice-title {
             background: rgba(0, 0, 0, 0.2);
-            padding: 2px 7px;
+            padding: 3px 9px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1683,7 +1684,7 @@
         
         .notice-title h3 {
             font-weight: 700;
-            font-size: .9rem;
+            font-size: 1.2rem;
             position: relative;
             display: flex;
             align-items: center;
@@ -1708,7 +1709,7 @@
         .marquee-container {
             display: flex;
             align-items: center;
-            height: 25px;
+            height: 35px;
             overflow: hidden;
             position: relative;
            
@@ -1717,12 +1718,12 @@
         .marquee-text {
             white-space: nowrap;
             animation: marquee 20s linear infinite;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 600;
             color: #0c2461;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 8px;
             padding: 2px 0;
         }
         
@@ -1734,11 +1735,11 @@
         .contact-info {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
             margin-left: 25px;
             background: #0c2461;
             color: white;
-            padding: 8px 20px;
+            padding: 12px 20px;
             border-radius: 30px;
             font-weight: 600;
             transition: all 0.3s ease;
@@ -1819,28 +1820,35 @@
             }
         }
         
-                @media (max-width: 480px) {
+        @media (max-width: 480px) {
             .notice-bar {
                 flex-direction: column;
             }
             
             .notice-title {
                 min-width: 100%;
-                padding: 15px;
+                padding: 5px;
             }
-            
+                    .marquee-container {
+            display: flex;
+            align-items: center;
+            height: 25px;
+            overflow: hidden;
+            position: relative;
+           
+        }
             .notice-content {
-                padding: 15px;
+                padding: 5px;
             }
             
             .marquee-text {
                 animation: marquee 15s linear infinite;
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             
             .contact-info {
                 margin-left: 15px;
-                padding: 6px 15px;
+                padding: 3px 5px;
             }
         }
 
@@ -2556,7 +2564,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- End of all list-->
-    <div class="notice-container mt-5">
+    <div class="notice-container mt-3">
         <div class="notice-bar">
             <div class="notice-title">
                 <h3><i class="fas fa-bullhorn"></i> आवश्यक सूचना :</h3>
