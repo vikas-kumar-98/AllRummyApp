@@ -3,681 +3,502 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rummy Mastery - Video Tutorials</title>
+    <title>Rummy King - Contact Us</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
-        
+
         body {
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            background: linear-gradient(135deg, #0c1427, #1a2a6c);
             color: #fff;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            position: relative;
             overflow-x: hidden;
         }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        /* Header Styles */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            margin-bottom: 40px;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #ff416c, #ff4b2b);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.8rem;
-            box-shadow: 0 5px 15px rgba(255, 75, 43, 0.5);
-        }
-        
-        .logo-text {
-            font-size: 2rem;
-            font-weight: 700;
-            background: linear-gradient(90deg, #ff8a00, #e52e71);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        nav ul {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-        
-        nav a {
-            color: #d0d0ff;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 5px 0;
-        }
-        
-        nav a:hover {
-            color: #fff;
-        }
-        
-        nav a::after {
-            content: '';
+
+        body::before {
+            content: "";
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #ff8a00, #e52e71);
-            transition: width 0.3s ease;
-        }
-        
-        nav a:hover::after {
             width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 Q50,20 100,0 T100,100 Q50,80 0,100 Z" fill="rgba(255,255,255,0.03)"/></svg>');
+            background-size: cover;
+            opacity: 0.3;
+            z-index: -1;
         }
-        
-        /* Hero Section */
-        .hero {
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 40px auto;
+        }
+
+        .header {
             text-align: center;
-            padding: 60px 20px;
             margin-bottom: 50px;
             position: relative;
         }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-            z-index: -1;
-        }
-        
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, #ff8a00, #e52e71);
+
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #ff9d00, #ffd166);
             -webkit-background-clip: text;
             background-clip: text;
-            color: transparent;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        
-        .hero p {
-            font-size: 1.4rem;
-            color: #d0d0ff;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-        
-        /* Video Section */
-        .video-container {
-            display: flex;
-            gap: 40px;
-            margin-bottom: 60px;
-            flex-wrap: wrap;
-        }
-        
-        .main-video {
-            flex: 1;
-            min-width: 300px;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            position: relative;
-            background: rgba(20, 30, 48, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .video-player {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-        }
-        
-        .video-player iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .video-info {
-            padding: 25px;
-        }
-        
-        .video-title {
-            font-size: 1.8rem;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 15px;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            text-shadow: 0 5px 15px rgba(255, 157, 0, 0.3);
         }
-        
-        .badge {
-            background: linear-gradient(90deg, #ff416c, #ff4b2b);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
+
+        .header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #d1d1e0;
+            line-height: 1.7;
         }
-        
-        .video-stats {
-            display: flex;
-            justify-content: space-between;
-            color: #a0a0d0;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .video-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .action-btn {
-            flex: 1;
-            padding: 12px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #d0d0ff;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .action-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-3px);
-        }
-        
-        .action-btn.active {
-            background: linear-gradient(90deg, #6a11cb, #2575fc);
-            color: white;
-        }
-        
-        /* Chapters Section */
-        .chapters {
-            flex: 0 0 350px;
-            background: rgba(20, 30, 48, 0.8);
-            border-radius: 25px;
-            padding: 30px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            max-height: 650px;
-        }
-        
-        .section-title {
-            font-size: 1.6rem;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-            color: #ff8a00;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .chapter-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .chapter-item {
-            display: flex;
-            gap: 15px;
-            padding: 15px;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-        
-        .chapter-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transform: translateX(5px);
-        }
-        
-        .chapter-item.active {
-            background: linear-gradient(90deg, rgba(106, 17, 203, 0.3), rgba(37, 117, 252, 0.3));
-            border: 1px solid rgba(106, 17, 203, 0.5);
-        }
-        
-        .chapter-number {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: 600;
-            flex-shrink: 0;
-        }
-        
-        .chapter-content {
-            flex: 1;
-        }
-        
-        .chapter-title {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-            color: #fff;
-        }
-        
-        .chapter-duration {
-            color: #a0a0d0;
-            font-size: 0.9rem;
-        }
-        
-        /* Features Section */
-        .features {
+
+        .contact-section {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin: 60px 0;
+            margin-top: 30px;
         }
-        
-        .feature-card {
-            background: rgba(20, 30, 48, 0.8);
+
+        .contact-info {
+            background: rgba(26, 33, 64, 0.7);
             border-radius: 20px;
-            padding: 35px;
-            text-align: center;
-            transition: all 0.4s ease;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(106, 17, 203, 0.5);
-        }
-        
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 25px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2.5rem;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            box-shadow: 0 10px 20px rgba(37, 117, 252, 0.3);
-        }
-        
-        .feature-title {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-        
-        .feature-desc {
-            color: #d0d0ff;
-            line-height: 1.7;
-        }
-        
-        /* Download Section */
-        .download-section {
-            background: linear-gradient(135deg, #141e30, #243b55);
-            border-radius: 25px;
-            padding: 60px;
-            margin: 60px 0;
-            text-align: center;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
         }
-        
-        .download-section::before {
-            content: '';
+
+        .contact-info::before {
+            content: "";
             position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-            z-index: 0;
-        }
-        
-        .download-content {
-            position: relative;
-            z-index: 10;
-        }
-        
-        .download-title {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-        
-        .download-subtitle {
-            font-size: 1.2rem;
-            color: #d0d0ff;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-        
-        .download-btn {
-            background: linear-gradient(90deg, #ff416c, #ff4b2b);
-            color: white;
-            border: none;
-            padding: 18px 45px;
-            border-radius: 50px;
-            font-size: 1.3rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(255, 75, 43, 0.5);
-        }
-        
-        .download-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(255, 75, 43, 0.7);
-        }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 0 20px;
-            color: #a0a0d0;
-            font-size: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 50px;
-        }
-        
-        /* Floating Elements */
-        .floating {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 157, 0, 0.1) 0%, transparent 70%);
             z-index: -1;
         }
-        
-        .floating:nth-child(1) {
-            width: 400px;
-            height: 400px;
+
+        .info-card {
+            margin-bottom: 35px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .info-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff9d00, #ff6b00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(255, 157, 0, 0.4);
+        }
+
+        .info-icon i {
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .info-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: #ffd166;
+        }
+
+        .info-content p {
+            font-size: 1.1rem;
+            color: #b8c1ec;
+            line-height: 1.6;
+        }
+
+        .info-content a {
+            color: #4cc9f0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .info-content a:hover {
+            color: #ff9d00;
+            transform: translateX(5px);
+        }
+
+        .contact-form {
+            background: rgba(26, 33, 64, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .form-header {
+            margin-bottom: 30px;
+        }
+
+        .form-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: #ffd166;
+        }
+
+        .form-header p {
+            color: #b8c1ec;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd166;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.2);
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ff9d00;
+            box-shadow: 0 0 0 3px rgba(255, 157, 0, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #ff9d00, #ff6b00);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.6);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .live-chat {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #ff9d00, #ff6b00);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(255, 107, 0, 0.6);
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .live-chat:hover {
+            transform: scale(1.1);
+        }
+
+        .live-chat i {
+            font-size: 1.8rem;
+        }
+
+        .cards-decor {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .card1 {
             top: 10%;
             left: 5%;
-            background: radial-gradient(circle, rgba(106, 17, 203, 0.1) 0%, transparent 70%);
+            transform: rotate(-15deg);
         }
-        
-        .floating:nth-child(2) {
-            width: 300px;
-            height: 300px;
-            bottom: 10%;
+
+        .card2 {
+            top: 20%;
             right: 8%;
-            background: radial-gradient(circle, rgba(255, 75, 43, 0.1) 0%, transparent 70%);
+            transform: rotate(10deg);
         }
-        
-        /* Responsive Design */
-        @media (max-width: 1100px) {
-            .video-container {
-                flex-direction: column;
-            }
-            
-            .chapters {
-                flex: 1;
-                width: 100%;
-            }
-            
-            nav ul {
-                gap: 15px;
-            }
+
+        .card3 {
+            bottom: 15%;
+            left: 7%;
+            transform: rotate(5deg);
         }
-        
+
+        .card4 {
+            bottom: 20%;
+            right: 10%;
+            transform: rotate(-5deg);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 157, 0, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 157, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 157, 0, 0); }
+        }
+
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .hero h1 {
+            .header h1 {
                 font-size: 2.8rem;
             }
             
-            .hero p {
-                font-size: 1.2rem;
+            .header p {
+                font-size: 1rem;
             }
             
-            .download-section {
-                padding: 40px 20px;
+            .contact-info, .contact-form {
+                padding: 30px;
             }
             
-            .download-title {
-                font-size: 2rem;
+            .info-icon {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .info-content h3 {
+                font-size: 1.3rem;
+            }
+            
+            .info-content p {
+                font-size: 1rem;
             }
         }
-        
+
         @media (max-width: 480px) {
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .hero h1 {
+            .header h1 {
                 font-size: 2.2rem;
             }
             
-            .video-actions {
-                flex-direction: column;
+            .contact-info, .contact-form {
+                padding: 25px;
             }
+            
+            .info-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .info-icon {
+                margin-bottom: 15px;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #b8c1ec;
+            font-size: 0.9rem;
+            width: 100%;
+            margin-top: auto;
         }
     </style>
 </head>
 <body>
-    <div class="floating"></div>
-    <div class="floating"></div>
-    
-    <div class="container">
-        <header>
-            <div class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-cards"></i>
-                </div>
-                <div class="logo-text">RummyMaster</div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="#"><i class="fas fa-video"></i> Tutorials</a></li>
-                    <li><a href="#"><i class="fas fa-trophy"></i> Strategies</a></li>
-                    <li><a href="#"><i class="fas fa-download"></i> Download</a></li>
-                    <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
-                </ul>
-            </nav>
-        </header>
-        
-        <section class="hero">
-            <h1>Master Rummy in 30 Minutes</h1>
-            <p>Learn from the pros with our step-by-step video tutorials. From beginner to advanced strategies, we've got you covered!</p>
-        </section>
-        
-        <div class="video-container">
-            <div class="main-video">
-                <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/0GQF-1cXo_w" title="Rummy Tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <h2 class="video-title">
-                        Complete Beginner's Guide to Rummy
-                        <span class="badge">New</span>
-                    </h2>
-                    <div class="video-stats">
-                        <span><i class="fas fa-eye"></i> 245K views</span>
-                        <span><i class="far fa-calendar"></i> June 15, 2023</span>
-                        <span><i class="fas fa-clock"></i> 25:18 minutes</span>
-                    </div>
-                    <p class="video-description">
-                        In this comprehensive tutorial, you'll learn everything you need to know to start playing Rummy like a pro. We cover the basic rules, card dealing, how to form sets and sequences, scoring system, and winning strategies. Perfect for absolute beginners who want to learn the game quickly and effectively.
-                    </p>
-                    <div class="video-actions">
-                        <button class="action-btn active">
-                            <i class="fas fa-thumbs-up"></i> 3.2K
-                        </button>
-                        <button class="action-btn">
-                            <i class="fas fa-thumbs-down"></i> 42
-                        </button>
-                        <button class="action-btn">
-                            <i class="fas fa-share-alt"></i> Share
-                        </button>
-                        <button class="action-btn">
-                            <i class="fas fa-bookmark"></i> Save
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="chapters">
-                <h3 class="section-title">
-                    <i class="fas fa-list"></i> Tutorial Chapters
-                </h3>
-                <div class="chapter-list">
-                    <div class="chapter-item active">
-                        <div class="chapter-number">1</div>
-                        <div class="chapter-content">
-                            <h4 class="chapter-title">Introduction to Rummy</h4>
-                            <div class="chapter-duration">4:15 min</div>
-                        </div>
-                    </div>
-                    
-                    <div class="chapter-item">
-                        <div class="chapter-number">2</div>
-                        <div class="chapter-content">
-                            <h4 class="chapter-title">Card Dealing & Setup</h4>
-                            <div class="chapter-duration">3:42 min</div>
-                        </div>
-                    </div>
-                    
-                    <div class="chapter-item">
-                        <div class="chapter-number">3</div>
-                        <div class="chapter-content">
-                            <h4 class="chapter-title">Forming Sets & Sequences</h4>
-                            <div class="chapter-duration">5:30 min</div>
-                        </div>
-                    </div>
-                    
-                    <div class="chapter-item">
-                        <div class="chapter-number">4</div>
-                        <div class="chapter-content">
-                            <h4 class="chapter-title">Understanding Jokers</h4>
-                            <div class="chapter-duration">3:18 min</div>
-                        </div>
-                    </div>
-                    
-                    <div class="chapter-item">
-                        <div class="chapter-number">5</div>
-                        <div class="chapter-content">
-                            <h4 class="chapter-title">Declaring Your Hand</h4>
-                            <div class="chapter-duration">4:05 min</div>
-                        </div>
-                    </div>
-                    
-                    <div class="chapter-item">
-                        <div class="chapter-number">6</div>
-                        <div class="chapter-content">
-                            <h4 class="chapter-title">Scoring System</h4>
-                            <div class="chapter-duration">3:22 min</div>
-                        </div>
-                    </div>
-                    
-                    <div class="chapter-item">
-                        <div class="chapter-number">7</div>
-                        <div class="chapter-content">
-                            <h4 class="chapter-title">Beginner Mistakes to Avoid</h4>
-                            <div class="chapter-duration">4:06 min</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="features">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
-                <h3 class="feature-title">Expert Instructors</h3>
-                <p class="feature-desc">Learn from professional Rummy players with years of tournament experience and winning strategies.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-lightbulb"></i>
-                </div>
-                <h3 class="feature-title">Proven Strategies</h3>
-                <p class="feature-desc">Discover winning techniques that have been tested in real tournaments against skilled opponents.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <h3 class="feature-title">Mobile Friendly</h3>
-                <p class="feature-desc">Access our tutorials anytime, anywhere. Our content is optimized for all mobile devices.</p>
-            </div>
-        </div>
-        
-        <div class="download-section">
-            <div class="download-content">
-                <h2 class="download-title">Ready to Play Rummy?</h2>
-                <p class="download-subtitle">Download our app now and get ₹200 bonus on your first deposit! Join millions of players worldwide in exciting Rummy games.</p>
-                <button class="download-btn">
-                    <i class="fab fa-android"></i> Download for Android
-                </button>
-            </div>
-        </div>
-        
-        <footer>
-            <p>© 2023 RummyMaster. All rights reserved.</p>
-            <p style="margin-top: 10px;">This site is for educational purposes only. Gambling may be addictive. Play responsibly.</p>
-        </footer>
+    <!-- Decorative Cards -->
+    <div class="cards-decor card1">
+        <i class="fas fa-club" style="font-size: 5rem;"></i>
     </div>
+    <div class="cards-decor card2">
+        <i class="fas fa-heart" style="font-size: 5rem;"></i>
+    </div>
+    <div class="cards-decor card3">
+        <i class="fas fa-diamond" style="font-size: 5rem;"></i>
+    </div>
+    <div class="cards-decor card4">
+        <i class="fas fa-spade" style="font-size: 5rem;"></i>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Contact Rummy King</h1>
+            <p>We're here to assist you with any questions or issues you may have. Our support team is available 24/7 to provide you with the best gaming experience.</p>
+        </div>
+
+        <div class="contact-section">
+            <div class="contact-info">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Phone Support</h3>
+                        <p>Call us anytime for immediate assistance with your account or gameplay.</p>
+                        <a href="tel:+919876543210">+91 98765 43210</a>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Email Support</h3>
+                        <p>Send us an email and we'll get back to you within 24 hours.</p>
+                        <a href="mailto:support@rummyking.com">support@rummyking.com</a>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Help Center</h3>
+                        <p>Visit our comprehensive help center for FAQs and guides.</p>
+                        <a href="#">Visit Help Center</a>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Corporate Office</h3>
+                        <p>Rummy King Headquarters<br>MG Road, Bangalore<br>Karnataka, India - 560001</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <div class="form-header">
+                    <h2>Send Us a Message</h2>
+                    <p>Fill out the form below and our team will get back to you as soon as possible.</p>
+                </div>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="Enter your phone number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="withdrawal">Withdrawal Issue</option>
+                            <option value="deposit">Deposit Problem</option>
+                            <option value="account">Account Management</option>
+                            <option value="gameplay">Gameplay Assistance</option>
+                            <option value="other">Other Inquiry</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" placeholder="Describe your issue or inquiry" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="live-chat">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <div class="footer">
+        <p>© 2023 Rummy King. All rights reserved. | Responsible Gaming: +91 1800 123 456</p>
+    </div>
+
+    <script>
+        // Form submission handling
+        const form = document.querySelector('form');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            
+            // Show success message
+            alert(`Thank you ${name}! Your message regarding "${subject}" has been sent. We'll contact you at ${email} shortly.`);
+            
+            // Reset form
+            form.reset();
+        });
+        
+    </script>
 </body>
 </html>

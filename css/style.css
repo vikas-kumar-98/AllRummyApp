@@ -427,7 +427,7 @@
             }
             
             .footer-links a {
-                justify-content: center;
+                justify-content: left;
             }
         }
 
