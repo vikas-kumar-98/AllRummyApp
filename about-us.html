@@ -168,7 +168,377 @@
     <link rel="stylesheet" href="css/style.css">
     
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
+        :root {
+            --primary: #0f4c81;
+            --secondary: #1a75bc;
+            --accent: #ff7a00;
+            --light: #f8f9ff;
+            --dark: #0a1520;
+            --gray: #8a99b5;
+            --success: #2ecc71;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a1520, #122b40);
+            color: var(--light);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(26, 92, 180, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 122, 0, 0.1) 0%, transparent 20%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto 60px;
+        }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, #ff9d00, #ffd166);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--gray);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Content */
+        .about-section {
+            margin: 10px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #1a2a6c, #b21f1f, #1a2a6c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/gamer.webp');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.8;
+        }
+
+        .about-content {
+            padding: 20px;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            color: #ffd166;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            display: flex;
+            gap: 15px;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-icon i {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+
+        .feature-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .feature-content p {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+
+        /* App Showcase */
+        .app-section {
+            margin: 100px 0;
+        }
+
+        .app-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .app-card {
+            background: rgba(19, 38, 64, 0.7);
+            border-radius: 25px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .app-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 25px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .app-img img{
+            width: 100%;
+            height: auto;
+            border-radius: 25px;
+        }
+
+        .app-name {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .app-desc {
+            color: var(--gray);
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+
+        .app-meta {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--accent);
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), #ff9e00);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);
+            margin-top: 15px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 122, 0, 0.4);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 60px 0 100px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(19, 38, 64, 0.5);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #ff9d00, #ffd166);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: var(--gray);
+        }
+
+        .card-decor {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.05;
+            font-size: 10rem;
+        }
+
+        .card1 {
+            top: 10%;
+            left: 5%;
+        }
+
+        .card2 {
+            top: 15%;
+            right: 8%;
+            transform: rotate(15deg);
+        }
+
+        .card3 {
+            bottom: 20%;
+            left: 7%;
+            transform: rotate(-10deg);
+        }
+
+        .card4 {
+            bottom: 15%;
+            right: 10%;
+            transform: rotate(5deg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .about-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
 
     </style>
 </head>
@@ -233,31 +603,191 @@
     
     <!-- Main Content (Placeholder) -->
     <main style="padding: .3rem; flex: 1;">
+    <!-- Decorative Card Elements -->
+    <div class="card-decor card1">
+        <i class="fas fa-club"></i>
+    </div>
+    <div class="card-decor card2">
+        <i class="fas fa-heart"></i>
+    </div>
+    <div class="card-decor card3">
+        <i class="fas fa-diamond"></i>
+    </div>
+    <div class="card-decor card4">
+        <i class="fas fa-spade"></i>
+    </div>
 
-    </main>
+    <div class="container">
+        <section class="hero-section">
+            <h1 class="hero-title">Your Trusted Rummy App Platform</h1>
+            <p class="hero-subtitle">Discover, download, and enjoy the best rummy apps with exclusive bonuses and secure gaming experience</p>
+        </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stats-container">
+        <section class="about-section">
+            <div class="about-image">
+                <!-- Rummy game image as background -->
+            </div>
+            
+            <div class="about-content">
+                <h2 class="section-title">About RummyPro</h2>
+                <p class="section-description">
+                    RummyPro is India's premier platform for rummy enthusiasts. We carefully select and review the top rummy apps to provide you with a curated collection of the best gaming experiences available.
+                </p>
+                <p class="section-description">
+                    Our mission is to simplify your search for the perfect rummy app while ensuring you get the most value through exclusive bonuses, secure transactions, and a seamless download experience.
+                </p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Secure Gaming</h3>
+                            <p>All apps are vetted for security and fair play standards</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Exclusive Bonuses</h3>
+                            <p>Special sign-up offers only available through us</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Easy Download</h3>
+                            <p>One-click installation for all featured apps</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Curated Selection</h3>
+                            <p>Only the best rummy apps make it to our platform</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="app-section">
+            <div class="app-header">
+                <h2 class="section-title">Featured Rummy Apps</h2>
+                <p class="section-description">Discover our hand-picked selection of top-rated rummy applications</p>
+            </div>
+            
+            <div class="app-grid">
+                <div class="app-card">
+                    <div class="app-img">
+                        <img src="img/rummy.png" alt="">
+                    </div>
+                    <h3 class="app-name">Rummy King</h3>
+                    <p class="app-desc">Premium rummy experience with daily tournaments and big prizes</p>
+                    <div class="app-meta">
+                        <span class="meta-item">₹50 Bonus</span>
+                        <span class="meta-item">4.8★</span>
+                    </div>
+                    <a href="#" class="download-btn">Download Now</a>
+                </div>
+                
+                <div class="app-card">
+                    <div class="app-img">
+                        <img src="img/rummy.png" alt="">
+                    </div>
+                    <h3 class="app-name">Ace Rummy</h3>
+                    <p class="app-desc">Fast-paced games and instant withdrawals</p>
+                    <div class="app-meta">
+                        <span class="meta-item">₹30 Bonus</span>
+                        <span class="meta-item">4.7★</span>
+                    </div>
+                    <a href="#" class="download-btn">Download Now</a>
+                </div>
+                
+                <div class="app-card">
+                    <div class="app-img">
+                        <img src="img/rummy.png" alt="">
+                    </div>
+                    <h3 class="app-name">Rummy Diamond</h3>
+                    <p class="app-desc">Luxury gaming experience with high-stakes tables</p>
+                    <div class="app-meta">
+                        <span class="meta-item">₹100 Bonus</span>
+                        <span class="meta-item">4.9★</span>
+                    </div>
+                    <a href="#" class="download-btn">Download Now</a>
+                </div>
+                
+                <div class="app-card">
+                    <div class="app-img">
+                        <img src="img/rummy.png" alt="">
+                    </div>
+                    <h3 class="app-name">Rummy Masters</h3>
+                    <p class="app-desc">Strategic gameplay for competitive players</p>
+                    <div class="app-meta">
+                        <span class="meta-item">₹75 Bonus</span>
+                        <span class="meta-item">4.6★</span>
+                    </div>
+                    <a href="#" class="download-btn">Download Now</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="stats-section">
             <div class="stat-card">
-                <div class="stat-number">5M+</div>
-                <div class="stat-label">Active Players</div>
+                <div class="stat-value">50+</div>
+                <div class="stat-label">Rummy Apps</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">1.2K</div>
-                <div class="stat-label">Games Available</div>
+                <div class="stat-value">2M+</div>
+                <div class="stat-label">Downloads</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">Live Support</div>
+                <div class="stat-value">₹10M+</div>
+                <div class="stat-label">Bonuses Given</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">98%</div>
-                <div class="stat-label">Positive Reviews</div>
+                <div class="stat-value">24/7</div>
+                <div class="stat-label">Support</div>
             </div>
         </div>
-    </section>
+    </div>
 
+    <script>
+        // Animation for cards
+        const cards = document.querySelectorAll('.app-card, .stat-card, .feature-card');
+        
+        function animateCards() {
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = "1";
+                    card.style.transform = "translateY(0)";
+                }, 200 * index);
+            });
+        }
+        
+        // Set initial state
+        cards.forEach(card => {
+            card.style.opacity = "0";
+            card.style.transform = "translateY(30px)";
+            card.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+        });
+        
+        // Animate on page load
+        window.addEventListener('load', animateCards);
+    </script>
+    </main>
+
+  
     <!-- Footer -->
     <footer>
         <div class="footer-content">

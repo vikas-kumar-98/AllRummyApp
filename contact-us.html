@@ -172,154 +172,217 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-
-
-
-
-        .container {
-            max-width: 1200px;
-            width: 100%;
         
+        :root {
+            --primary: #0d47a1;
+            --secondary: #1565c0;
+            --accent: #ff6f00;
+            --dark: #0d1b2a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #2e7d32;
         }
-
-        .header-contact {
-            text-align: center;
-            margin-top: 50px;
-            position: relative;
+        
+        body {
+            background: linear-gradient(135deg, #0d1b2a, #1b263b);
+            color: #e0e1dd;
+            min-height: 100vh;
+            line-height: 1.6;
         }
-
-        .header-contact h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: linear-gradient(to right, #ff9d00, #ffd166);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
-            text-shadow: 0 5px 15px rgba(255, 157, 0, 0.3);
-        }
-
-        .header-contact p {
-            font-size: 1.2rem;
-            max-width: 700px;
+        
+        .contact-container {
+            max-width: 1200px;
             margin: 0 auto;
-            color: black;
-            line-height: 1.7;
-        }
-
-        .contact-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3px;
-            margin-top: 3px;
-        }
-
-        .contact-info {
-            
-            border-radius: 20px;
             padding: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 50px;
             position: relative;
             overflow: hidden;
+            margin-bottom: 40px;
+            z-index: 10;
+
         }
-
-
-
-        .info-card {
-            margin-bottom: 35px;
+        
+        .contact-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 Q50,20 100,0 T100,100 Q50,80 0,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+            opacity: 0.2;
+        }
+        
+        .contact-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-header p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .highlight {
+            color: #ffd166;
+            font-weight: 700;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .contact-info {
+            background: rgba(26, 35, 53, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-info h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #ffd166;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .contact-info h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .info-item {
             display: flex;
-            align-items: flex-end;
+            margin-bottom: 30px;
         }
-
-        .info-card:last-child {
-            margin-bottom: 0;
-        }
-
+        
         .info-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #ff9d00, #ff6b00);
-            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #ff9e00);
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: 20px;
             flex-shrink: 0;
-            box-shadow: 0 5px 15px rgba(255, 157, 0, 0.4);
         }
-
+        
         .info-icon i {
             font-size: 1.8rem;
             color: white;
         }
-
+        
         .info-content h3 {
             font-size: 1.5rem;
             margin-bottom: 8px;
-            color: black;
         }
-
-        .info-content p {
+        
+        .info-content p, .info-content a {
             font-size: 1.1rem;
-            color: black;
+            color: #b8c1ec;
             line-height: 1.6;
         }
-
+        
         .info-content a {
             color: #4cc9f0;
             text-decoration: none;
             transition: all 0.3s ease;
             display: inline-block;
-            margin-top: 5px;
         }
-
+        
         .info-content a:hover {
             color: #ff9d00;
             transform: translateX(5px);
         }
-
-        .contact-form {
-            background: rgba(26, 33, 64, 0.7);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
+        
+        .business-hours {
+            margin-top: 40px;
         }
-
-        .form-header {
-            margin-bottom: 30px;
+        
+        .hours-list {
+            list-style: none;
         }
-
-        .form-header h2 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
+        
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .hours-list strong {
             color: #ffd166;
         }
-
-        .form-header p {
-            color: #b8c1ec;
-            font-size: 1.1rem;
-            line-height: 1.6;
+        
+        .contact-form {
+            background: rgba(26, 35, 53, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
+        
+        .contact-form h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #ffd166;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .contact-form h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
         .form-group {
             margin-bottom: 25px;
         }
-
+        
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            font-weight: 600;
             color: #ffd166;
-            font-weight: 500;
         }
-
+        
         .form-group input,
         .form-group textarea,
         .form-group select {
@@ -332,25 +395,25 @@
             font-size: 1.1rem;
             transition: all 0.3s ease;
         }
-
+        
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: #ff9d00;
-            box-shadow: 0 0 0 3px rgba(255, 157, 0, 0.2);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255, 111, 0, 0.2);
         }
-
+        
         .form-group textarea {
             min-height: 150px;
             resize: vertical;
         }
-
+        
         .submit-btn {
-            background: linear-gradient(135deg, #ff9d00, #ff6b00);
+            background: linear-gradient(135deg, var(--accent), #ff9e00);
             color: white;
             border: none;
-            padding: 16px 40px;
+            padding: 16px 45px;
             border-radius: 12px;
             font-size: 1.2rem;
             font-weight: 600;
@@ -359,127 +422,106 @@
             width: 100%;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.4);
+            box-shadow: 0 5px 20px rgba(255, 111, 0, 0.4);
         }
-
+        
         .submit-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.6);
+            box-shadow: 0 8px 25px rgba(255, 111, 0, 0.6);
         }
-
-        .submit-btn:active {
-            transform: translateY(0);
+        
+        .contact-footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(13, 27, 42, 0.8);
+            border-radius: 30px 30px 0 0;
+            margin-top: 40px;
         }
-
-        .live-chat {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, #ff9d00, #ff6b00);
-            color: white;
-            width: 60px;
-            height: 60px;
+        
+        .contact-footer p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 25px rgba(255, 107, 0, 0.6);
-            cursor: pointer;
-            z-index: 100;
+            color: white;
+            font-size: 1.3rem;
             transition: all 0.3s ease;
-            animation: pulse 2s infinite;
         }
-
-        .live-chat:hover {
-            transform: scale(1.1);
+        
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
         }
-
-        .live-chat i {
-            font-size: 1.8rem;
-        }
-
-        .cards-decor {
+        
+        .card-decor {
             position: absolute;
             z-index: -1;
             opacity: 0.1;
+            font-size: 5rem;
         }
-
+        
         .card1 {
-            top: 10%;
+            top: 15%;
             left: 5%;
             transform: rotate(-15deg);
         }
-
+        
         .card2 {
             top: 20%;
             right: 8%;
             transform: rotate(10deg);
         }
-
+        
         .card3 {
             bottom: 15%;
             left: 7%;
             transform: rotate(5deg);
         }
-
+        
         .card4 {
             bottom: 20%;
             right: 10%;
             transform: rotate(-5deg);
         }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 157, 0, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 157, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 157, 0, 0); }
-        }
-
+        
         @media (max-width: 768px) {
-            .header-contact h1 {
-                font-size: 2.8rem;
+            .contact-header h1 {
+                font-size: 2.5rem;
             }
             
-            .header-contact p {
-                font-size: 1rem;
+            .contact-header p {
+                font-size: 1.1rem;
             }
             
             .contact-info, .contact-form {
                 padding: 30px;
             }
-            
-            .info-icon {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .info-content h3 {
-                font-size: 1.3rem;
-            }
-            
-            .info-content p {
-                font-size: 1rem;
-            }
         }
 
         @media (max-width: 480px) {
-            .header-contact h1 {
-                font-size: 2.2rem;
+            .contact-header h1 {
+                font-size: 2rem;
             }
             
             .contact-info, .contact-form {
                 padding: 25px;
             }
-            
-            .info-card {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .info-icon {
-                margin-bottom: 15px;
-            }
         }
-
 
     </style>
 </head>
@@ -545,69 +587,90 @@
     <!-- Main Content (Placeholder) -->
     <main style="padding: .3rem; flex: 1;">
   
+    <!-- Decorative Cards -->
+    <div class="card-decor card1">
+        <i class="fas fa-club"></i>
+    </div>
+    <div class="card-decor card2">
+        <i class="fas fa-heart"></i>
+    </div>
+    <div class="card-decor card3">
+        <i class="fas fa-diamond"></i>
+    </div>
+    <div class="card-decor card4">
+        <i class="fas fa-spade"></i>
+    </div>
 
-    <div class="container">
-        <div class="header-contact">
-            <h1>Contact Rummy King</h1>
-            <p>We're here to assist you with any questions or issues you may have. Our support team is available 24/7 to provide you with the best gaming experience.</p>
-        </div>
+    <div class="contact-container">
+        <header class="contact-header">
+            <h1>Promote Your <span class="highlight">Rummy App</span> With Us</h1>
+            <p>Contact us today to discuss how we can help promote your rummy app to millions of players</p>
+        </header>
 
-        <div class="contact-section">
+        <div class="contact-content">
             <div class="contact-info">
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Phone Support</h3>
-                        <p>Call us anytime for immediate assistance with your account or gameplay.</p>
-                        <a href="tel:+919876543210">+91 98765 43210</a>
-                    </div>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Email Support</h3>
-                        <p>Send us an email and we'll get back to you within 24 hours.</p>
-                        <a href="mailto:support@rummyking.com">support@rummyking.com</a>
-                    </div>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Help Center</h3>
-                        <p>Visit our comprehensive help center for FAQs and guides.</p>
-                        <a href="#">Visit Help Center</a>
-                    </div>
-                </div>
-
-                <div class="info-card">
+                <h2>Get In Touch</h2>
+                
+                <div class="info-item">
                     <div class="info-icon">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <div class="info-content">
-                        <h3>Corporate Office</h3>
-                        <p>Rummy King Headquarters<br>MG Road, Bangalore<br>Karnataka, India - 560001</p>
+                        <h3>Our Office</h3>
+                        <p>Rummy Promotion HQ<br>Gaming District, Mumbai<br>Maharashtra, India - 400001</p>
                     </div>
                 </div>
-            </div>
-
-            <div class="contact-form">
-                <div class="form-header">
-                    <h2>Send Us a Message</h2>
-                    <p>Fill out the form below and our team will get back to you as soon as possible.</p>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Phone</h3>
+                        <p>+91 98765 43210</p>
+                        <a href="tel:+919876543210">Call Now</a>
+                    </div>
                 </div>
                 
-                <form>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Email</h3>
+                        <p>promotions@rummypartner.com</p>
+                        <a href="mailto:promotions@rummypartner.com">Send Email</a>
+                    </div>
+                </div>
+                
+                <div class="business-hours">
+                    <h3>Business Hours</h3>
+                    <ul class="hours-list">
+                        <li><strong>Monday - Friday:</strong> 9:00 AM - 8:00 PM</li>
+                        <li><strong>Saturday:</strong> 10:00 AM - 6:00 PM</li>
+                        <li><strong>Sunday:</strong> Closed</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h2>Request Promotion</h2>
+                <p>Fill out the form below and our team will contact you within 24 hours</p>
+                
+                <form id="promotionForm">
                     <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" placeholder="Enter your name" required>
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" placeholder="Enter your company name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="app">Rummy App Name</label>
+                        <input type="text" id="app" placeholder="Enter your app name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" placeholder="Enter your full name" required>
                     </div>
                     
                     <div class="form-group">
@@ -621,55 +684,85 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <select id="subject" required>
-                            <option value="" disabled selected>Select an option</option>
-                            <option value="withdrawal">Withdrawal Issue</option>
-                            <option value="deposit">Deposit Problem</option>
-                            <option value="account">Account Management</option>
-                            <option value="gameplay">Gameplay Assistance</option>
-                            <option value="other">Other Inquiry</option>
+                        <label for="promotion">Promotion Type</label>
+                        <select id="promotion" required>
+                            <option value="" disabled selected>Select promotion type</option>
+                            <option value="featured">Featured Listing</option>
+                            <option value="banner">Banner Promotion</option>
+                            <option value="social">Social Media Campaign</option>
+                            <option value="email">Email Marketing</option>
+                            <option value="combo">Combo Package</option>
+                            <option value="custom">Custom Solution</option>
                         </select>
                     </div>
                     
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" placeholder="Describe your issue or inquiry" required></textarea>
+                        <label for="message">Additional Information</label>
+                        <textarea id="message" placeholder="Tell us about your app and promotion goals"></textarea>
                     </div>
                     
-                    <button type="submit" class="submit-btn">Send Message</button>
+                    <button type="submit" class="submit-btn">Request Promotion</button>
                 </form>
             </div>
         </div>
     </div>
 
-    <div class="live-chat">
-        <i class="fas fa-comment-dots"></i>
-    </div>
-
-
+    <footer class="contact-footer">
+        <p>Follow us on social media for the latest updates and promotion offers</p>
+        
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        </div>
+        
+        <p>© 2023 Rummy Promotion Pro. All rights reserved.</p>
+        <p>Gaming can be addictive. Please play responsibly.</p>
+    </footer>
 
     <script>
         // Form submission handling
-        const form = document.querySelector('form');
+        const form = document.getElementById('promotionForm');
         
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
+            const company = document.getElementById('company').value;
+            const app = document.getElementById('app').value;
+            const promoType = document.getElementById('promotion').value;
             
             // Show success message
-            alert(`Thank you ${name}! Your message regarding "${subject}" has been sent. We'll contact you at ${email} shortly.`);
+            alert(`Thank you for your interest, ${document.getElementById('name').value}!\n\nWe've received your request to promote "${app}" from ${company}.\n\nOur team will contact you within 24 hours to discuss ${promoType} opportunities.`);
             
             // Reset form
             form.reset();
         });
         
-    </script>
-    </main>
+        // Animation for info items
+        const infoItems = document.querySelectorAll('.info-item');
+        
+        function animateItems() {
+            infoItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = "1";
+                    item.style.transform = "translateY(0)";
+                }, 200 * index);
+            });
+        }
+        
+        // Set initial state
+        infoItems.forEach(item => {
+            item.style.opacity = "0";
+            item.style.transform = "translateY(30px)";
+            item.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+        });
+        
+        // Animate on page load
+        window.addEventListener('load', animateItems);
+    </script>    </main>
 
     <!-- Stats Section -->
     <section class="stats">
