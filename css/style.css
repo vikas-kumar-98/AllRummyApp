@@ -63,7 +63,7 @@
             font-weight: 700;
             color: var(--light);
             text-decoration: none;
-            animation: pulse 2s infinite;
+
         }
 
         .nav-links {
@@ -180,6 +180,7 @@
             border: none;
             outline: none;
             z-index: 1100;
+            animation: pulse 2s infinite;
         }
 
          .hamburgerL img {
