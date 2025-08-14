@@ -35,8 +35,9 @@
         header {
             background: rgba(15, 12, 41, 0.95);
             backdrop-filter: blur(10px);
-            position: sticky;
+            position: fixed;
             top: 0;
+            width: 100%;
             z-index: 1000;
             box-shadow: var(--shadow);
         }
@@ -45,9 +46,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 5%;
+            padding: .5rem 5%;
             max-width: 1600px;
+            width: 100%;
             margin: 0 auto;
+            
+
+
         }
 
         .logo {
@@ -324,11 +329,11 @@
         /* Responsive Design */
         @media (max-width: 992px) {
             .navbar {
-                padding: 1rem 5%;
+                padding: .5rem 5%;
             }
             
             .nav-links {
-                gap: 1.2rem;
+                gap: .7rem;
             }
         }
 

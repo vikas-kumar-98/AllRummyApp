@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rummy Mastery - Video Tutorials</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(255, 75, 43, 0.5);
+        }
+        
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ff8a00, #e52e71);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        nav a {
+            color: #d0d0ff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav a:hover {
+            color: #fff;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff8a00, #e52e71);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ff8a00, #e52e71);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            color: #d0d0ff;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        
+        /* Video Section */
+        .video-container {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .main-video {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+            background: rgba(20, 30, 48, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .video-player {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        
+        .video-player iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-info {
+            padding: 25px;
+        }
+        
+        .video-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .badge {
+            background: linear-gradient(90deg, #ff416c, #ff4b2b);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .video-stats {
+            display: flex;
+            justify-content: space-between;
+            color: #a0a0d0;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .video-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .action-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #d0d0ff;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .action-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+        }
+        
+        .action-btn.active {
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            color: white;
+        }
+        
+        /* Chapters Section */
+        .chapters {
+            flex: 0 0 350px;
+            background: rgba(20, 30, 48, 0.8);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-height: 650px;
+        }
+        
+        .section-title {
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            color: #ff8a00;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .chapter-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .chapter-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .chapter-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+        
+        .chapter-item.active {
+            background: linear-gradient(90deg, rgba(106, 17, 203, 0.3), rgba(37, 117, 252, 0.3));
+            border: 1px solid rgba(106, 17, 203, 0.5);
+        }
+        
+        .chapter-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .chapter-content {
+            flex: 1;
+        }
+        
+        .chapter-title {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+        
+        .chapter-duration {
+            color: #a0a0d0;
+            font-size: 0.9rem;
+        }
+        
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .feature-card {
+            background: rgba(20, 30, 48, 0.8);
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(106, 17, 203, 0.5);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            box-shadow: 0 10px 20px rgba(37, 117, 252, 0.3);
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .feature-desc {
+            color: #d0d0ff;
+            line-height: 1.7;
+        }
+        
+        /* Download Section */
+        .download-section {
+            background: linear-gradient(135deg, #141e30, #243b55);
+            border-radius: 25px;
+            padding: 60px;
+            margin: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+        
+        .download-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .download-content {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .download-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .download-subtitle {
+            font-size: 1.2rem;
+            color: #d0d0ff;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        
+        .download-btn {
+            background: linear-gradient(90deg, #ff416c, #ff4b2b);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(255, 75, 43, 0.5);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 75, 43, 0.7);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0 20px;
+            color: #a0a0d0;
+            font-size: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 50px;
+        }
+        
+        /* Floating Elements */
+        .floating {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .floating:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            top: 10%;
+            left: 5%;
+            background: radial-gradient(circle, rgba(106, 17, 203, 0.1) 0%, transparent 70%);
+        }
+        
+        .floating:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            bottom: 10%;
+            right: 8%;
+            background: radial-gradient(circle, rgba(255, 75, 43, 0.1) 0%, transparent 70%);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1100px) {
+            .video-container {
+                flex-direction: column;
+            }
+            
+            .chapters {
+                flex: 1;
+                width: 100%;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .download-section {
+                padding: 40px 20px;
+            }
+            
+            .download-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .video-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating"></div>
+    <div class="floating"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-cards"></i>
+                </div>
+                <div class="logo-text">RummyMaster</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-video"></i> Tutorials</a></li>
+                    <li><a href="#"><i class="fas fa-trophy"></i> Strategies</a></li>
+                    <li><a href="#"><i class="fas fa-download"></i> Download</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <section class="hero">
+            <h1>Master Rummy in 30 Minutes</h1>
+            <p>Learn from the pros with our step-by-step video tutorials. From beginner to advanced strategies, we've got you covered!</p>
+        </section>
+        
+        <div class="video-container">
+            <div class="main-video">
+                <div class="video-player">
+                    <iframe src="https://www.youtube.com/embed/0GQF-1cXo_w" title="Rummy Tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h2 class="video-title">
+                        Complete Beginner's Guide to Rummy
+                        <span class="badge">New</span>
+                    </h2>
+                    <div class="video-stats">
+                        <span><i class="fas fa-eye"></i> 245K views</span>
+                        <span><i class="far fa-calendar"></i> June 15, 2023</span>
+                        <span><i class="fas fa-clock"></i> 25:18 minutes</span>
+                    </div>
+                    <p class="video-description">
+                        In this comprehensive tutorial, you'll learn everything you need to know to start playing Rummy like a pro. We cover the basic rules, card dealing, how to form sets and sequences, scoring system, and winning strategies. Perfect for absolute beginners who want to learn the game quickly and effectively.
+                    </p>
+                    <div class="video-actions">
+                        <button class="action-btn active">
+                            <i class="fas fa-thumbs-up"></i> 3.2K
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-thumbs-down"></i> 42
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-share-alt"></i> Share
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-bookmark"></i> Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chapters">
+                <h3 class="section-title">
+                    <i class="fas fa-list"></i> Tutorial Chapters
+                </h3>
+                <div class="chapter-list">
+                    <div class="chapter-item active">
+                        <div class="chapter-number">1</div>
+                        <div class="chapter-content">
+                            <h4 class="chapter-title">Introduction to Rummy</h4>
+                            <div class="chapter-duration">4:15 min</div>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter-item">
+                        <div class="chapter-number">2</div>
+                        <div class="chapter-content">
+                            <h4 class="chapter-title">Card Dealing & Setup</h4>
+                            <div class="chapter-duration">3:42 min</div>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter-item">
+                        <div class="chapter-number">3</div>
+                        <div class="chapter-content">
+                            <h4 class="chapter-title">Forming Sets & Sequences</h4>
+                            <div class="chapter-duration">5:30 min</div>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter-item">
+                        <div class="chapter-number">4</div>
+                        <div class="chapter-content">
+                            <h4 class="chapter-title">Understanding Jokers</h4>
+                            <div class="chapter-duration">3:18 min</div>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter-item">
+                        <div class="chapter-number">5</div>
+                        <div class="chapter-content">
+                            <h4 class="chapter-title">Declaring Your Hand</h4>
+                            <div class="chapter-duration">4:05 min</div>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter-item">
+                        <div class="chapter-number">6</div>
+                        <div class="chapter-content">
+                            <h4 class="chapter-title">Scoring System</h4>
+                            <div class="chapter-duration">3:22 min</div>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter-item">
+                        <div class="chapter-number">7</div>
+                        <div class="chapter-content">
+                            <h4 class="chapter-title">Beginner Mistakes to Avoid</h4>
+                            <div class="chapter-duration">4:06 min</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="feature-title">Expert Instructors</h3>
+                <p class="feature-desc">Learn from professional Rummy players with years of tournament experience and winning strategies.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3 class="feature-title">Proven Strategies</h3>
+                <p class="feature-desc">Discover winning techniques that have been tested in real tournaments against skilled opponents.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3 class="feature-title">Mobile Friendly</h3>
+                <p class="feature-desc">Access our tutorials anytime, anywhere. Our content is optimized for all mobile devices.</p>
+            </div>
+        </div>
+        
+        <div class="download-section">
+            <div class="download-content">
+                <h2 class="download-title">Ready to Play Rummy?</h2>
+                <p class="download-subtitle">Download our app now and get ₹200 bonus on your first deposit! Join millions of players worldwide in exciting Rummy games.</p>
+                <button class="download-btn">
+                    <i class="fab fa-android"></i> Download for Android
+                </button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 RummyMaster. All rights reserved.</p>
+            <p style="margin-top: 10px;">This site is for educational purposes only. Gambling may be addictive. Play responsibly.</p>
+        </footer>
+    </div>
+</body>
+</html>
