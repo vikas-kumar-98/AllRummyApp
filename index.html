@@ -166,7 +166,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   
+    
     <link rel="stylesheet" href="css/style.css">
     
     <style>
@@ -253,9 +253,9 @@
         
         /* Stats Section */
         .stats {
-            padding: 4rem 5%;
-            background: rgba(0, 0, 0, 0.2);
-            margin: 4rem 0;
+            padding: 2rem 5%;
+            margin: .2rem 0;
+            background-color: white;
         }
         
         .stats-container {
@@ -269,27 +269,27 @@
         .stat-card {
             text-align: center;
             padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: linear-gradient(135deg, var(--primary), #e01cdd);
             border-radius: 16px;
             transition: var(--transition);
         }
         
         .stat-card:hover {
             transform: translateY(-5px);
-            background: rgba(106, 17, 203, 0.1);
+            background: linear-gradient(135deg, var(--primary), #001c15);
         }
         
         .stat-number {
             font-size: 3rem;
             font-weight: 700;
-            background: linear-gradient(to right, #ff3c78, #6a11cb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: white;
+
             margin-bottom: 0.5rem;
         }
         
         .stat-label {
-            color: #a0aec0;
+            color: #e9ecef;
+            font-weight: bold;
             font-size: 1.1rem;
         }
 
@@ -1625,6 +1625,400 @@
        */
         /*End of marqur*/
         
+                 /* Unique class names with rummy prefix */
+        
+        .rummy-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 30px;
+        }
+        
+        .rummy-header {
+            text-align: center;
+            padding: 20px 0 40px;
+            position: relative;
+        }
+        
+        .rummy-logo-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .rummy-logo-icon {
+            font-size: 2.8rem;
+            color: #FFD700;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 50%;
+            border: 2px solid #FFA500;
+            animation: rummy-float 4s ease-in-out infinite;
+        }
+        
+        .rummy-title {
+            font-size: 2.8rem;
+            background: linear-gradient(to right, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+        
+        .rummy-tagline {
+            font-size: 1.2rem;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .rummy-video-section {
+            background: rgba(10, 15, 35, 0.9);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            margin-bottom: 40px;
+            border: 2px solid #FFA500;
+            transition: transform 0.3s ease;
+        }
+        
+        .rummy-video-section:hover {
+            transform: translateY(-8px);
+        }
+        
+        .rummy-video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        
+        .rummy-video-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .rummy-video-info {
+            padding: 25px;
+        }
+        
+        .rummy-video-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #FFD700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .rummy-video-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        
+        .rummy-video-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+        
+        .rummy-stats {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .rummy-stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+        
+        .rummy-btn {
+            background: linear-gradient(to right, #FF8C00, #FFA500);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+        }
+        
+        .rummy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 140, 0, 0.5);
+        }
+        
+        .rummy-btn-icon {
+            font-size: 1.2rem;
+        }
+        
+        .rummy-related-videos {
+            width: 100%;
+            margin-top: 30px;
+        }
+        
+        .rummy-section-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #FFD700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .rummy-videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .rummy-video-card {
+            background: rgba(10, 15, 35, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 165, 0, 0.3);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .rummy-video-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        
+        .rummy-video-card:hover {
+            transform: translateY(-8px);
+            border-color: #FFA500;
+        }
+        
+        .rummy-video-card:hover::before {
+            opacity: 1;
+        }
+        
+        .rummy-card-thumbnail {
+            position: relative;
+            height: 160px;
+            overflow: hidden;
+        }
+        
+        .rummy-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .rummy-video-card:hover .rummy-card-img {
+            transform: scale(1.05);
+        }
+        
+        .rummy-play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #FFA500;
+            opacity: 0.9;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .rummy-video-card:hover .rummy-play-icon {
+            background: #FFA500;
+            color: #000;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .rummy-card-content {
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .rummy-card-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #FFD700;
+        }
+        
+        .rummy-card-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .rummy-card-duration {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            z-index: 2;
+        }
+        
+
+        
+        .rummy-cards-decoration {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 5px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        .rummy-card-item {
+            width: 40px;
+            height: 60px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .rummy-card-red {
+            background: linear-gradient(to bottom, #e74c3c, #c0392b);
+            transform: rotate(10deg);
+        }
+        
+        .rummy-card-black {
+            background: linear-gradient(to bottom, #34495e, #2c3e50);
+            transform: rotate(-5deg);
+        }
+        
+        .rummy-card-gold {
+            background: linear-gradient(to bottom, #f1c40f, #f39c12);
+            transform: rotate(5deg);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .rummy-title {
+                font-size: 2.2rem;
+            }
+            
+            .rummy-tagline {
+                font-size: 1.1rem;
+            }
+            
+            .rummy-video-title {
+                font-size: 1.5rem;
+            }
+            
+            .rummy-video-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .rummy-videos-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+            
+            .rummy-cards-decoration {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .rummy-logo-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .rummy-title {
+                font-size: 1.8rem;
+            }
+            
+            .rummy-video-info {
+                padding: 20px 15px;
+            }
+            
+            .rummy-video-title {
+                font-size: 1.3rem;
+            }
+            
+            .rummy-video-description {
+                font-size: 1rem;
+            }
+            
+            .rummy-stats {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .rummy-videos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation for cards */
+        @keyframes rummy-fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .rummy-video-section, .rummy-video-card {
+            animation: rummy-fadeIn 0.6s ease-out forwards;
+        }
+
+        .rummy-video-card:nth-child(2) { animation-delay: 0.1s; }
+        .rummy-video-card:nth-child(3) { animation-delay: 0.2s; }
+        .rummy-video-card:nth-child(4) { animation-delay: 0.3s; }
+        
+        /* Floating animation */
+        @keyframes rummy-float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
     </style>
 </head>
 <body>
@@ -1640,9 +2034,9 @@
                 <li class="dropdown">
                     <a href="game.html"><i class="fas fa-dice"></i> Games <i class="fas fa-caret-down"></i></a>
                     <div class="dropdown-content">
-                        <a href="#"> <i class="fas fa-dice"></i> Point Rummy</a>
-                        <a href="#"><i class="fas fa-layer-group"></i> Pool Rummy</a>
-                        <a href="#"><i class="fas fa-gem"></i> Deal Rummy</a>
+                        <a href="#"> <i class="fas fa-crown"></i> Point Rummy</a>
+                        <a href="#"><i class="fas fa-crown"></i> Pool Rummy</a>
+                        <a href="#"><i class="fas fa-crown"></i> Deal Rummy</a>
                         <a href="#"><i class="fas fa-crown"></i>21 cards Rummy</a>
 
                     </div>
@@ -1653,8 +2047,7 @@
                     <div class="dropdown-content">
                         <a href="rummy-rulers.html"><i class="fas fa-shield-alt"></i>How to play</a>
                         <a href="rummy-tutorial.html"><i class="fas fa-video"></i>Video</a>
-                        <a href="our-strategies.html"><i class="fas fa-puzzle-piece"></i>Strategies</a>
-                        <a href="rules.html"><i class="fas fa-car"></i>Rules & Scoring</a>
+
 
                     </div>
                 </li>
@@ -1748,6 +2141,7 @@
     </div>
     <!--End of search box -->
 
+    
 
     <!--Game app list -->
     <div class="container-fluid py-4">
@@ -2374,6 +2768,186 @@
         }
     </script>
 
+  <!--Youtube video goes here.........................-->
+   
+    <div class="rummy-cards-decoration">
+        <div class="rummy-card-item rummy-card-red">A</div>
+        <div class="rummy-card-item rummy-card-black">K</div>
+        <div class="rummy-card-item rummy-card-gold">Q</div>
+    </div>
+    
+    <div class="rummy-container" style=" background: linear-gradient(135deg, #0c1120, #1d0c2d);">
+        <header class="rummy-header">
+            <div class="rummy-logo-group">
+                <i class="fas fa-cards rummy-logo-icon"></i>
+                <h1 class="rummy-title">RummyMaster Pro</h1>
+            </div>
+            <p class="rummy-tagline">Watch our tutorial videos to master the art of rummy and become a pro player!</p>
+        </header>
+
+
+            <section class="rummy-video-section">
+                <div class="rummy-video-container">
+                    <!-- YouTube video embed -->
+                    <iframe class="rummy-video-iframe" src="https://www.youtube.com/embed/6gherZ1pczQ?rel=0&modestbranding=1" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
+                </div>
+                <div class="rummy-video-info">
+                    <h2 class="rummy-video-title"><i class="fas fa-play-circle"></i> How to Play Rummy: The Ultimate Beginner's Guide</h2>
+                    <p class="rummy-video-description">
+                        Learn the basics of rummy in just 15 minutes! This comprehensive tutorial covers everything from setting up the game to forming valid sets and sequences. Perfect for new players who want to understand the rules, strategies, and winning techniques of this classic card game.
+                    </p>
+                    <div class="rummy-video-meta">
+                        <div class="rummy-stats">
+                            <div class="rummy-stat">
+                                <i class="fas fa-eye"></i>
+                                <span>1.2M views</span>
+                            </div>
+                            <div class="rummy-stat">
+                                <i class="fas fa-calendar"></i>
+                                <span>May 15, 2023</span>
+                            </div>
+                            <div class="rummy-stat">
+                                <i class="fas fa-clock"></i>
+                                <span>15:42 min</span>
+                            </div>
+                        </div>
+                        <button class="rummy-btn">
+                            <i class="fas fa-download rummy-btn-icon"></i> Download App
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="rummy-related-videos">
+                <h2 class="rummy-section-title"><i class="fas fa-film"></i> More Rummy Tutorials</h2>
+                <div class="rummy-videos-grid">
+                    <div class="rummy-video-card" data-video-id="6gherZ1pczQ">
+                        <div class="rummy-card-thumbnail">
+                            <img class="rummy-card-img" src="img/rummy123.jpeg" alt="Advanced Rummy Strategies">
+                            <div class="rummy-play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="rummy-card-duration">12:30</div>
+                        </div>
+                        <div class="rummy-card-content">
+                            <h3 class="rummy-card-title">Advanced Rummy Strategies</h3>
+                            <div class="rummy-card-stats">
+                                <span><i class="fas fa-eye"></i> 458K views</span>
+                                <span>2 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="rummy-video-card" data-video-id="6gherZ1pczQ">
+                        <div class="rummy-card-thumbnail">
+                            <img class="rummy-card-img" src="img/rummy.png" alt="Winning Tips & Tricks">
+                            <div class="rummy-play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="rummy-card-duration">10:15</div>
+                        </div>
+                        <div class="rummy-card-content">
+                            <h3 class="rummy-card-title">Winning Tips & Tricks</h3>
+                            <div class="rummy-card-stats">
+                                <span><i class="fas fa-eye"></i> 387K views</span>
+                                <span>1 week ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="rummy-video-card" data-video-id="6gherZ1pczQ">
+                        <div class="rummy-card-thumbnail">
+                            <img class="rummy-card-img" src="img/rummy123.jpeg" alt="Tournament Preparation">
+                            <div class="rummy-play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="rummy-card-duration">18:22</div>
+                        </div>
+                        <div class="rummy-card-content">
+                            <h3 class="rummy-card-title">Tournament Preparation</h3>
+                            <div class="rummy-card-stats">
+                                <span><i class="fas fa-eye"></i> 295K views</span>
+                                <span>3 weeks ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="rummy-video-card" data-video-id="o6SzGixooTw">
+                        <div class="rummy-card-thumbnail">
+                            <img class="rummy-card-img" src="img/img123.jpeg" alt="Common Mistakes to Avoid">
+                            <div class="rummy-play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="rummy-card-duration">08:45</div>
+                        </div>
+                        <div class="rummy-card-content">
+                            <h3 class="rummy-card-title">Common Mistakes to Avoid</h3>
+                            <div class="rummy-card-stats">
+                                <span><i class="fas fa-eye"></i> 412K views</span>
+                                <span>1 month ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoCards = document.querySelectorAll('.rummy-video-card');
+            const downloadBtn = document.querySelector('.rummy-btn');
+            
+            // Video card click functionality
+            videoCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const title = this.querySelector('.rummy-card-title').textContent;
+                    const videoId = this.getAttribute('data-video-id');
+                    
+                    // Update main video
+                    document.querySelector('.rummy-video-iframe').src = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`;
+                    
+                    // Update video info
+                    document.querySelector('.rummy-video-title').innerHTML = 
+                        `<i class="fas fa-play-circle"></i> ${title}`;
+                    
+                    // Add smooth scroll to main video
+                    document.querySelector('.rummy-video-section').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Add visual feedback
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 300);
+                });
+            });
+            
+            // Download button animation
+            downloadBtn.addEventListener('click', function() {
+                const originalHTML = this.innerHTML;
+                
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
+                this.disabled = true;
+                
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = originalHTML;
+                        this.disabled = false;
+                    }, 2000);
+                }, 1500);
+            });
+        });
+    </script>
+
+    <!--End of Youtube -->
+
+
     <!--Faq part goes here............................-->
   <div class="rummy-faq-container">
         <div class="faq-header">
@@ -2515,7 +3089,7 @@
                     <div class="faq-question">How can I use timing tells to read opponents in online Rummy?</div>
                     <div class="faq-answer">
                         <p>Even online, timing reveals information:</p>
-                        <table border="1" style="width:100%; border-collapse: collapse; margin: 15px 0;">
+                        <table class="border=1" style="width:100%; border-collapse: collapse; margin: 15px 0;">
                             <tr>
                                 <th>Action</th>
                                 <th>Quick</th>
@@ -2579,7 +3153,7 @@
                             <li><span class="term">Delayed Cashouts</span>: Funds held for review if suspicious activity detected</li>
                         </ol>
                         <div class="warning-note">
-                            <strong>Detection Stats:</strong> Top platforms catch 99.7% of collusion attempts with <2% false positives.
+                            <strong>Detection Stats:</strong> Top platforms catch 99.7% of collusion attempts with <2% false positives></2>.
                         </div>
                     </div>
                 </div>
@@ -2612,130 +3186,7 @@
 
     <!--End of faq part goes here-->
 
-    <!--Youtube video goes here.........................-->
-    <section class="video-section">
-        <div class="section-header">
-            <h2 class="section-title">Rummy Game Tutorials</h2>
-            <p class="section-subtitle">Learn advanced strategies, tips and tricks from our expert players</p>
-        </div>
-        
-        <div class="video-grid">
-            <!-- Video Card 1 -->
-            <div class="video-card">
-                <div class="video-thumbnail">
-                    <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Rummy Tutorial">
-                    <div class="play-button" onclick="openVideo('-am6eZlbivU')">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <h3 class="video-title">How to Win at Rummy - Beginner's Guide to Card Games</h3>
-                    <div class="video-meta">
-                        <span>15K views</span>
-                        <span>2 weeks ago</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Video Card 2 -->
-            <div class="video-card">
-                <div class="video-thumbnail">
-                    <img src="https://i.ytimg.com/vi/9bZkp7q19f0/maxresdefault.jpg" alt="Rummy Strategies">
-                    <div class="play-button" onclick="openVideo('9bZkp7q19f0')">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <h3 class="video-title">Advanced Rummy Strategies That Will Make You Win More Games</h3>
-                    <div class="video-meta">
-                        <span>42K views</span>
-                        <span>1 month ago</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Video Card 3 -->
-            <div class="video-card">
-                <div class="video-thumbnail">
-                    <img src="https://i.ytimg.com/vi/kJQP7kiw5Fk/maxresdefault.jpg" alt="Rummy Tips">
-                    <div class="play-button" onclick="openVideo('JGwWNGJdvx8')">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <h3 class="video-title">5 Pro Tips to Improve Your Rummy Game Overnight</h3>
-                    <div class="video-meta">
-                        <span>28K views</span>
-                        <span>3 months ago</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Video Card 4 -->
-            <div class="video-card">
-                <div class="video-thumbnail">
-                    <img src="https://i.ytimg.com/vi/kJQP7kiw5Fk/maxresdefault.jpg" alt="Rummy Tournament">
-                    <div class="play-button" onclick="openVideo('kJQP7kiw5Fk')">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <h3 class="video-title">Rummy Tournament Finals - Watch the Best Players Compete</h3>
-                    <div class="video-meta">
-                        <span>75K views</span>
-                        <span>5 months ago</span>
-                    </div>
-                </div>
-            </div>
-                        <!-- Video Card 4 -->
-            <div class="video-card">
-                <div class="video-thumbnail">
-                    <img src="https://i.ytimg.com/vi/kJQP7kiw5Fk/maxresdefault.jpg" alt="Rummy Tournament">
-                    <div class="play-button" onclick="openVideo('-am6eZlbivU')">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <h3 class="video-title">Rummy Tournament Finals - Watch the Best Players Compete</h3>
-                    <div class="video-meta">
-                        <span>75K views</span>
-                        <span>5 months ago</span>
-                    </div>
-                </div>
-            </div>
-                        <!-- Video Card 4 -->
-            <div class="video-card">
-                <div class="video-thumbnail">
-                    <img src="https://i.ytimg.com/vi/kJQP7kiw5Fk/maxresdefault.jpg" alt="Rummy Tournament">
-                    <div class="play-button" onclick="openVideo('kJQP7kiw5Fk')">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <h3 class="video-title">Rummy Tournament Finals - Watch the Best Players Compete</h3>
-                    <div class="video-meta">
-                        <span>75K views</span>
-                        <span>5 months ago</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!--End of Youtube -->
+  
     </main>
 
     <!-- Stats Section -->
@@ -2764,8 +3215,8 @@
     <footer>
         <div class="footer-content">
             <div class="footer-column">
-                <h3>GameHub</h3>
-                <p>Your ultimate gaming destination with thousands of games, tournaments, and a vibrant community of players.</p>
+                <h3 style="color: white;">GameHub</h3>
+                <p style="color: white;">Your ultimate gaming destination with thousands of games, tournaments, and a vibrant community of players.</p>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
@@ -2776,7 +3227,7 @@
             </div>
             
             <div class="footer-column">
-                <h3>Quick Links</h3>
+                <h3 style="color: white;">Quick Links</h3>
                 <ul class="footer-links">
                     <li><a href="#"><i class="fas fa-chevron-right"></i>Home</a></li>
                     <li><a href="#"><i class="fas fa-chevron-right"></i>Popular Games</a></li>
@@ -2787,7 +3238,7 @@
             </div>
             
             <div class="footer-column">
-                <h3>Support</h3>
+                <h3 style="color: white;">Support</h3>
                 <ul class="footer-links">
                     <li><a href="#"><i class="fas fa-chevron-right"></i>FAQ</a></li>
                     <li><a href="#"><i class="fas fa-chevron-right"></i>Help Center</a></li>
@@ -2798,8 +3249,8 @@
             </div>
             
             <div class="footer-column">
-                <h3>Newsletter</h3>
-                <p>Subscribe to get latest updates on new games, tournaments and special offers.</p>
+                <h3 style="color: white;">Newsletter</h3>
+                <p style="color: white;"> Subscribe to get latest updates on new games, tournaments and special offers.</p>
                 <form class="newsletter-form">
                     <input type="email" placeholder="Your Email">
                     <button type="submit"><i class="fas fa-paper-plane"></i></button>
