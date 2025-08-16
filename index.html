@@ -2068,7 +2068,7 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
-            padding: 0.3rem 0.2rem;
+            padding: 0.5rem 0.4rem;
             border-radius: 4px;
             position: relative;
             transition: var(--transition);
@@ -2090,11 +2090,11 @@
             height: 2px;
             background: var(--accent);
             transition: var(--transition);
-            transform: translateX(-50%);
+            transform: translateX(10%);
         }
 
         .gaming-nav-links a:hover::after {
-            width: 70%;
+            width: 100%;
         }
 
         /* Dropdown Styles */
@@ -2110,7 +2110,7 @@
             backdrop-filter: blur(10px);
             border-radius: 8px;
             box-shadow: var(--shadow);
-            width: 250px;
+            width: 200px;
             padding: 1rem 0;
             opacity: 0;
             visibility: hidden;
@@ -2135,13 +2135,13 @@
         }
 
         .gaming-dropdown-content a:hover {
-            background: rgba(255, 60, 120, 0.15);
+            background: rgba(255, 60, 120, 0.65);
             color: var(--accent);
             padding-left: 1.8rem;
         }
 
         .gaming-dropdown-content a i {
-            width: 20px;
+            width: 15px;
             text-align: center;
         }
 
@@ -2215,18 +2215,17 @@
         @media (max-width: 992px) {
             .gaming-nav-links {
                 position: fixed;
-                top: 0;
-                left: -80%;
+                top: 10;
+                left: -100%;
                 height: 100vh;
                 width: 260px;
                 background: rgba(15, 12, 41, 0.98);
                 backdrop-filter: blur(10px);
                 flex-direction: column;
-                padding: 50px 20px 20px;
+                padding: 50px 40px 40px;
                 transition: var(--transition);
                 overflow-y: auto;
                 z-index: 900;
-
                 box-shadow: 5px 0 25px rgba(0,0,0,0.3);
             }
 
@@ -2283,7 +2282,7 @@
 
         @media (max-width: 768px) {
             .gaming-navbar {
-                padding: .5rem 3%;
+                padding: .3rem 3%;
             }
             
             .gaming-logo span {
@@ -2305,7 +2304,7 @@
             }
             
             .gaming-nav-links {
-                width: 85%;
+                width: 65%;
                 padding: 90px 20px 30px;
             }
         }
@@ -2334,9 +2333,9 @@
                 <span>AllGamingApp.com</span>
             </a>
             <ul class="gaming-nav-links" id="gaming-nav-menu">
-                <li><a href="index.html" ><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="index.html" > Home</a></li>
                 <li class="gaming-dropdown">
-                    <a href="game.html"><i class="fas fa-dice"></i> Games <i class="fas fa-caret-down"></i></a>
+                    <a href="game.html"> Games <i class="fas fa-caret-down"></i></a>
                     <div class="gaming-dropdown-content">
                         <a href="new-game.html"> <i class="fas fa-crown"></i> Point Rummy</a>
                         <a href="new-game.html"><i class="fas fa-crown"></i> Pool Rummy</a>
@@ -2346,7 +2345,7 @@
                 </li>
                
                 <li class="gaming-dropdown">
-                    <a href="rummy-tutorial.html" ><i class="fas fa-book"></i>Learn <i class="fas fa-caret-down"></i></a>
+                    <a href="rummy-tutorial.html" >Learn <i class="fas fa-caret-down"></i></a>
                     <div class="gaming-dropdown-content">
                         <a href="rummy-rulers.html"><i class="fas fa-shield-alt"></i>How to play</a>
                         <a href="rummy-tutorial.html"><i class="fas fa-video"></i>Video Tutorial</a>
@@ -2354,7 +2353,7 @@
                 </li>
 
                  <li class="gaming-dropdown">
-                    <a href="#"><i class="fas fa-layer-group"></i> Pages <i class="fas fa-caret-down"></i></a>
+                    <a href="#"> Pages <i class="fas fa-caret-down"></i></a>
                     <div class="gaming-dropdown-content">
                         <a href="about-us.html"><i class="fas fa-info-circle"></i>About Us</a>
                         <a href="contact-us.html"><i class="fas fa-envelope"></i>Contact Us</a>
@@ -2362,8 +2361,8 @@
                     </div>
                 </li>
 
-                <li><a href="promotions.html"><i class="fas fa-gift"></i> Promotions</a></li>
-                <li><a href="contact-us.html"><i class="fas fa-headset"></i> Support</a></li>
+                <li><a href="promotions.html"> Promotions</a></li>
+                <li><a href="contact-us.html"> Support</a></li>
             </ul>
 
             <button id="gaming-join-button">
