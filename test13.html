@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Navigation</title>
+    <title>GamingHub - Responsive Navigation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Variables */
@@ -31,19 +31,18 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: white;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: var(--light);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             line-height: 1.6;
             overflow-x: hidden;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
             padding-top: 80px;
         }
 
         /* Header & Navigation */
-        header {
+        .gaming-header {
             background: rgba(15, 12, 41, 0.95);
             backdrop-filter: blur(10px);
             position: fixed;
@@ -53,7 +52,7 @@
             box-shadow: var(--shadow);
         }
 
-        .navbar {
+        .gaming-navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -63,7 +62,7 @@
             margin: 0 auto;
         }
 
-        .logo {
+        .gaming-logo {
             display: flex;
             align-items: center;
             gap: 0.8rem;
@@ -74,13 +73,13 @@
             z-index: 1100;
         }
 
-        .nav-links {
+        .gaming-nav-links {
             display: flex;
             gap: 1.8rem;
             list-style: none;
         }
 
-        .nav-links a {
+        .gaming-nav-links a {
             color: var(--light);
             text-decoration: none;
             font-weight: 600;
@@ -94,11 +93,11 @@
             gap: 8px;
         }
 
-        .nav-links a:hover {
+        .gaming-nav-links a:hover {
             color: var(--accent);
         }
 
-        .nav-links a::after {
+        .gaming-nav-links a::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -110,16 +109,16 @@
             transform: translateX(-50%);
         }
 
-        .nav-links a:hover::after {
+        .gaming-nav-links a:hover::after {
             width: 70%;
         }
 
         /* Dropdown Styles */
-        .dropdown {
+        .gaming-dropdown {
             position: relative;
         }
 
-        .dropdown-content {
+        .gaming-dropdown-content {
             position: absolute;
             top: 100%;
             left: 0;
@@ -136,13 +135,13 @@
             z-index: 1;
         }
 
-        .dropdown:hover .dropdown-content {
+        .gaming-dropdown:hover .gaming-dropdown-content {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
 
-        .dropdown-content a {
+        .gaming-dropdown-content a {
             display: block;
             padding: 0.8rem 1.5rem;
             color: var(--light);
@@ -151,19 +150,19 @@
             font-weight: 500;
         }
 
-        .dropdown-content a:hover {
+        .gaming-dropdown-content a:hover {
             background: rgba(255, 60, 120, 0.15);
             color: var(--accent);
             padding-left: 1.8rem;
         }
 
-        .dropdown-content a i {
+        .gaming-dropdown-content a i {
             width: 20px;
             text-align: center;
         }
 
         /* Mobile Menu */
-        .hamburger {
+        #gaming-mobile-toggle {
             display: none;
             cursor: pointer;
             background: transparent;
@@ -175,7 +174,7 @@
             position: relative;
         }
 
-        .hamburger span {
+        #gaming-mobile-toggle span {
             display: block;
             width: 28px;
             height: 3px;
@@ -187,33 +186,33 @@
             left: 6px;
         }
 
-        .hamburger span:nth-child(1) {
+        #gaming-mobile-toggle span:nth-child(1) {
             top: 10px;
         }
 
-        .hamburger span:nth-child(2) {
+        #gaming-mobile-toggle span:nth-child(2) {
             top: 18px;
         }
 
-        .hamburger span:nth-child(3) {
+        #gaming-mobile-toggle span:nth-child(3) {
             top: 26px;
         }
 
-        .hamburger.active span:nth-child(1) {
+        #gaming-mobile-toggle.active span:nth-child(1) {
             transform: rotate(45deg) translate(5px, 5px);
             top: 18px;
         }
 
-        .hamburger.active span:nth-child(2) {
+        #gaming-mobile-toggle.active span:nth-child(2) {
             opacity: 0;
         }
 
-        .hamburger.active span:nth-child(3) {
+        #gaming-mobile-toggle.active span:nth-child(3) {
             transform: rotate(-45deg) translate(5px, -5px);
             top: 18px;
         }
 
-        .hamburgerL {
+        #gaming-join-button {
             cursor: pointer;
             background: transparent;
             border: none;
@@ -222,18 +221,18 @@
             animation: pulse 2s infinite;
         }
 
-        .hamburgerL img {
+        #gaming-join-button img {
             display: block;
             width: 80px;
             height: auto;
         }
 
-        /* Mobile Navigation Styles */
+        /* Mobile Navigation Styles - LEFT SIDE */
         @media (max-width: 992px) {
-            .nav-links {
+            .gaming-nav-links {
                 position: fixed;
                 top: 0;
-                right: -100%;
+                left: -100%;
                 height: 100vh;
                 width: 280px;
                 background: rgba(15, 12, 41, 0.98);
@@ -243,28 +242,29 @@
                 transition: var(--transition);
                 overflow-y: auto;
                 z-index: 900;
-                box-shadow: -5px 0 25px rgba(0,0,0,0.3);
+                box-shadow: 5px 0 25px rgba(0,0,0,0.3);
             }
 
-            .nav-links.active {
-                right: 0;
+            .gaming-nav-links.active {
+                left: 0;
             }
 
-            .nav-links li {
+            .gaming-nav-links li {
                 width: 100%;
                 border-bottom: 1px solid rgba(255,255,255,0.1);
             }
 
-            .nav-links a {
+            .gaming-nav-links a {
                 padding: 15px 0;
                 font-size: 1.2rem;
+                justify-content: space-between;
             }
 
-            .hamburger {
+            #gaming-mobile-toggle {
                 display: block;
             }
 
-            .dropdown-content {
+            .gaming-dropdown-content {
                 position: static;
                 opacity: 1;
                 visibility: visible;
@@ -279,58 +279,48 @@
                 margin-top: 0;
             }
 
-            .dropdown.active .dropdown-content {
+            .gaming-dropdown.active .gaming-dropdown-content {
                 max-height: 500px;
                 padding: 10px 0 10px 20px;
             }
 
-            .dropdown-content a {
+            .gaming-dropdown-content a {
                 padding: 12px 0;
                 font-size: 1rem;
             }
 
-            .dropdown-content a:hover {
+            .gaming-dropdown-content a:hover {
                 padding-left: 25px;
             }
 
-            .dropdown > a::after {
-                content: '\f107';
-                font-family: 'Font Awesome 5 Free';
-                font-weight: 900;
-                margin-left: auto;
-                transition: transform 0.3s ease;
-            }
 
-            .dropdown.active > a::after {
-                transform: rotate(180deg);
-            }
         }
 
         @media (max-width: 768px) {
-            .navbar {
+            .gaming-navbar {
                 padding: .5rem 3%;
             }
             
-            .logo span {
+            .gaming-logo span {
                 font-size: 1.3rem;
             }
             
-            .hamburgerL img {
+            #gaming-join-button img {
                 width: 70px;
             }
         }
 
         @media (max-width: 480px) {
-            .logo span {
-                display: none;
+            .gaming-logo span {
+                font-size: 1.1rem;
             }
             
-            .hamburgerL img {
+            #gaming-join-button img {
                 width: 60px;
             }
             
-            .nav-links {
-                width: 100%;
+            .gaming-nav-links {
+                width: 85%;
                 padding: 90px 20px 30px;
             }
         }
@@ -342,107 +332,45 @@
             100% { transform: scale(1); }
         }
 
-        /* Demo Content */
-        .content {
-            padding: 30px 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-            color: white;
-            text-align: center;
-            flex: 1;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        .content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
-        }
-        
-        .content p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            line-height: 1.7;
-        }
-        
-        .cards {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            justify-content: center;
-            margin-top: 40px;
-        }
-        
-        .card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 30px;
-            width: 280px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            transition: transform 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .card i {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-        
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .card p {
-            font-size: 1rem;
-            margin-bottom: 0;
-        }
-        
-        footer {
-            background: rgba(15, 12, 41, 0.9);
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-        }
+
+       
     </style>
 </head>
 <body>
     <!-- Header & Navigation -->
-    <header>
-        <nav class="navbar">
-            <a href="#" class="logo">
-                <img src="https://cdn-icons-png.flaticon.com/512/6542/6542838.png" style="width: 35px;height: auto; border-radius: 10px;" alt="Logo">
-                <span>AllGamingApps</span>
+    <header class="gaming-header">
+        <nav class="gaming-navbar">
+            <a href="#" class="gaming-logo">
+                <img src="img/rummy.png" style="width: 35px;height: auto; border-radius: 10px;" alt="Logo">
+                <span>Allgamingapp.com</span>
             </a>
-            <ul class="nav-links">
+            <ul class="gaming-nav-links" id="gaming-nav-menu">
                 <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                <li class="dropdown">
+                <li class="gaming-dropdown">
                     <a href="game.html"><i class="fas fa-dice"></i> Games <i class="fas fa-caret-down"></i></a>
-                    <div class="dropdown-content">
+                    <div class="gaming-dropdown-content">
                         <a href="new-game.html"> <i class="fas fa-crown"></i> Point Rummy</a>
                         <a href="new-game.html"><i class="fas fa-crown"></i> Pool Rummy</a>
                         <a href="new-game.html"><i class="fas fa-crown"></i> Deal Rummy</a>
-                        <a href="new-game.html"><i class="fas fa-crown"></i>21 cards Rummy</a>
+                        <a href="new-game.html"><i class="fas fa-crown"></i> 21 Cards Rummy</a>
                     </div>
                 </li>
                
-                <li class="dropdown">
+                <li class="gaming-dropdown">
                     <a href="rummy-tutorial.html"><i class="fas fa-book"></i> Learn <i class="fas fa-caret-down"></i></a>
-                    <div class="dropdown-content">
+                    <div class="gaming-dropdown-content">
                         <a href="rummy-rulers.html"><i class="fas fa-shield-alt"></i>How to play</a>
-                        <a href="rummy-tutorial.html"><i class="fas fa-video"></i>Video</a>
+                        <a href="rummy-tutorial.html"><i class="fas fa-video"></i>Video Tutorial</a>
                     </div>
                 </li>
 
-                 <li class="dropdown">
+                 <li class="gaming-dropdown">
                     <a href="#"><i class="fas fa-layer-group"></i> Pages <i class="fas fa-caret-down"></i></a>
-                    <div class="dropdown-content">
+                    <div class="gaming-dropdown-content">
                         <a href="about-us.html"><i class="fas fa-info-circle"></i>About Us</a>
                         <a href="contact-us.html"><i class="fas fa-envelope"></i>Contact Us</a>
                         <a href="privecy-policy.html"><i class="fas fa-lock"></i>Privacy Policy</a>
@@ -453,11 +381,11 @@
                 <li><a href="contact-us.html"><i class="fas fa-headset"></i> Support</a></li>
             </ul>
 
-            <button class="hamburgerL">
-                <img src="https://cdn-icons-png.flaticon.com/512/5580/5580997.png" alt="Join Us">
+            <button id="gaming-join-button">
+                <img src="img/joinus.webp" alt="Join Us">
             </button>
 
-            <button class="hamburger">
+            <button id="gaming-mobile-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -465,48 +393,19 @@
         </nav>
     </header>
     
-    <!-- Demo Content -->
-    <div class="content">
-        <h1>Fully Responsive Navigation</h1>
-        <p>This navigation bar is now fully responsive and works on all device sizes. Try resizing your browser to see how it adapts!</p>
-        
-        <div class="cards">
-            <div class="card">
-                <i class="fas fa-mobile-alt"></i>
-                <h3>Mobile Friendly</h3>
-                <p>Optimized for small screens with a slide-in menu and touch-friendly controls.</p>
-            </div>
-            
-            <div class="card">
-                <i class="fas fa-tablet-alt"></i>
-                <h3>Tablet Ready</h3>
-                <p>Perfectly adapts to medium-sized screens with enhanced touch navigation.</p>
-            </div>
-            
-            <div class="card">
-                <i class="fas fa-desktop"></i>
-                <h3>Desktop Experience</h3>
-                <p>Full navigation with hover effects and dropdown menus for larger screens.</p>
-            </div>
-        </div>
-    </div>
     
-    <footer>
-        <p>© 2023 AllGamingApps. All rights reserved.</p>
-    </footer>
-
     <script>
         // Mobile Menu Toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        const dropdowns = document.querySelectorAll('.dropdown');
+        const gamingMobileToggle = document.getElementById('gaming-mobile-toggle');
+        const gamingNavMenu = document.getElementById('gaming-nav-menu');
+        const gamingDropdowns = document.querySelectorAll('.gaming-dropdown');
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
+        gamingMobileToggle.addEventListener('click', () => {
+            gamingMobileToggle.classList.toggle('active');
+            gamingNavMenu.classList.toggle('active');
             
             // Prevent body scroll when menu is open
-            if (navLinks.classList.contains('active')) {
+            if (gamingNavMenu.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
             } else {
                 document.body.style.overflow = 'auto';
@@ -514,7 +413,7 @@
         });
 
         // Mobile Dropdown Toggle
-        dropdowns.forEach(dropdown => {
+        gamingDropdowns.forEach(dropdown => {
             const dropdownLink = dropdown.querySelector('a');
             
             dropdownLink.addEventListener('click', (e) => {
@@ -527,23 +426,45 @@
 
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 992 && navLinks.classList.contains('active') && 
-                !e.target.closest('.nav-links') && !e.target.closest('.hamburger') && !e.target.closest('.hamburgerL')) {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
+            if (window.innerWidth <= 992 && gamingNavMenu.classList.contains('active') && 
+                !e.target.closest('#gaming-nav-menu') && 
+                !e.target.closest('#gaming-mobile-toggle') && 
+                !e.target.closest('#gaming-join-button')) {
+                
+                gamingMobileToggle.classList.remove('active');
+                gamingNavMenu.classList.remove('active');
                 document.body.style.overflow = 'auto';
-                dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
+                
+                gamingDropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
             }
         });
 
         // Close menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
+        document.querySelectorAll('.gaming-nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                if (window.innerWidth <= 992) {
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
+                if (window.innerWidth <= 992 && !link.querySelector('.fa-caret-down')) {
+                    gamingMobileToggle.classList.remove('active');
+                    gamingNavMenu.classList.remove('active');
                     document.body.style.overflow = 'auto';
                 }
+            });
+        });
+
+        // Animation on scroll for cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = `fadeIn 5s ease forwards`;
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.gaming-card').forEach(card => {
+                card.style.opacity = '0';
+                observer.observe(card);
             });
         });
     </script>
