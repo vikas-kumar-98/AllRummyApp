@@ -3,481 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Rummy Game Apps</title>
+    <title>Telegram Bonus Offer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #1a2a6c;
-            --secondary: #b21f1f;
-            --accent: #ffd700;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --card-bg: #ffffff;
-            --shadow: rgba(0, 0, 0, 0.1);
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa, #e4e7eb);
-            color: var(--dark);
-            line-height: 1.6;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
             min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .rummy-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .rummy-header {
-            text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 30px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .rummy-header::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: 
-                radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 20%),
-                radial-gradient(circle, rgba(255,215,0,0.05) 0%, transparent 30%);
-            z-index: 0;
-        }
-        
-        .rummy-header-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .rummy-header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .rummy-header p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-        
-        .rummy-apps-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            padding: 20px;
-        }
-        
-        .rummy-app-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px var(--shadow);
-            transition: all 0.3s ease;
-            position: relative;
             display: flex;
             flex-direction: column;
-        }
-        
-        .rummy-app-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        
-        .rummy-app-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--accent);
-            color: var(--dark);
-            font-weight: 600;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            z-index: 2;
-        }
-        
-        .rummy-app-image {
-            height: 160px;
-            display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            position: relative;
-            overflow: hidden;
+            color: white;
         }
         
-        .rummy-app-image::before {
-            content: "";
+        .container {
+            width: 100%;
+            text-align: center;
+        }
+
+        .offer-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+        }
+        
+        .bonus-amount {
+            font-size: 4.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #ffd700, #ff9800);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            margin: 20px 0;
+        }
+        
+
+        
+        .telegram-button {
+            display: inline-block;
+            background: linear-gradient(to right, #0088cc, #00a8ff);
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            padding: 20px 50px;
+            border-radius: 60px;
+            text-decoration: none;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .telegram-button i {
+            margin-right: 15px;
+            font-size: 2.2rem;
+            vertical-align: middle;
+        }
+        
+        .telegram-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 136, 204, 0.7);
+        }
+        
+        .telegram-button:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.5);
+        }
+        
+        .telegram-button::before {
+            content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle, rgba(255,215,0,0.05) 0%, transparent 70%);
-            z-index: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
         }
         
-        .rummy-app-image img {
-            max-width: 100%;
-            max-height: 120px;
-            object-fit: contain;
-            z-index: 1;
-            transition: transform 0.3s ease;
+        .telegram-button:hover::before {
+            left: 100%;
         }
-        
-        .rummy-app-card:hover .rummy-app-image img {
-            transform: scale(1.05);
-        }
-        
-        .rummy-app-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .rummy-app-name {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--primary);
-            text-align: center;
-        }
-        
-        .rummy-app-desc {
-            color: #666;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            flex-grow: 1;
-        }
-        
-        .rummy-app-rating {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 25px;
-            gap: 8px;
-        }
-        
-        .rummy-stars {
-            color: var(--accent);
-            font-size: 1.1rem;
-        }
-        
-        .rummy-rating-text {
-            font-weight: 600;
-            font-size: 1rem;
-            color: #444;
-        }
-        
-        .rummy-download-btn {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(26, 42, 108, 0.3);
-        }
-        
-        .rummy-download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(26, 42, 108, 0.4);
-        }
-        
-        .rummy-download-btn:active {
-            transform: translateY(1px);
-        }
-        
-        .rummy-footer {
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 50px;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .rummy-disclaimer {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 15px;
-            background: rgba(255, 215, 0, 0.1);
+                        
+        .timer {
+            font-size: 1.5rem;
+            margin: 30px 0;
+            padding: 15px 30px;
+            background: rgba(0, 0, 0, 0.3);
             border-radius: 10px;
-            font-size: 0.9rem;
+            display: inline-block;
         }
         
+
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            .rummy-header h1 {
-                font-size: 2.2rem;
+
+            .telegram-button {
+                font-size: 1.4rem;
+                padding: 18px 35px;
             }
             
-            .rummy-apps-container {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 20px;
+            .offer-card {
+                padding: 30px 20px;
             }
         }
         
         @media (max-width: 480px) {
-            .rummy-header h1 {
-                font-size: 1.8rem;
+            
+            .telegram-button {
+                font-size: 1.2rem;
+                padding: 15px 25px;
             }
             
-            .rummy-header p {
-                font-size: 1rem;
-            }
-            
-            .rummy-apps-container {
-                grid-template-columns: 1fr;
-            }
+
         }
-        
-        /* Animation for cards */
-        @keyframes rummy-fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .rummy-app-card {
-            animation: rummy-fadeIn 0.5s ease-out forwards;
-            opacity: 0;
-        }
-        
-        .rummy-app-card:nth-child(1) { animation-delay: 0.1s; }
-        .rummy-app-card:nth-child(2) { animation-delay: 0.2s; }
-        .rummy-app-card:nth-child(3) { animation-delay: 0.3s; }
-        .rummy-app-card:nth-child(4) { animation-delay: 0.4s; }
-        .rummy-app-card:nth-child(5) { animation-delay: 0.5s; }
-        .rummy-app-card:nth-child(6) { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
-    <div class="rummy-container">
-        <header class="rummy-header">
-            <div class="rummy-header-content">
-                <h1>Top Rummy Game Apps</h1>
-                <p>Discover the best rummy apps with real cash prizes, exciting tournaments, and massive bonuses</p>
-            </div>
-        </header>
-        
-        <div class="rummy-apps-container">
-            <!-- App 1 -->
-            <div class="rummy-app-card">
-                <div class="rummy-app-badge">#1 Choice</div>
-                <div class="rummy-app-image">
-                    <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="RummyCircle">
-                </div>
-                <div class="rummy-app-content">
-                    <h3 class="rummy-app-name">RummyCircle</h3>
-                    <p class="rummy-app-desc">India's largest rummy platform with over 30 million players. Play rummy and win real cash prizes daily!</p>
-                    <div class="rummy-app-rating">
-                        <div class="rummy-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <span class="rummy-rating-text">4.7 (1.2M)</span>
-                    </div>
-                    <button class="rummy-download-btn">
-                        <i class="fas fa-download"></i> Download Now
-                    </button>
-                </div>
-            </div>
-            
-            <!-- App 2 -->
-            <div class="rummy-app-card">
-                <div class="rummy-app-badge">Popular</div>
-                <div class="rummy-app-image">
-                    <img src="https://images.unsplash.com/photo-1611930022073-732b6b84f8ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Junglee Rummy">
-                </div>
-                <div class="rummy-app-content">
-                    <h3 class="rummy-app-name">Junglee Rummy</h3>
-                    <p class="rummy-app-desc">Fast and secure rummy experience with ₹10,000 welcome bonus. Play with real players across India.</p>
-                    <div class="rummy-app-rating">
-                        <div class="rummy-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                        <span class="rummy-rating-text">4.5 (890K)</span>
-                    </div>
-                    <button class="rummy-download-btn">
-                        <i class="fas fa-download"></i> Download Now
-                    </button>
-                </div>
-            </div>
-            
-            <!-- App 3 -->
-            <div class="rummy-app-card">
-                <div class="rummy-app-badge">New</div>
-                <div class="rummy-app-image">
-                    <img src="https://images.unsplash.com/photo-1559523182-a284c3fb7cff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Ace2Three">
-                </div>
-                <div class="rummy-app-content">
-                    <h3 class="rummy-app-name">Ace2Three</h3>
-                    <p class="rummy-app-desc">Play rummy with friends and win big. Get ₹50 free on signup and withdraw winnings instantly.</p>
-                    <div class="rummy-app-rating">
-                        <div class="rummy-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <span class="rummy-rating-text">4.9 (750K)</span>
-                    </div>
-                    <button class="rummy-download-btn">
-                        <i class="fas fa-download"></i> Download Now
-                    </button>
-                </div>
-            </div>
-            
-            <!-- App 4 -->
-            <div class="rummy-app-card">
-                <div class="rummy-app-image">
-                    <img src="https://images.unsplash.com/photo-1581089781785-603411fa81e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Rummy Passion">
-                </div>
-                <div class="rummy-app-content">
-                    <h3 class="rummy-app-name">Rummy Passion</h3>
-                    <p class="rummy-app-desc">Experience the passion of rummy with daily tournaments and ₹1 Crore guaranteed prizes.</p>
-                    <div class="rummy-app-rating">
-                        <div class="rummy-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <span class="rummy-rating-text">4.6 (620K)</span>
-                    </div>
-                    <button class="rummy-download-btn">
-                        <i class="fas fa-download"></i> Download Now
-                    </button>
-                </div>
-            </div>
-            
-            <!-- App 5 -->
-            <div class="rummy-app-card">
-                <div class="rummy-app-badge">Trending</div>
-                <div class="rummy-app-image">
-                    <img src="https://images.unsplash.com/photo-1548365328-8c6db3220e4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Classic Rummy">
-                </div>
-                <div class="rummy-app-content">
-                    <h3 class="rummy-app-name">Classic Rummy</h3>
-                    <p class="rummy-app-desc">Play classic Indian rummy with 100% secure transactions and 24/7 customer support.</p>
-                    <div class="rummy-app-rating">
-                        <div class="rummy-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                        <span class="rummy-rating-text">4.4 (540K)</span>
-                    </div>
-                    <button class="rummy-download-btn">
-                        <i class="fas fa-download"></i> Download Now
-                    </button>
-                </div>
-            </div>
-            
-            <!-- App 6 -->
-            <div class="rummy-app-card">
-                <div class="rummy-app-badge">Bonus</div>
-                <div class="rummy-app-image">
-                    <img src="https://images.unsplash.com/photo-1600857062241-98c0b05794be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Deccan Rummy">
-                </div>
-                <div class="rummy-app-content">
-                    <h3 class="rummy-app-name">Deccan Rummy</h3>
-                    <p class="rummy-app-desc">Get up to ₹10,000 welcome bonus. Play pool, points, and deals rummy variants.</p>
-                    <div class="rummy-app-rating">
-                        <div class="rummy-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <span class="rummy-rating-text">4.5 (480K)</span>
-                    </div>
-                    <button class="rummy-download-btn">
-                        <i class="fas fa-download"></i> Download Now
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="rummy-disclaimer">
-            <p><strong>Disclaimer:</strong> Rummy involves financial risk and may be addictive. Please play responsibly and only if you are 18 years or older. We do not promote gambling. Players are advised to check local laws before participating.</p>
-        </div>
-        
-        <footer class="rummy-footer">
-            <p>© 2023 Rummy Apps Directory. All rights reserved.</p>
-            <p>This site is for informational purposes only. We are not affiliated with any rummy apps listed.</p>
-        </footer>
+    <div class="container">
+        <div class="offer-card">
+            <a href="https://telegram.org" target="_blank" class="telegram-button timer">
+                <i class="fab fa-telegram"></i>Join Us to Get Your ₹50 Bonus  <i class="fas fa-clock"></i> Offer expires in: <span class="highlight">23:59:59</span>
+            </a>
+        </div> 
     </div>
-
+    
     <script>
-        // Add download button functionality
-        document.querySelectorAll('.rummy-download-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const appName = this.closest('.rummy-app-card').querySelector('.rummy-app-name').textContent;
-                const originalText = this.innerHTML;
-                
-                // Show loading state
-                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
-                this.disabled = true;
-                
-                // Simulate download process
-                setTimeout(() => {
-                    // Show success state
-                    this.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
-                    this.style.background = 'linear-gradient(to right, #28a745, #218838)';
-                    
-                    // Reset after 2 seconds
-                    setTimeout(() => {
-                        this.innerHTML = originalText;
-                        this.disabled = false;
-                        this.style.background = 'linear-gradient(to right, #1a2a6c, #b21f1f)';
-                    }, 2000);
-                }, 1500);
-                
-                // Notify user
-                alert(`Starting download for ${appName}`);
-            });
-        });
+        // Timer countdown for the offer
+        function updateTimer() {
+            const timerElement = document.querySelector('.timer .highlight');
+            const now = new Date();
+            const endOfDay = new Date();
+            endOfDay.setHours(23, 59, 59, 999);
+            
+            const diff = endOfDay - now;
+            
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            timerElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        // Update timer every second
+        setInterval(updateTimer, 1000);
+        updateTimer();
+        
+        // Animation for the bonus amount
+        const bonusAmount = document.querySelector('.bonus-amount');
+        setInterval(() => {
+            bonusAmount.style.textShadow = '0 0 20px rgba(255, 215, 0, 0.7)';
+            setTimeout(() => {
+                bonusAmount.style.textShadow = '0 0 15px rgba(255, 215, 0, 0.4)';
+            }, 500);
+        }, 2000);
     </script>
 </body>
 </html>

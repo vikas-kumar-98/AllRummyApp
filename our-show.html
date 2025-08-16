@@ -2082,6 +2082,117 @@
     padding: 10px;
     margin-bottom: 5px;
 }
+
+
+
+
+        .offer-card {
+            background: rgba(16, 143, 241, 0.1);
+            border-radius: 20px;
+            padding: 0px;
+            max-width: 700px;
+            margin: 0 auto;
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        
+        .bonus-amount {
+            font-size: 4.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #ffd700, #ff9800);
+            -webkit-background-clip: text;
+            width: 100%;
+            -webkit-text-fill-color: transparent;
+            margin: 1px 0;
+        }
+        
+
+        
+        .telegram-button {
+            color: white;
+            width: 100%;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 2px 5px;
+            border-radius: 40px;
+            text-decoration: none;
+            margin: 3px 0;
+            box-shadow: 0 3px 5px rgba(0, 136, 204, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .telegram-button i {
+            margin-right: 15px;
+            font-size: 1.4rem;
+            vertical-align: middle;
+        }
+        
+        .telegram-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 136, 204, 0.7);
+        }
+        
+        .telegram-button:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 1px rgba(0, 136, 204, 0.5);
+        }
+        
+        .telegram-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(182, 24, 24, 0.9), transparent);
+            transition: 0.5s;
+        }
+        
+        .telegram-button:hover::before {
+            left: 100%;
+        }
+                        
+        .timer {
+            font-size: 1.2rem;
+            margin: 0;
+            padding: 5px 15px;
+            background: rgba(19, 125, 225, 0.9);
+            
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+
+            .telegram-button {
+                font-size: 1rem;
+                padding: 1px 5px;
+            }
+            
+            .offer-card {
+                padding: 3px 2px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            
+            .telegram-button {
+                font-size: .8rem;
+                padding: 7px 12px;
+                margin: 0;
+            }
+            
+
+        }
     </style>
 </head>
 <body>
@@ -2148,7 +2259,26 @@
     <div class="content-container" style="margin-top: 50px;">
        <img src="img/gamer.webp" style="width: 100%;height: auto;" alt="Description">
     </div>
+    
+        <div class="offer-card">
+            <a href="https://telegram.org" target="_blank" class="telegram-button timer">
+                <i class="fab fa-telegram"></i>Join Us to Get Your ₹50 Bonus 
+            </a>
+        </div> 
+    
+    
+    <script>
 
+        
+        // Animation for the bonus amount
+        const bonusAmount = document.querySelector('.bonus-amount');
+        setInterval(() => {
+            bonusAmount.style.textShadow = '0 0 20px rgba(255, 215, 0, 0.7)';
+            setTimeout(() => {
+                bonusAmount.style.textShadow = '0 0 15px rgba(255, 215, 0, 0.4)';
+            }, 500);
+        }, 2000);
+    </script>
     <!--Game app list -->
     <div class="container-fluid py-4">
 
