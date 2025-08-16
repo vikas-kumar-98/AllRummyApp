@@ -1656,12 +1656,11 @@
             justify-content: center;
             gap: 15px;
             margin-bottom: 15px;
-        }
-        
+        }        
 
         
         .rummy-title {
-            font-size: 2.8rem;
+            font-size: 2.8rem; 
             background: linear-gradient(to right, #FFD700, #FFA500);
             -webkit-background-clip: text;
             background-clip: text;
@@ -2028,7 +2027,7 @@
     <header>
         <nav class="navbar">
             <a href="#" class="logo">
-                <img src="img/rummy.png" style="width: 35px;height: auto; border-radius: 10px;" alt="">
+                <img src="https://cdn-icons-png.flaticon.com/512/326/326909.png" alt="Rummy Logo">
                 <span>AllGamingApps</span>
             </a>
             <ul class="nav-links">
@@ -2039,37 +2038,30 @@
                         <a href="new-game.html"> <i class="fas fa-crown"></i> Point Rummy</a>
                         <a href="new-game.html"><i class="fas fa-crown"></i> Pool Rummy</a>
                         <a href="new-game.html"><i class="fas fa-crown"></i> Deal Rummy</a>
-                        <a href="new-game.html"><i class="fas fa-crown"></i>21 cards Rummy</a>
-
+                        <a href="new-game.html"><i class="fas fa-crown"></i> 21 Cards Rummy</a>
                     </div>
                 </li>
-               
                 <li class="dropdown">
                     <a href="rummy-tutorial.html"><i class="fas fa-learn"></i> Learn <i class="fas fa-caret-down"></i></a>
                     <div class="dropdown-content">
-                        <a href="rummy-rulers.html"><i class="fas fa-shield-alt"></i>How to play</a>
-                        <a href="rummy-tutorial.html"><i class="fas fa-video"></i>Video</a>
-
-
+                        <a href="rummy-rulers.html"><i class="fas fa-shield-alt"></i> How to Play</a>
+                        <a href="rummy-tutorial.html"><i class="fas fa-video"></i> Video Tutorial</a>
                     </div>
                 </li>
-
-                 <li class="dropdown">
-                    <a href="#"><i class="fas fa-learn"></i> Pages <i class="fas fa-caret-down"></i></a>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-layer-group"></i> Pages <i class="fas fa-caret-down"></i></a>
                     <div class="dropdown-content">
-                        <a href="about-us.html"><i class="fas fa-shield-alt"></i>About Us</a>
-                        <a href="contact-us.html"><i class="fas fa-hat-wizard"></i>Contact Us</a>
-                        <a href="privecy-policy.html"><i class="fas fa-puzzle-piece"></i>Our privecy-policy</a>
-
+                        <a href="about-us.html"><i class="fas fa-info-circle"></i> About Us</a>
+                        <a href="contact-us.html"><i class="fas fa-envelope"></i> Contact Us</a>
+                        <a href="privecy-policy.html"><i class="fas fa-lock"></i> Privacy Policy</a>
                     </div>
                 </li>
-
                 <li><a href="promotions.html"><i class="fas fa-shopping-bag"></i> Promotions</a></li>
                 <li><a href="contact-us.html"><i class="fas fa-headset"></i> Support</a></li>
             </ul>
 
             <button class="hamburgerL">
-                <img src="img/joinus.webp" alt="">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" style="width: 40px;height: auto;" alt="Join Us">
             </button>
 
             <button class="hamburger">
@@ -2079,6 +2071,50 @@
             </button>
         </nav>
     </header>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            
+            <li class="mobile-dropdown">
+                <a href="javascript:void(0)" onclick="toggleMobileDropdown('games')">
+                    <i class="fas fa-dice"></i> Games <i class="fas fa-caret-down"></i>
+                </a>
+                <div class="mobile-dropdown-content" id="games">
+                    <a href="new-game.html"><i class="fas fa-crown"></i> Point Rummy</a>
+                    <a href="new-game.html"><i class="fas fa-crown"></i> Pool Rummy</a>
+                    <a href="new-game.html"><i class="fas fa-crown"></i> Deal Rummy</a>
+                    <a href="new-game.html"><i class="fas fa-crown"></i> 21 Cards Rummy</a>
+                </div>
+            </li>
+            
+            <li class="mobile-dropdown">
+                <a href="javascript:void(0)" onclick="toggleMobileDropdown('learn')">
+                    <i class="fas fa-learn"></i> Learn <i class="fas fa-caret-down"></i>
+                </a>
+                <div class="mobile-dropdown-content" id="learn">
+                    <a href="rummy-rulers.html"><i class="fas fa-shield-alt"></i> How to Play</a>
+                    <a href="rummy-tutorial.html"><i class="fas fa-video"></i> Video Tutorial</a>
+                </div>
+            </li>
+            
+            <li class="mobile-dropdown">
+                <a href="javascript:void(0)" onclick="toggleMobileDropdown('pages')">
+                    <i class="fas fa-layer-group"></i> Pages <i class="fas fa-caret-down"></i>
+                </a>
+                <div class="mobile-dropdown-content" id="pages">
+                    <a href="about-us.html"><i class="fas fa-info-circle"></i> About Us</a>
+                    <a href="contact-us.html"><i class="fas fa-envelope"></i> Contact Us</a>
+                    <a href="privecy-policy.html"><i class="fas fa-lock"></i> Privacy Policy</a>
+                </div>
+            </li>
+            
+            <li><a href="promotions.html"><i class="fas fa-shopping-bag"></i> Promotions</a></li>
+            <li><a href="contact-us.html"><i class="fas fa-headset"></i> Support</a></li>
+        </ul>
+    </div>
+    
 
     
     <!-- Main Content (Placeholder) -->

@@ -3,176 +3,822 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegram Bonus Offer</title>
+    <title>CardMaster | Premium Online Gaming</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
+        /* Reset & Base Styles */
+        .card-master-reset {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+        /* Color Variables */
+        :root {
+            --card-master-primary: #4a148c;
+            --card-master-secondary: #7b1fa2;
+            --card-master-accent: #e91e63;
+            --card-master-light: #f3e5f5;
+            --card-master-dark: #12005e;
+            --card-master-text: #f5f5f5;
+            --card-master-card-bg: rgba(26, 26, 46, 0.7);
+            --card-master-header-height: 70px;
+        }
+        
+        .card-master-body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: var(--card-master-text);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            color: white;
+            padding-top: var(--card-master-header-height);
+            background-attachment: fixed;
+            line-height: 1.6;
         }
         
-        .container {
+        /* Header Styles */
+        .card-master-header {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            text-align: center;
-        }
-
-        .offer-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 2px solid rgba(255, 255, 255, 0.15);
+            z-index: 1000;
+            background: rgba(26, 26, 46, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid rgba(123, 31, 162, 0.3);
+            height: var(--card-master-header-height);
         }
         
-        .bonus-amount {
-            font-size: 4.5rem;
-            font-weight: 800;
-            background: linear-gradient(to right, #ffd700, #ff9800);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-            margin: 20px 0;
+        .card-master-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            height: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
         }
         
-
-        
-        .telegram-button {
-            display: inline-block;
-            background: linear-gradient(to right, #0088cc, #00a8ff);
-            color: white;
-            font-size: 1.8rem;
-            font-weight: 700;
-            padding: 20px 50px;
-            border-radius: 60px;
+        .card-master-logo {
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            margin: 30px 0;
-            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.5);
+            color: var(--card-master-text);
+            font-size: 1.4rem;
+            font-weight: 700;
+            gap: 12px;
+        }
+        
+        .card-master-logo img {
+            width: 35px;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .card-master-logo:hover img {
+            transform: rotate(15deg);
+        }
+        
+        .card-master-nav-links {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+        
+        .card-master-nav-links li a {
+            color: var(--card-master-text);
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
+            font-size: 0.95rem;
+        }
+        
+        .card-master-nav-links li a:hover {
+            background: rgba(123, 31, 162, 0.2);
+        }
+        
+        .card-master-dropdown {
+            position: relative;
+        }
+        
+        .card-master-dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(26, 26, 46, 0.95);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            padding: 10px 0;
+            z-index: 1;
+            top: 100%;
+            left: 0;
+            border: 1px solid rgba(123, 31, 162, 0.3);
+        }
+        
+        .card-master-dropdown-content a {
+            padding: 10px 15px;
+            display: block;
+            text-decoration: none;
+            color: var(--card-master-text);
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+        
+        .card-master-dropdown-content a:hover {
+            background: rgba(123, 31, 162, 0.3);
+            padding-left: 20px;
+        }
+        
+        .card-master-dropdown:hover .card-master-dropdown-content {
+            display: block;
+        }
+        
+        .card-master-hamburger, .card-master-hamburgerL {
+            display: none;
+            background: transparent;
             border: none;
             cursor: pointer;
+            padding: 5px;
         }
         
-        .telegram-button i {
-            margin-right: 15px;
-            font-size: 2.2rem;
-            vertical-align: middle;
+        .card-master-hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--card-master-accent);
+            margin: 5px 0;
+            border-radius: 3px;
+            transition: all 0.3s ease;
         }
         
-        .telegram-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 136, 204, 0.7);
-        }
-        
-        .telegram-button:active {
-            transform: translateY(0);
-            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.5);
-        }
-        
-        .telegram-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+        /* Mobile Menu Styles */
+        .card-master-mobile-menu {
+            display: none;
+            position: fixed;
+            top: var(--card-master-header-height);
+            left: 0;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
+            height: calc(100vh - var(--card-master-header-height));
+            background: rgba(26, 26, 46, 0.98);
+            z-index: 999;
+            overflow-y: auto;
+            padding: 20px;
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: all 0.4s ease;
         }
         
-        .telegram-button:hover::before {
-            left: 100%;
-        }
-                        
-        .timer {
-            font-size: 1.5rem;
-            margin: 30px 0;
-            padding: 15px 30px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            display: inline-block;
+        .card-master-mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
         }
         
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-
-            .telegram-button {
-                font-size: 1.4rem;
-                padding: 18px 35px;
+        .card-master-mobile-links {
+            list-style: none;
+        }
+        
+        .card-master-mobile-links li {
+            margin-bottom: 15px;
+        }
+        
+        .card-master-mobile-links li a {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: rgba(123, 31, 162, 0.2);
+            border-radius: 8px;
+            color: var(--card-master-text);
+            text-decoration: none;
+            font-size: 1.1rem;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .card-master-mobile-links li a:hover {
+            background: rgba(123, 31, 162, 0.4);
+        }
+        
+        .card-master-mobile-dropdown-content {
+            display: none;
+            padding-left: 20px;
+            margin-top: 10px;
+            border-left: 2px solid var(--card-master-accent);
+        }
+        
+        .card-master-mobile-dropdown-content a {
+            background: rgba(74, 20, 140, 0.2);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        
+        .card-master-mobile-dropdown.active .card-master-mobile-dropdown-content {
+            display: block;
+        }
+        
+        /* Hero Section */
+        .card-master-hero {
+            text-align: center;
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .card-master-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #e91e63, #7b1fa2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-master-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #bbb;
+            line-height: 1.7;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .card-master-nav-links {
+                gap: 8px;
             }
             
-            .offer-card {
-                padding: 30px 20px;
+            .card-master-nav-links li a {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .card-master-nav-links {
+                display: none;
+            }
+            
+            .card-master-hamburger, .card-master-hamburgerL {
+                display: block;
+            }
+            
+            .card-master-mobile-menu {
+                display: block;
+            }
+            
+            .card-master-hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .card-master-hero {
+                padding: 40px 20px;
+            }
+            
+            .card-master-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .card-master-hero p {
+                font-size: 1.1rem;
             }
         }
         
         @media (max-width: 480px) {
-            
-            .telegram-button {
-                font-size: 1.2rem;
-                padding: 15px 25px;
+            .card-master-navbar {
+                padding: 0 15px;
             }
             
-
+            .card-master-logo span {
+                font-size: 1.2rem;
+            }
+            
+            .card-master-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .card-master-hero p {
+                font-size: 1rem;
+            }
+            
+            .card-master-hamburgerL {
+                display: none;
+            }
+        }
+        
+        /* Content Styles */
+        .card-master-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .card-master-section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        .card-master-section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--card-master-accent), var(--card-master-secondary));
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        
+        .card-master-games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .card-master-game-card {
+            background: var(--card-master-card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(123, 31, 162, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-master-game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(123, 31, 162, 0.5);
+        }
+        
+        .card-master-game-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .card-master-game-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-master-game-info h3 {
+            margin-bottom: 12px;
+            color: var(--card-master-accent);
+        }
+        
+        .card-master-game-info p {
+            color: #bbb;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+        
+        .card-master-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--card-master-accent), var(--card-master-secondary));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .card-master-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+        }
+        
+        .card-master-btn-block {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        /* How to Play Section */
+        .card-master-rules-container {
+            background: var(--card-master-card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(123, 31, 162, 0.3);
+        }
+        
+        .card-master-rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .card-master-rule-card {
+            background: rgba(74, 20, 140, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        /* Promotions Section */
+        .card-master-promotions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .card-master-promo-card {
+            background: var(--card-master-card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(123, 31, 162, 0.3);
+        }
+        
+        .card-master-promo-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .card-master-promo-content {
+            padding: 20px;
+        }
+        
+        /* Footer */
+        .card-master-footer {
+            background: rgba(10, 10, 20, 0.9);
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .card-master-footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .card-master-footer-column h3 {
+            color: var(--card-master-accent);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .card-master-footer-links {
+            list-style: none;
+        }
+        
+        .card-master-footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .card-master-footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card-master-footer-links a:hover {
+            color: var(--card-master-accent);
+        }
+        
+        .card-master-copyright {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        /* Animation */
+        @keyframes cardMasterPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .card-master-pulse {
+            animation: cardMasterPulse 2s infinite;
+        }
+        
+        /* Fix for Font Awesome icons */
+        .fas.fa-learn:before {
+            content: "\f518"; /* graduation cap */
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="offer-card">
-            <a href="https://telegram.org" target="_blank" class="telegram-button timer">
-                <i class="fab fa-telegram"></i>Join Us to Get Your ₹50 Bonus  <i class="fas fa-clock"></i> Offer expires in: <span class="highlight">23:59:59</span>
+<body class="card-master-reset card-master-body">
+    <!-- Header & Navigation -->
+    <header class="card-master-header">
+        <nav class="card-master-navbar">
+            <a href="#" class="card-master-logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/326/326909.png" alt="Rummy Logo">
+                <span>CardMaster</span>
             </a>
-        </div> 
+            <ul class="card-master-nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li class="card-master-dropdown">
+                    <a href="game.html"><i class="fas fa-dice"></i> Games <i class="fas fa-caret-down"></i></a>
+                    <div class="card-master-dropdown-content">
+                        <a href="new-game.html"> <i class="fas fa-crown"></i> Point Rummy</a>
+                        <a href="new-game.html"><i class="fas fa-crown"></i> Pool Rummy</a>
+                        <a href="new-game.html"><i class="fas fa-crown"></i> Deal Rummy</a>
+                        <a href="new-game.html"><i class="fas fa-crown"></i> 21 Cards Rummy</a>
+                    </div>
+                </li>
+                <li class="card-master-dropdown">
+                    <a href="rummy-tutorial.html"><i class="fas fa-learn"></i> Learn <i class="fas fa-caret-down"></i></a>
+                    <div class="card-master-dropdown-content">
+                        <a href="rummy-rulers.html"><i class="fas fa-shield-alt"></i> How to Play</a>
+                        <a href="rummy-tutorial.html"><i class="fas fa-video"></i> Video Tutorial</a>
+                    </div>
+                </li>
+                <li class="card-master-dropdown">
+                    <a href="#"><i class="fas fa-layer-group"></i> Pages <i class="fas fa-caret-down"></i></a>
+                    <div class="card-master-dropdown-content">
+                        <a href="about-us.html"><i class="fas fa-info-circle"></i> About Us</a>
+                        <a href="contact-us.html"><i class="fas fa-envelope"></i> Contact Us</a>
+                        <a href="privecy-policy.html"><i class="fas fa-lock"></i> Privacy Policy</a>
+                    </div>
+                </li>
+                <li><a href="promotions.html"><i class="fas fa-shopping-bag"></i> Promotions</a></li>
+                <li><a href="contact-us.html"><i class="fas fa-headset"></i> Support</a></li>
+            </ul>
+
+            <button class="card-master-hamburgerL card-master-hamburger">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Join Us">
+            </button>
+
+            <button class="card-master-hamburger" id="cardMasterHamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div class="card-master-mobile-menu" id="cardMasterMobileMenu">
+        <ul class="card-master-mobile-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            
+            <li class="card-master-mobile-dropdown">
+                <a href="javascript:void(0)" onclick="cardMasterToggleMobileDropdown('games')">
+                    <i class="fas fa-dice"></i> Games <i class="fas fa-caret-down"></i>
+                </a>
+                <div class="card-master-mobile-dropdown-content" id="games">
+                    <a href="new-game.html"><i class="fas fa-crown"></i> Point Rummy</a>
+                    <a href="new-game.html"><i class="fas fa-crown"></i> Pool Rummy</a>
+                    <a href="new-game.html"><i class="fas fa-crown"></i> Deal Rummy</a>
+                    <a href="new-game.html"><i class="fas fa-crown"></i> 21 Cards Rummy</a>
+                </div>
+            </li>
+            
+            <li class="card-master-mobile-dropdown">
+                <a href="javascript:void(0)" onclick="cardMasterToggleMobileDropdown('learn')">
+                    <i class="fas fa-learn"></i> Learn <i class="fas fa-caret-down"></i>
+                </a>
+                <div class="card-master-mobile-dropdown-content" id="learn">
+                    <a href="rummy-rulers.html"><i class="fas fa-shield-alt"></i> How to Play</a>
+                    <a href="rummy-tutorial.html"><i class="fas fa-video"></i> Video Tutorial</a>
+                </div>
+            </li>
+            
+            <li class="card-master-mobile-dropdown">
+                <a href="javascript:void(0)" onclick="cardMasterToggleMobileDropdown('pages')">
+                    <i class="fas fa-layer-group"></i> Pages <i class="fas fa-caret-down"></i>
+                </a>
+                <div class="card-master-mobile-dropdown-content" id="pages">
+                    <a href="about-us.html"><i class="fas fa-info-circle"></i> About Us</a>
+                    <a href="contact-us.html"><i class="fas fa-envelope"></i> Contact Us</a>
+                    <a href="privecy-policy.html"><i class="fas fa-lock"></i> Privacy Policy</a>
+                </div>
+            </li>
+            
+            <li><a href="promotions.html"><i class="fas fa-shopping-bag"></i> Promotions</a></li>
+            <li><a href="contact-us.html"><i class="fas fa-headset"></i> Support</a></li>
+        </ul>
     </div>
     
+    <!-- Hero Section -->
+    <section class="card-master-hero">
+        <h1>Ultimate Card Gaming Experience</h1>
+        <p>Play your favorite card games anytime, anywhere. Enjoy seamless gameplay, stunning graphics, and exciting tournaments with players from around the world.</p>
+        <a href="game.html" class="card-master-btn card-master-pulse">Play Now</a>
+    </section>
+    
+    <!-- Games Section -->
+    <section class="card-master-content">
+        <h2 class="card-master-section-title">Popular Games</h2>
+        <div class="card-master-games-grid">
+            <div class="card-master-game-card">
+                <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd08?auto=format&fit=crop&w=600" alt="Point Rummy">
+                <div class="card-master-game-info">
+                    <h3>Point Rummy</h3>
+                    <p>Fast-paced rummy variant where each point has a pre-decided value. Play for quick wins!</p>
+                    <a href="new-game.html" class="card-master-btn card-master-btn-block">Play Now</a>
+                </div>
+            </div>
+            
+            <div class="card-master-game-card">
+                <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=600" alt="Pool Rummy">
+                <div class="card-master-game-info">
+                    <h3>Pool Rummy</h3>
+                    <p>Compete against players in a pool format. Last player standing wins the prize pool!</p>
+                    <a href="new-game.html" class="card-master-btn card-master-btn-block">Play Now</a>
+                </div>
+            </div>
+            
+            <div class="card-master-game-card">
+                <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf968a92?auto=format&fit=crop&w=600" alt="Deal Rummy">
+                <div class="card-master-game-info">
+                    <h3>Deal Rummy</h3>
+                    <p>Fixed number of deals where the player with the highest score wins the game.</p>
+                    <a href="new-game.html" class="card-master-btn card-master-btn-block">Play Now</a>
+                </div>
+            </div>
+            
+            <div class="card-master-game-card">
+                <img src="https://images.unsplash.com/photo-1511882150382-421056c89033?auto=format&fit=crop&w=600" alt="21 Cards Rummy">
+                <div class="card-master-game-info">
+                    <h3>21 Cards Rummy</h3>
+                    <p>Advanced rummy variant with 21 cards. More cards, more combinations, more fun!</p>
+                    <a href="new-game.html" class="card-master-btn card-master-btn-block">Play Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How to Play Section -->
+    <section class="card-master-content">
+        <h2 class="card-master-section-title">How to Play Rummy</h2>
+        <div class="card-master-rules-container">
+            <h3 style="margin-bottom: 20px; color: #e91e63;">Basic Rules</h3>
+            <p style="margin-bottom: 20px;">
+                Rummy is a card game where the objective is to form valid sets and sequences. A valid declaration must include at least two sequences, one of which must be a pure sequence (without a joker).
+            </p>
+            <div class="card-master-rules-grid">
+                <div class="card-master-rule-card">
+                    <h4 style="color: #7b1fa2; margin-bottom: 10px;"><i class="fas fa-check-circle"></i> Pure Sequence</h4>
+                    <p>A consecutive sequence of 3 or more cards of the same suit without any joker.</p>
+                </div>
+                <div class="card-master-rule-card">
+                    <h4 style="color: #7b1fa2; margin-bottom: 10px;"><i class="fas fa-check-circle"></i> Impure Sequence</h4>
+                    <p>A consecutive sequence of 3 or more cards of the same suit with jokers.</p>
+                </div>
+                <div class="card-master-rule-card">
+                    <h4 style="color: #7b1fa2; margin-bottom: 10px;"><i class="fas fa-check-circle"></i> Sets</h4>
+                    <p>3 or 4 cards of the same rank but different suits.</p>
+                </div>
+            </div>
+            <a href="rummy-rulers.html" class="card-master-btn" style="margin-top: 30px;">Learn More</a>
+        </div>
+    </section>
+    
+    <!-- Promotions Section -->
+    <section class="card-master-content">
+        <h2 class="card-master-section-title">Special Promotions</h2>
+        <div class="card-master-promotions">
+            <div class="card-master-promo-card">
+                <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&w=600" alt="Welcome Bonus">
+                <div class="card-master-promo-content">
+                    <h3>Welcome Bonus</h3>
+                    <p>Get ₹200 bonus on your first deposit! Use code: WELCOME200</p>
+                    <a href="promotions.html" class="card-master-btn">Claim Now</a>
+                </div>
+            </div>
+            
+            <div class="card-master-promo-card">
+                <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=600" alt="Weekly Tournament">
+                <div class="card-master-promo-content">
+                    <h3>Weekly Tournament</h3>
+                    <p>Join our weekly tournament with ₹50,000 prize pool. Every Friday at 8 PM.</p>
+                    <a href="promotions.html" class="card-master-btn">Join Now</a>
+                </div>
+            </div>
+            
+            <div class="card-master-promo-card">
+                <img src="https://images.unsplash.com/photo-1550461716-dbf266b2a8a7?auto=format&fit=crop&w=600" alt="Referral Program">
+                <div class="card-master-promo-content">
+                    <h3>Refer & Earn</h3>
+                    <p>Refer a friend and earn ₹100 for each successful referral.</p>
+                    <a href="promotions.html" class="card-master-btn">Refer Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="card-master-footer">
+        <div class="card-master-footer-content">
+            <div class="card-master-footer-column">
+                <h3>CardMaster</h3>
+                <p>Your ultimate destination for online card games. Play, compete, and win real cash prizes!</p>
+            </div>
+            
+            <div class="card-master-footer-column">
+                <h3>Quick Links</h3>
+                <ul class="card-master-footer-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="game.html"><i class="fas fa-dice"></i> Games</a></li>
+                    <li><a href="promotions.html"><i class="fas fa-gift"></i> Promotions</a></li>
+                    <li><a href="about-us.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="card-master-footer-column">
+                <h3>Legal</h3>
+                <ul class="card-master-footer-links">
+                    <li><a href="privecy-policy.html"><i class="fas fa-lock"></i> Privacy Policy</a></li>
+                    <li><a href="terms.html"><i class="fas fa-file-alt"></i> Terms of Service</a></li>
+                    <li><a href="responsible-gaming.html"><i class="fas fa-shield-alt"></i> Responsible Gaming</a></li>
+                </ul>
+            </div>
+            
+            <div class="card-master-footer-column">
+                <h3>Support</h3>
+                <ul class="card-master-footer-links">
+                    <li><a href="contact-us.html"><i class="fas fa-headset"></i> Contact Us</a></li>
+                    <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                    <li><a href="help.html"><i class="fas fa-life-ring"></i> Help Center</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card-master-copyright">
+            &copy; 2023 CardMaster Gaming. All rights reserved.
+        </div>
+    </footer>
+    
     <script>
-        // Timer countdown for the offer
-        function updateTimer() {
-            const timerElement = document.querySelector('.timer .highlight');
-            const now = new Date();
-            const endOfDay = new Date();
-            endOfDay.setHours(23, 59, 59, 999);
+        // Mobile menu toggle
+        const cardMasterHamburger = document.getElementById('cardMasterHamburger');
+        const cardMasterMobileMenu = document.getElementById('cardMasterMobileMenu');
+        
+        cardMasterHamburger.addEventListener('click', function() {
+            cardMasterMobileMenu.classList.toggle('active');
+            cardMasterHamburger.classList.toggle('active');
+        });
+        
+        // Mobile dropdown toggle
+        function cardMasterToggleMobileDropdown(id) {
+            const dropdown = document.getElementById(id);
+            const parent = dropdown.parentElement;
             
-            const diff = endOfDay - now;
-            
-            const hours = Math.floor(diff / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-            
-            timerElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            if (dropdown.style.display === 'block') {
+                dropdown.style.display = 'none';
+                parent.classList.remove('active');
+            } else {
+                dropdown.style.display = 'block';
+                parent.classList.add('active');
+            }
         }
         
-        // Update timer every second
-        setInterval(updateTimer, 1000);
-        updateTimer();
+        // Close mobile menu when clicking a link
+        const cardMasterMobileLinks = document.querySelectorAll('.card-master-mobile-links a');
+        cardMasterMobileLinks.forEach(link => {
+            if (!link.getAttribute('href') || link.getAttribute('href') !== 'javascript:void(0)') {
+                link.addEventListener('click', function() {
+                    cardMasterMobileMenu.classList.remove('active');
+                    cardMasterHamburger.classList.remove('active');
+                    
+                    // Close all dropdowns
+                    document.querySelectorAll('.card-master-mobile-dropdown-content').forEach(dropdown => {
+                        dropdown.style.display = 'none';
+                    });
+                    document.querySelectorAll('.card-master-mobile-dropdown').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                });
+            }
+        });
         
-        // Animation for the bonus amount
-        const bonusAmount = document.querySelector('.bonus-amount');
-        setInterval(() => {
-            bonusAmount.style.textShadow = '0 0 20px rgba(255, 215, 0, 0.7)';
-            setTimeout(() => {
-                bonusAmount.style.textShadow = '0 0 15px rgba(255, 215, 0, 0.4)';
-            }, 500);
-        }, 2000);
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.card-master-dropdown') && !event.target.closest('.card-master-mobile-dropdown')) {
+                document.querySelectorAll('.card-master-dropdown-content').forEach(dropdown => {
+                    dropdown.style.display = 'none';
+                });
+            }
+        });
     </script>
 </body>
 </html>
