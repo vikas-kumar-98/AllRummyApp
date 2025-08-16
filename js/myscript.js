@@ -1,14 +1,14 @@
-       // Mobile Menu Toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        const dropdowns = document.querySelectorAll('.dropdown');
+        // Mobile Menu Toggle
+        const gamingMobileToggle = document.getElementById('gaming-mobile-toggle');
+        const gamingNavMenu = document.getElementById('gaming-nav-menu');
+        const gamingDropdowns = document.querySelectorAll('.gaming-dropdown');
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
+        gamingMobileToggle.addEventListener('click', () => {
+            gamingMobileToggle.classList.toggle('active');
+            gamingNavMenu.classList.toggle('active');
             
             // Prevent body scroll when menu is open
-            if (navLinks.classList.contains('active')) {
+            if (gamingNavMenu.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
             } else {
                 document.body.style.overflow = 'auto';
@@ -16,9 +16,11 @@
         });
 
         // Mobile Dropdown Toggle
-        dropdowns.forEach(dropdown => {
-            dropdown.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768) {
+        gamingDropdowns.forEach(dropdown => {
+            const dropdownLink = dropdown.querySelector('a');
+            
+            dropdownLink.addEventListener('click', (e) => {
+                if (window.innerWidth <= 992) {
                     e.preventDefault();
                     dropdown.classList.toggle('active');
                 }
@@ -27,80 +29,50 @@
 
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768 && navLinks.classList.contains('active') && 
-                !e.target.closest('.nav-links') && !e.target.closest('.hamburger')) {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
+            if (window.innerWidth <= 992 && gamingNavMenu.classList.contains('active') && 
+                !e.target.closest('#gaming-nav-menu') && 
+                !e.target.closest('#gaming-mobile-toggle') && 
+                !e.target.closest('#gaming-join-button')) {
+                
+                gamingMobileToggle.classList.remove('active');
+                gamingNavMenu.classList.remove('active');
                 document.body.style.overflow = 'auto';
-                dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
+                
+                gamingDropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
             }
         });
 
-        // Animation on scroll
+        // Close menu when clicking on a link
+        document.querySelectorAll('.gaming-nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 992 && !link.querySelector('.fa-caret-down')) {
+                    gamingMobileToggle.classList.remove('active');
+                    gamingNavMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Animation on scroll for cards
         document.addEventListener('DOMContentLoaded', () => {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.animation = `fadeIn 0.8s ease forwards`;
+                        entry.target.style.animation = `fadeIn 5s ease forwards`;
                     }
                 });
             }, { threshold: 0.1 });
 
-            document.querySelectorAll('.game-card, .stat-card').forEach((card, index) => {
+            document.querySelectorAll('.gaming-card').forEach(card => {
                 card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.animationDelay = `${index * 0.2}s`;
                 observer.observe(card);
             });
         });
 
 
-
-
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
-        
-        // Dropdown Menu Toggle for Mobile
-        const navItems = document.querySelectorAll('.nav-item');
-        
-        navItems.forEach(item => {
-            const link = item.querySelector('.nav-link');
-            
-            if (link && (item.querySelector('.dropdown-menu') || item.querySelector('.mega-menu'))) {
-                link.addEventListener('click', (e) => {
-                    if (window.innerWidth <= 992) {
-                        e.preventDefault();
-                        const dropdown = item.querySelector('.dropdown-menu') || item.querySelector('.mega-menu');
-                        dropdown.classList.toggle('active');
-                        
-                        const icon = link.querySelector('i');
-                        if (icon) {
-                            icon.style.transform = dropdown.classList.contains('active') 
-                                ? 'rotate(180deg)' 
-                                : 'rotate(0deg)';
-                        }
-                    }
-                });
-            }
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && e.target !== mobileMenuBtn) {
-                navMenu.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-        });
-  
-
+        //End fo navigation......
 //    <!--sercvh box scrit-->..........................
 
         document.addEventListener('DOMContentLoaded', function() {
