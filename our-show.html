@@ -1087,7 +1087,7 @@
 
 
         .tab-container {
-            max-width: 1200px;
+            max-width: 700px;
             margin: 0 auto 1rem;
             position: relative;
             padding:0;
@@ -1145,7 +1145,7 @@
         }
 
         .content-container {
-            max-width: 1200px;
+            max-width: 700px;
             margin: 0 auto;
             padding: 0 .1rem;
             position: relative;
@@ -2028,6 +2028,60 @@
             50% { transform: translateY(-15px); }
             100% { transform: translateY(0px); }
         }
+
+
+        .responsive-image-container {
+  /* Container takes full viewport width */
+  width: 70vw;
+  margin-left: 0 auto; /* Centers container */
+  
+  /* Responsive height (adjust ratio as needed) */
+  height: 56.25vw; /* 16:9 aspect ratio (9/16 = 0.5625) */
+  max-height: 80vh; /* Prevents excessive height on large screens */
+  
+  /* Center content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Overflow control */
+  overflow: hidden;
+}
+
+.responsive-image-container img {
+  /* Ensure image covers container while maintaining aspect ratio */
+  width: 200px;
+  height: auto;
+   /* or 'contain' for full visibility */
+  
+  /* Smooth scaling */
+  min-height: 100%;
+  min-width: 100%;
+}
+
+/* Media Queries for Mobile & Tablet Adjustments */
+@media (max-width: 1024px) { /* Tablet */
+  .responsive-image-container {
+    height: 50vw; /* Adjust aspect ratio for tablets */
+  }
+}
+
+@media (max-width: 768px) { /* Mobile */
+  .responsive-image-container {
+    height: 100vw; /* Square (1:1) or adjust as needed */
+    max-height: 50vh; /* Limit height on mobile */
+  }
+}
+
+.titler{
+    font-size: 22px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color:#cd0f0f;
+    border-bottom: 1px solid #cd0f0f;
+    padding: 10px;
+    margin-bottom: 5px;
+}
     </style>
 </head>
 <body>
@@ -2089,13 +2143,18 @@
 
     
     <!-- Main Content (Placeholder) -->
-    <main style="padding: .3rem; flex: 1;">
+    <main style="padding: .1rem; flex: 1;">
  
-    
+    <div class="content-container" style="margin-top: 50px;">
+       <img src="img/gamer.webp" style="width: 100%;height: auto;" alt="Description">
+    </div>
 
     <!--Game app list -->
     <div class="container-fluid py-4">
+
         <div class="tab-container p-0">
+                            <h2 class="titler"><i class="fas fa-film"></i> More related Rummy</h2>
+
             <div class="tab-scroll">
                 <div class="tab-nav">
                     <button class="tab-btn active" data-tab="content1">Bonus 41</button>
