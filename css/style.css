@@ -118,7 +118,7 @@
             backdrop-filter: blur(10px);
             border-radius: 8px;
             box-shadow: var(--shadow);
-            width: 200px;
+            width: 210px;
             padding: 1rem 0;
             opacity: 0;
             visibility: hidden;
@@ -143,9 +143,9 @@
         }
 
         .gaming-dropdown-content a:hover {
-            background: rgba(255, 60, 120, 0.65);
+            background: rgba(19, 19, 19, 0.65);
             color: var(--accent);
-            padding-left: 1.8rem;
+            padding-left: .6rem;
         }
 
         .gaming-dropdown-content a i {
@@ -250,6 +250,13 @@
                 padding: 5px 0;
                 font-size: 1.2rem;
                 justify-content: left;
+            }
+
+             .icon-test {
+                padding: 5px 0;
+                font-size: 1.2rem;
+                justify-content: left;
+                margin-top: 5px;
             }
 
             #gaming-mobile-toggle {

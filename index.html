@@ -253,9 +253,10 @@
         
         /* Stats Section */
         .stats {
-            padding: 2rem 5%;
-            margin: .2rem 0;
-            background-color: white;
+            padding: 1rem 5%;
+            margin: .1rem 0;
+            background-color: rgb(26, 2, 2);
+            
         }
         
         .stats-container {
@@ -269,9 +270,10 @@
         .stat-card {
             text-align: center;
             padding: 2rem;
-            background: linear-gradient(135deg, var(--primary), #e01cdd);
+            background: linear-gradient(135deg, var(--primary), #075ae9);
             border-radius: 16px;
             transition: var(--transition);
+            opacity: .9;
         }
         
         .stat-card:hover {
@@ -1662,7 +1664,7 @@
         
         .rummy-title {
             font-size: 2.8rem;
-            background: linear-gradient(to right, #FFD700, #FFA500);
+            background: linear-gradient(to right, #d70ee6, #5d06e0);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -1671,11 +1673,14 @@
         }
         
         .rummy-tagline {
-            font-size: 1.2rem;
-            opacity: 0.85;
+            font-size: 1.4rem;
+            opacity: 1;
             max-width: 600px;
             margin: 0 auto;
-            line-height: 1.6;
+            padding: 0;
+            color: #5d06e0;
+            font-family: Arial, Helvetica, sans-serif;
+            
         }
         
         .rummy-video-section {
@@ -1683,7 +1688,7 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             border: 2px solid #FFA500;
             transition: transform 0.3s ease;
         }
@@ -1784,7 +1789,7 @@
         .rummy-section-title {
             font-size: 1.8rem;
             margin-bottom: 25px;
-            color: #FFD700;
+            color: peru;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -1880,7 +1885,7 @@
         .rummy-card-title {
             font-size: 1.2rem;
             margin-bottom: 8px;
-            color: #ffd700;
+color: peru;
             font-family: Arial, Helvetica, sans-serif;
             font-weight: 600;
         }
@@ -1890,7 +1895,7 @@
             justify-content: space-between;
             font-size: 0.9rem;
             opacity: 0.8;
-            color: rgb(33, 5, 155);
+            color: rgb(23, 20, 181);
         }
         
         .rummy-card-duration {
@@ -2330,12 +2335,12 @@
         <nav class="gaming-navbar">
             <a href="#" class="gaming-logo">
                 <img src="img/rummy.png" style="width: 35px;height: auto; border-radius: 10px;" alt="Logo">
-                <span>AllGamingApp.com</span>
+                <span>AllGamingApp</span>
             </a>
             <ul class="gaming-nav-links" id="gaming-nav-menu">
-                <li><a href="index.html" > Home</a></li>
+                <li><a href="index.html" ><i class="fas fa-home " style="margin-top: 6px; font-size: 16px;"></i> Home</a></li>
                 <li class="gaming-dropdown">
-                    <a href="game.html"> Games <i class="fas fa-caret-down" style="margin-top: 6px;"></i></a>
+                    <a href="game.html"><i class="fas fa-dice " style="margin-top: 6px; font-size: 16px;"></i> Games <i class="fas fa-caret-down" style="margin-top: 6px;"></i></a>
                     <div class="gaming-dropdown-content">
                         <a href="new-game.html"> <i class="fas fa-crown"></i> Point Rummy</a>
                         <a href="new-game.html"><i class="fas fa-crown"></i> Pool Rummy</a>
@@ -2345,7 +2350,7 @@
                 </li>
                
                 <li class="gaming-dropdown">
-                    <a href="rummy-tutorial.html" > Learn <i class="fas fa-caret-down" style="margin-top: 6px;"></i></a>
+                    <a href="rummy-tutorial.html" ><i class="fas fa-book icon-test" style="margin-top: 6px; font-size: 16px;"></i> Learn <i class="fas fa-caret-down" style="margin-top: 6px;"></i></a>
                     <div class="gaming-dropdown-content">
                         <a href="rummy-rulers.html"><i class="fas fa-shield-alt"></i> How to play</a>
                         <a href="rummy-tutorial.html"><i class="fas fa-video"></i> Video Tutorial</a>
@@ -2353,7 +2358,7 @@
                 </li>
 
                  <li class="gaming-dropdown">
-                    <a href="#"> Pages <i class="fas fa-caret-down" style="margin-top: 6px;"></i></a>
+                    <a href="#"><i class="fas fa-layer-group icon-test" style="margin-top: 6px; font-size: 16px;"></i> Pages <i class="fas fa-caret-down" style="margin-top: 6px;"></i></a>
                     <div class="gaming-dropdown-content">
                         <a href="about-us.html"><i class="fas fa-info-circle"></i> About Us</a>
                         <a href="contact-us.html"><i class="fas fa-envelope"></i> Contact Us</a>
@@ -2361,8 +2366,8 @@
                     </div>
                 </li>
 
-                <li><a href="promotions.html"> Promotions</a></li>
-                <li><a href="contact-us.html"> Support</a></li>
+                <li><a href="promotions.html"><i class="fas fa-gift icon-test" style="margin-top: 6px; font-size: 16px;"></i> Promotions</a></li>
+                <li><a href="contact-us.html"><i class="fas fa-headset icon-test" style="margin-top: 6px; font-size: 16px;"></i> Support</a></li>
             </ul>
 
             <button id="gaming-join-button"> 
