@@ -179,7 +179,7 @@
         
         .container {
             max-width: 1200px;
-            margin: 50px auto;
+            margin: 43px auto;
             padding: 0px;
         }
         
@@ -187,12 +187,13 @@
             text-align: center;
             padding: 30px 0;
             margin-bottom: 30px;
+            background-color: rgba(4, 50, 116, 0.933);
         }
         
         .header-rummy h1 {
             font-size: 3.5rem;
             margin-bottom: 15px;
-            background: linear-gradient(90deg, #ff416c, #ff4b2b);
+            background: white;
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -201,7 +202,7 @@
         
         .header-rummy .subtitle {
             font-size: 1.3rem;
-            color: black;
+            color: white;
             max-width: 700px;
             margin: 0 auto;
             line-height: 1.6;
@@ -278,11 +279,13 @@
         }
         
         .related-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 25px;
             padding-bottom: 15px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
             color: #ff8a00;
+            border-bottom: 2px solid #2575fc;
         }
         
         .related-item {
@@ -347,6 +350,8 @@
             font-size: 1.1rem;
             margin-bottom: 8px;
             color: black;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
         }
         
         .related-item-meta {
@@ -378,7 +383,7 @@
         }
         
         .feature-card {
-            background: rgba(30, 30, 60, 0.7);
+            background: rgba(4, 50, 116, 0.933);
             border-radius: 15px;
             padding: 30px;
             text-align: center;
@@ -393,43 +398,49 @@
         }
         
         .feature-icon {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             margin-bottom: 20px;
-            color: #ff416c;
+            color: white;
         }
         
         .feature-title {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             margin-bottom: 15px;
-            color: black;
+            color: white;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
         }
         
         .feature-desc {
-            color: black;
+            color: white;
             line-height: 1.6;
+
         }
         
         .download-section {
             text-align: center;
             padding: 50px 20px;
+            background: rgba(4, 50, 116, 0.933);
         }
         
         .download-title {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            color: black;
+            color: white;
+            font-weight: bold;
         }
         
         .download-subtitle {
             font-size: 1.2rem;
-            color: black;
+            color: white;
             max-width: 700px;
             margin: 0 auto 40px;
             line-height: 1.6;
+            font-family: Arial, Helvetica, sans-serif;
         }
         
-        .download-btn {
-            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+        .download-btn-link {
+            background: linear-gradient(90deg, #ec0c0c 0%, #dc069f 100%);
             color: white;
             border: none;
             padding: 18px 45px;
@@ -444,19 +455,12 @@
             box-shadow: 0 10px 25px rgba(37, 117, 252, 0.5);
         }
         
-        .download-btn:hover {
+        .download-btn-link:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(37, 117, 252, 0.7);
         }
         
-        footer {
-            text-align: center;
-            padding: 40px 0 20px;
-            color: #a0a0d0;
-            font-size: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 50px;
-        }
+
         
         @media (max-width: 900px) {
             .video-section {
@@ -494,7 +498,7 @@
 
         .hero-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 3.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
             margin-bottom: 25px;
             background: linear-gradient(to right, #ff9d00, #ffd166);
@@ -563,9 +567,8 @@
     <main style="padding: .3rem; flex: 1;">
     <div class="container">
         <div class="header-rummy">
-
-                        <h1 class="hero-title">Rummy App Masterclass</h1>
-            <p class="subtitle">Learn how to play, win, and become a Rummy pro with our comprehensive video tutorials</p>
+           <h1 class="hero-title">Rummy App Masterclass</h1>
+            <p class="subtitle" style="color: white; font-weight: bold;font-family: 'Times New Roman', Times, serif;">Learn how to play, win, and become a Rummy pro with our comprehensive video tutorials</p>
         </div>
         
         <div class="video-section"> 
@@ -646,7 +649,7 @@
         </div>
         
         <div class="key-features">
-            <h2 class="section-title">Why Learn Rummy?</h2>
+            <h2 class="section-title" style="font-size: 32px;font-family: Arial, Helvetica, sans-serif; font-weight: bold;">Why Learn Rummy?</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -677,7 +680,7 @@
         <div class="download-section">
             <h2 class="download-title">Ready to Play?</h2>
             <p class="download-subtitle">Download our Rummy app now and get ₹100 bonus on your first deposit! Play with millions of players worldwide.</p>
-            <button class="download-btn">
+            <button class="download-btn-link">
                 <i class="fab fa-android"></i> Download for Android
             </button>
         </div>
