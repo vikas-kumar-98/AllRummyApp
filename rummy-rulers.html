@@ -175,47 +175,21 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        :root {
-            --primary: #0f4c81;
-            --secondary: #1a75bc;
-            --accent: #ff7a00;
-            --light: #f8f9ff;
-            --dark: #0a1520;
-            --gray: #8a99b5;
-            --success: #2ecc71;
-        }
 
-        body {
-            background: linear-gradient(135deg, #0a1520, #122b40);
-            color: var(--light);
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
 
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(26, 92, 180, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(255, 122, 0, 0.1) 0%, transparent 20%);
-            z-index: -1;
-        }
+
 
         .rules-container {
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 50px auto;
             padding: 0px;
         }
 
         .section-header {
             text-align: center;
             margin-bottom: 60px;
+            border-radius: 10px;
+            padding: 4px;
         }
 
         .section-title {
@@ -243,7 +217,7 @@
         }
 
         .rules-card {
-            background: rgba(19, 38, 64, 0.7);
+            background: rgba(4, 50, 116, 0.933);
             border-radius: 25px;
             padding: 40px;
             backdrop-filter: blur(10px);
@@ -337,7 +311,7 @@
         }
 
         .app-showcase {
-            background: rgba(19, 38, 64, 0.7);
+            background: rgba(57, 211, 225, 0.7);
             border-radius: 25px;
             padding: 60px;
             backdrop-filter: blur(10px);
@@ -355,7 +329,7 @@
         }
 
         .app-card {
-            background: rgba(10, 21, 32, 0.5);
+            background: rgba(4, 50, 116, 0.933);
             border-radius: 20px;
             padding: 30px;
             text-align: center;
@@ -424,7 +398,7 @@
         .step-card {
             display: flex;
             gap: 30px;
-            background: rgba(19, 38, 64, 0.7);
+            background: rgba(4, 50, 116, 0.933);
             border-radius: 20px;
             padding: 30px;
             backdrop-filter: blur(10px);
@@ -529,6 +503,18 @@
          
             }
         }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, #ff9d00, #ffd166);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
     </style>
 </head>
 <body>
@@ -603,8 +589,9 @@
     </div>
 
     <div class="rules-container">
-        <div class="section-header">
-            <h2 class="section-title">Master Rummy Game Rules</h2>
+        <div class="section-header" style="background-color: rgb(5, 111, 210);">
+           <h1 class="hero-title">Master Rummy Game Rules</h1>
+
             <p class="section-subtitle">Learn how to play, download comprehensive guides, and become a rummy expert</p>
         </div>
 
@@ -705,7 +692,7 @@
             <div class="app-grid">
                 <div class="app-card">
                     <div class="app-icon">
-                        <i class="fas fa-crown"></i>
+                       <img src="img/rummy333.webp" class="app-img" alt="">
                     </div>
                     <h3 class="app-name">Rummy Elite</h3>
                     <p class="app-desc">Premium rummy experience with daily tournaments</p>
@@ -716,7 +703,7 @@
                 
                 <div class="app-card">
                     <div class="app-icon">
-                        <i class="fas fa-dice"></i>
+                       <img src="img/rummy333.webp" class="app-img" alt="">
                     </div>
                     <h3 class="app-name">Rummy Pro</h3>
                     <p class="app-desc">Fast-paced games and instant withdrawals</p>
@@ -727,7 +714,7 @@
                 
                 <div class="app-card">
                     <div class="app-icon">
-                        <i class="fas fa-gem"></i>
+                       <img src="img/rummy333.webp" class="app-img" alt="">
                     </div>
                     <h3 class="app-name">Rummy Diamond</h3>
                     <p class="app-desc">Luxury gaming experience with high-stakes tables</p>
@@ -738,7 +725,7 @@
                 
                 <div class="app-card">
                     <div class="app-icon">
-                        <i class="fas fa-chess"></i>
+                       <img src="img/rummy333.webp" class="app-img" alt="">
                     </div>
                     <h3 class="app-name">Rummy Masters</h3>
                     <p class="app-desc">Strategic gameplay for competitive players</p>
