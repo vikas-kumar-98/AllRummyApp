@@ -2191,9 +2191,52 @@
                 padding: 9px 12px;
                 margin: 0;
             }
-            
-
         }
+
+        .download-btn-now {
+  background: linear-gradient(135deg, #ee0a80, #de0744);
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 14px 32px;
+  border: none;
+  margin: 3px;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.1s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.download-btn-now:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.6); }
+  70% { box-shadow: 0 0 0 12px rgba(76, 175, 80, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+}
+
+.download-btn-now {
+  animation: pulse .6s infinite;
+}
+
+.download-icon-now {
+  display: inline-block;
+  margin-right: 8px;
+  /* Apply the up-down movement */
+  animation: upDown 1s infinite alternate;
+}
+
+@keyframes upDown {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
     </style>
 </head>
 <body>
@@ -2255,15 +2298,20 @@
     <div class="content-container" style="margin-top: 49px; padding: 0px;">
        <img src="img/gamer.webp" style="width: 100%;height: auto;" alt="Description">
     </div>
+        <div class="offer-card">
+            <a href="https://rummybonusapp.com/" target="_blank" class="telegram-button timer" style="background-color: wheat; text-align: center;padding: 5px;">
+               <button class="download-btn-now"><i class="fa fa-download download-icon-now"></i> Download </button>  
+            </a>
+        </div>
     
         <div class="offer-card">
-            <a href="https://telegram.org" target="_blank" class="telegram-button timer">
-               <span><i class="fab fa-telegram"></i>Join Us to Get Your ₹50 Bonus </span>  
+            <a href="https://telegram.org" target="_blank" class="telegram-button timer" style="text-align: center;">
+               <span><i class="fab fa-telegram" ></i>Join Us to Get Your ₹50 Bonus </span>  
             </a>
         </div>
         
         
-        
+
     <script>
         // Animation for the bonus amount
         const bonusAmount = document.querySelector('.bonus-amount');
