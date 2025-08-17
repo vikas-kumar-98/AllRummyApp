@@ -339,7 +339,8 @@
        
         /* Footer Styles */
         footer {
-            background: black;
+            background: rgba(15, 12, 41, 0.95);
+            backdrop-filter: blur(10px);
             margin-top: auto;
             padding-top: 4rem;
             position: relative;
