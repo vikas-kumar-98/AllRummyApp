@@ -168,44 +168,6 @@
     <link rel="stylesheet" href="css/style.css">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        :root {
-            --primary: #0f4c81;
-            --secondary: #1a75bc;
-            --accent: #ff7a00;
-            --light: #f8f9ff;
-            --dark: #0a1520;
-            --gray: #8a99b5;
-            --success: #2ecc71;
-        }
-
-        body {
-            background: linear-gradient(135deg, #0a1520, #122b40);
-            color: var(--light);
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(26, 92, 180, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(255, 122, 0, 0.1) 0%, transparent 20%);
-            z-index: -1;
-        }
 
         .container {
             max-width: 1200px;
@@ -216,15 +178,17 @@
         /* Hero Section */
         .hero-section {
             text-align: center;
-            padding: 50px 20px;
+            padding: 20px 20px;
             position: relative;
-            max-width: 900px;
-            margin: 0 auto 10px;
+            max-width: 1400px;
+            margin: 43px auto;
+            background: rgba(4, 50, 116, 0.933);
+
         }
 
         .hero-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 25px;
             background: linear-gradient(to right, #ff9d00, #ffd166);
@@ -236,7 +200,7 @@
 
         .hero-subtitle {
             font-size: 1.4rem;
-            color: var(--gray);
+            color: white;
             margin-bottom: 40px;
             max-width: 700px;
             margin-left: auto;
@@ -259,7 +223,7 @@
             position: relative;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, #1a2a6c, #b21f1f, #1a2a6c);
+            background: linear-gradient(45deg, #1a2a6c, #981111, #1a2a6c);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -286,14 +250,18 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 2.8rem;
             margin-bottom: 25px;
-            color: #ffd166;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            color: blue;
+
         }
 
         .section-description {
             font-size: 1.1rem;
-            color: var(--gray);
+            color: black;
             margin-bottom: 30px;
             line-height: 1.8;
+            font-family: 'Times New Roman', Times, serif;
         }
 
         .features-grid {
@@ -306,6 +274,9 @@
         .feature-card {
             display: flex;
             gap: 15px;
+            padding: 4px;
+            border-radius: 10px;
+            background-color: rgba(4, 50, 116, 0.933);
         }
 
         .feature-icon {
@@ -352,7 +323,7 @@
         }
 
         .app-card {
-            background: rgba(19, 38, 64, 0.7);
+            background: rgba(4, 50, 116, 0.933);
             border-radius: 25px;
             padding: 10px;
             backdrop-filter: blur(10px);
@@ -408,7 +379,7 @@
             padding: 8px 15px;
             border-radius: 20px;
             font-size: 0.9rem;
-            color: var(--accent);
+            color: white
         }
 
         .download-btn {
@@ -440,7 +411,7 @@
         .stat-card {
             text-align: center;
             padding: 40px 20px;
-            background: rgba(19, 38, 64, 0.5);
+            background: rgba(4, 50, 116, 0.933);
             border-radius: 20px;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -625,7 +596,7 @@
             </div>
             
             <div class="about-content">
-                <h2 class="section-title">About RummyPro</h2>
+                <h2 class="section-title"> <span style="border-bottom: 2px solid #ff9d00;">About RummyPro </span></h2>
                 <p class="section-description">
                     RummyPro is India's premier platform for rummy enthusiasts. We carefully select and review the top rummy apps to provide you with a curated collection of the best gaming experiences available.
                 </p>
@@ -679,7 +650,7 @@
 
         <section class="app-section">
             <div class="app-header">
-                <h2 class="section-title">Featured Rummy Apps</h2>
+                <h2 class="section-title"> <span style="border-bottom:2px solid#ff9d00;">Featured Rummy Apps</span></h2>
                 <p class="section-description">Discover our hand-picked selection of top-rated rummy applications</p>
             </div>
             
