@@ -701,6 +701,55 @@
             .header-icon:nth-child(2) {
                 display: none;
             }
+            
+            .recent-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .chart-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .chart-filter, .btn {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 100%;
+            }
+            
+            .sidebar.collapsed {
+                width: 0;
+            }
+            
+            .sidebar-header {
+                padding: 15px;
+            }
+            
+            .menu-item {
+                padding: 12px 15px;
+            }
+            
+            .sub-menu-item {
+                padding: 10px 15px 10px 50px;
+            }
+            
+            .stat-info h4 {
+                font-size: 1.5rem;
+            }
+            
+            .chart-card, .recent-card {
+                padding: 1rem;
+            }
+            
+            th, td {
+                padding: 8px 10px;
+            }
         }
     </style>
 </head>
@@ -1112,7 +1161,10 @@
             menuItemsAll.forEach(function(item) {
                 item.addEventListener('click', function() {
                     if (window.innerWidth < 992) {
-                        sidebar.classList.remove('open');
+                        // Don't close sidebar when clicking dropdown items
+                        if (!this.classList.contains('has-dropdown') && !this.parentElement.classList.contains('sub-menu')) {
+                            sidebar.classList.remove('open');
+                        }
                     }
                 });
             });
@@ -1181,6 +1233,13 @@
                             position: 'bottom'
                         }
                     }
+                }
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 992) {
+                    sidebar.classList.remove('open');
                 }
             });
         });
