@@ -35,12 +35,15 @@
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
+            width: 100%;
         }
 
         /* Layout */
         .dashboard-container {
             display: flex;
             min-height: 100vh;
+            width: 100%;
+            overflow: hidden;
         }
 
         /* Sidebar */
@@ -52,6 +55,7 @@
             position: fixed;
             transition: var(--transition);
             z-index: 1000;
+            overflow-y: auto;
         }
 
         .sidebar-header {
@@ -83,6 +87,7 @@
             transition: var(--transition);
             cursor: pointer;
             border-left: 4px solid transparent;
+            position: relative;
         }
 
         .menu-item:hover {
@@ -98,6 +103,36 @@
         .menu-item i {
             margin-right: 12px;
             font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .menu-item .arrow {
+            margin-left: auto;
+            transition: var(--transition);
+        }
+
+        .submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .submenu.active {
+            max-height: 500px;
+        }
+
+        .submenu-item {
+            padding: 0.8rem 1.5rem 0.8rem 3rem;
+            display: block;
+            transition: var(--transition);
+            cursor: pointer;
+            border-left: 4px solid transparent;
+        }
+
+        .submenu-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--info);
         }
 
         /* Main Content */
@@ -105,6 +140,8 @@
             flex: 1;
             margin-left: var(--sidebar-width);
             transition: var(--transition);
+            width: calc(100% - var(--sidebar-width));
+            max-width: 100%;
         }
 
         /* Header */
@@ -161,6 +198,8 @@
         /* Dashboard Content */
         .dashboard-content {
             padding: 2rem;
+            width: 100%;
+            overflow-x: hidden;
         }
 
         .page-title {
@@ -221,6 +260,8 @@
             border-radius: var(--border-radius);
             padding: 1.5rem;
             box-shadow: var(--card-shadow);
+            width: 100%;
+            overflow: hidden;
         }
 
         .chart-header {
@@ -242,15 +283,19 @@
             padding: 1.5rem;
             box-shadow: var(--card-shadow);
             margin-bottom: 2rem;
+            width: 100%;
+            overflow: hidden;
         }
 
         .table-responsive {
             overflow-x: auto;
+            width: 100%;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
+            min-width: 600px;
         }
 
         th, td {
@@ -297,12 +342,19 @@
             color: #6c757d;
             font-size: 0.9rem;
             border-top: 1px solid #eee;
+            width: 100%;
         }
 
         /* Responsive Design */
-        @media (max-width: 992px) {
+        @media (max-width: 1200px) {
             .charts-container {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -310,6 +362,7 @@
             .sidebar {
                 transform: translateX(-100%);
                 width: 70%;
+                max-width: 250px;
             }
             
             .sidebar.active {
@@ -318,6 +371,7 @@
             
             .main-content {
                 margin-left: 0;
+                width: 100%;
             }
             
             .menu-toggle {
@@ -326,6 +380,10 @@
             
             .search-box {
                 width: 200px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -342,12 +400,24 @@
                 padding: 1rem;
             }
             
-            .stats-grid {
-                grid-template-columns: 1fr;
+            .page-title {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
             }
             
             .page-title h1 {
                 font-size: 1.5rem;
+            }
+            
+            .chart-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .user-profile span {
+                display: none;
             }
         }
     </style>
@@ -364,30 +434,65 @@
                     <i class="fas fa-home"></i>
                     <span>Dashboard</span>
                 </div>
-                <div class="menu-item">
+                
+                <div class="menu-item has-submenu">
                     <i class="fas fa-users"></i>
                     <span>Players</span>
+                    <i class="fas fa-chevron-down arrow"></i>
                 </div>
-                <div class="menu-item">
+                <div class="submenu">
+                    <div class="submenu-item">All Players</div>
+                    <div class="submenu-item">Active Players</div>
+                    <div class="submenu-item">New Signups</div>
+                    <div class="submenu-item">VIP Players</div>
+                </div>
+                
+                <div class="menu-item has-submenu">
                     <i class="fas fa-gamepad"></i>
                     <span>Games</span>
+                    <i class="fas fa-chevron-down arrow"></i>
                 </div>
-                <div class="menu-item">
+                <div class="submenu">
+                    <div class="submenu-item">Tournaments</div>
+                    <div class="submenu-item">Cash Games</div>
+                    <div class="submenu-item">Practice Tables</div>
+                    <div class="submenu-item">Game History</div>
+                </div>
+                
+                <div class="menu-item has-submenu">
                     <i class="fas fa-coins"></i>
                     <span>Transactions</span>
+                    <i class="fas fa-chevron-down arrow"></i>
                 </div>
+                <div class="submenu">
+                    <div class="submenu-item">Deposits</div>
+                    <div class="submenu-item">Withdrawals</div>
+                    <div class="submenu-item">Transaction History</div>
+                    <div class="submenu-item">Bonus History</div>
+                </div>
+                
                 <div class="menu-item">
                     <i class="fas fa-chart-bar"></i>
                     <span>Analytics</span>
                 </div>
-                <div class="menu-item">
+                
+                <div class="menu-item has-submenu">
                     <i class="fas fa-gift"></i>
                     <span>Promotions</span>
+                    <i class="fas fa-chevron-down arrow"></i>
                 </div>
+                <div class="submenu">
+                    <div class="submenu-item">Bonus Codes</div>
+                    <div class="submenu-item">Referral Program</div>
+                    <div class="submenu-item">Tournament Promotions</div>
+                    <div class="submenu-item">Seasonal Offers</div>
+                </div>
+                
                 <div class="menu-item">
                     <i class="fas fa-cog"></i>
                     <span>Settings</span>
                 </div>
+                
                 <div class="menu-item">
                     <i class="fas fa-question-circle"></i>
                     <span>Support</span>
@@ -580,6 +685,28 @@
             }
         });
 
+        // Toggle submenus
+        const menuItems = document.querySelectorAll('.menu-item.has-submenu');
+        
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const submenu = this.nextElementSibling;
+                const arrow = this.querySelector('.arrow');
+                
+                // Close other open submenus
+                document.querySelectorAll('.submenu').forEach(sub => {
+                    if (sub !== submenu && sub.classList.contains('active')) {
+                        sub.classList.remove('active');
+                        sub.previousElementSibling.querySelector('.arrow').classList.remove('rotated');
+                    }
+                });
+                
+                // Toggle current submenu
+                submenu.classList.toggle('active');
+                arrow.classList.toggle('rotated');
+            });
+        });
+
         // Initialize charts
         document.addEventListener('DOMContentLoaded', function() {
             // Revenue Chart
@@ -648,6 +775,11 @@
                     }
                 }
             });
+        });
+
+        // Prevent horizontal scrolling
+        window.addEventListener('resize', function() {
+            document.body.style.overflowX = 'hidden';
         });
     </script>
 </body>
